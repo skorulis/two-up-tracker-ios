@@ -37,7 +37,7 @@ struct SessionDetailView: View {
                 ForEach(Array(model.roundRows), id: \.round.id) { row in
                     VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
                         HStack {
-                            Text(row.round.date, format: .dateTime.day().month().year().hour().minute())
+                            Text(row.round.date, format: .dateTime.hour().minute())
                                 .font(DesignTokens.Typography.caption)
                                 .foregroundStyle(.secondary)
                             Spacer()
@@ -67,13 +67,13 @@ struct SessionDetailView: View {
                             .accessibilityElement(children: .contain)
                         }
                         HStack {
-                            Text("Round P&L")
+                            Text("Result")
                                 .font(DesignTokens.Typography.body)
                             Spacer()
                             CurrencyLabel(amount: row.round.profit)
                         }
                         HStack {
-                            Text("Running")
+                            Text("Running Balance")
                                 .font(DesignTokens.Typography.caption)
                                 .foregroundStyle(.secondary)
                             Spacer()
