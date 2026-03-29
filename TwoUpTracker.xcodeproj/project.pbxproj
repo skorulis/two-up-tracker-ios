@@ -17,7 +17,13 @@
 		5EE73F7F63C8E882C00D01EF /* UtilPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234587BF98C98F45A1B8D9B6 /* UtilPlaceholder.swift */; };
 		6B41C0DCACCD396F36441B07 /* CoordinatorView+TwoUpTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330C29CA08D50E62424A522 /* CoordinatorView+TwoUpTracker.swift */; };
 		9449BBF997F1165520CB9602 /* ASKCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC81680AC7E4D5AC424E3DA /* ASKCoordinator */; };
-		98E12E732611CDCAB271712B /* DesignSystemPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9837B9F814C7BFEA37C40 /* DesignSystemPlaceholder.swift */; };
+		7C1A2B3D4E5F60718293A4B5 /* DesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1A2B3D4E5F60718293A4B6 /* DesignTokens.swift */; };
+		7E1A2B3D4E5F60718293A4B7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1A2B3D4E5F60718293A4B8 /* Colors.swift */; };
+		801A2B3D4E5F60718293A4B9 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811A2B3D4E5F60718293A4BA /* Card.swift */; };
+		821A2B3D4E5F60718293A4BB /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A2B3D4E5F60718293A4BC /* PrimaryButtonStyle.swift */; };
+		841A2B3D4E5F60718293A4BD /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851A2B3D4E5F60718293A4BE /* SectionHeader.swift */; };
+		861A2B3D4E5F60718293A4BF /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871A2B3D4E5F60718293A4C0 /* EmptyState.swift */; };
+		881A2B3D4E5F60718293A4C1 /* CurrencyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891A2B3D4E5F60718293A4C2 /* CurrencyLabel.swift */; };
 		AF89CF64394036C80B5FA0F3 /* MainPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB6B3842FDFE077726FA9BE /* MainPathRenderer.swift */; };
 		B2B10347A61A49E8764DF491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53224A99EC8A747374A0D44A /* Assets.xcassets */; };
 		B6124C5E12970F619EA53673 /* KnitMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 5EEE554B454885BDCB0FF15E /* KnitMacros */; };
@@ -42,7 +48,13 @@
 		0F237BCE720AA86D1723BB91 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		234587BF98C98F45A1B8D9B6 /* UtilPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilPlaceholder.swift; sourceTree = "<group>"; };
 		2D388E4876A521C3D0D672BD /* TwoUpTrackerUnitTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TwoUpTrackerUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2ED9837B9F814C7BFEA37C40 /* DesignSystemPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystemPlaceholder.swift; sourceTree = "<group>"; };
+		7D1A2B3D4E5F60718293A4B6 /* DesignTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTokens.swift; sourceTree = "<group>"; };
+		7F1A2B3D4E5F60718293A4B8 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		811A2B3D4E5F60718293A4BA /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		831A2B3D4E5F60718293A4BC /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		851A2B3D4E5F60718293A4BE /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		871A2B3D4E5F60718293A4C0 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
+		891A2B3D4E5F60718293A4C2 /* CurrencyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLabel.swift; sourceTree = "<group>"; };
 		3C1F350B6C0E1022A0ED3DCD /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		53224A99EC8A747374A0D44A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66D6DFA5A6F1E9549A749B11 /* TwoUpTrackerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoUpTrackerUnitTests.swift; sourceTree = "<group>"; };
@@ -157,7 +169,13 @@
 		B5172159D3287A7A78195D16 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
-				2ED9837B9F814C7BFEA37C40 /* DesignSystemPlaceholder.swift */,
+				7D1A2B3D4E5F60718293A4B6 /* DesignTokens.swift */,
+				7F1A2B3D4E5F60718293A4B8 /* Colors.swift */,
+				811A2B3D4E5F60718293A4BA /* Card.swift */,
+				831A2B3D4E5F60718293A4BC /* PrimaryButtonStyle.swift */,
+				851A2B3D4E5F60718293A4BE /* SectionHeader.swift */,
+				871A2B3D4E5F60718293A4C0 /* EmptyState.swift */,
+				891A2B3D4E5F60718293A4C2 /* CurrencyLabel.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -305,7 +323,13 @@
 				C531F994072F4D0F751F9F51 /* ContentView.swift in Sources */,
 				5CBC7DBAADC04A3F7009E801 /* ContentViewModel.swift in Sources */,
 				6B41C0DCACCD396F36441B07 /* CoordinatorView+TwoUpTracker.swift in Sources */,
-				98E12E732611CDCAB271712B /* DesignSystemPlaceholder.swift in Sources */,
+				7C1A2B3D4E5F60718293A4B5 /* DesignTokens.swift in Sources */,
+				7E1A2B3D4E5F60718293A4B7 /* Colors.swift in Sources */,
+				801A2B3D4E5F60718293A4B9 /* Card.swift in Sources */,
+				821A2B3D4E5F60718293A4BB /* PrimaryButtonStyle.swift in Sources */,
+				841A2B3D4E5F60718293A4BD /* SectionHeader.swift in Sources */,
+				861A2B3D4E5F60718293A4BF /* EmptyState.swift in Sources */,
+				881A2B3D4E5F60718293A4C1 /* CurrencyLabel.swift in Sources */,
 				366E0B94BE9BB6A66B9C1D14 /* MainPath.swift in Sources */,
 				AF89CF64394036C80B5FA0F3 /* MainPathRenderer.swift in Sources */,
 				19DA008099A12120320FAD7A /* ModelPlaceholder.swift in Sources */,
