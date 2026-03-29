@@ -37,6 +37,11 @@ final class MainStore {
         persist()
     }
 
+    func removeRound(id: UUID) {
+        activeSession.rounds.removeAll { $0.id == id }
+        persist()
+    }
+
     private func persist() {
         guard let data = Self.encodeSession(activeSession) else { return }
         keyValueStore.set(data, forKey: Self.activeSessionKey)

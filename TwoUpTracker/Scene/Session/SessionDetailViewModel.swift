@@ -33,4 +33,8 @@ final class SessionDetailViewModel {
     func recordOutcome(roundId: UUID, outcome: Outcome) {
         mainStore.setRoundResult(roundId: roundId, result: outcome)
     }
+
+    func deleteRound(id: UUID) {
+        mainStore.removeRound(id: id)
+    }
 }

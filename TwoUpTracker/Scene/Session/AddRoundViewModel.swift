@@ -13,7 +13,7 @@ struct BetDraft: Identifiable, Equatable {
 @MainActor
 @Observable
 final class AddRoundViewModel {
-    @ObservationIgnored private let mainStore: MainStore
+    private let mainStore: MainStore
 
     var betDrafts: [BetDraft] = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
 

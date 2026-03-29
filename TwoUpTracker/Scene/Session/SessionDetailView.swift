@@ -84,6 +84,13 @@ struct SessionDetailView: View {
                     }
                     .padding(.vertical, DesignTokens.Spacing.xs)
                 }
+                .onDelete { indexSet in
+                    let rows = model.roundRows
+                    for index in indexSet {
+                        guard rows.indices.contains(index) else { continue }
+                        model.deleteRound(id: rows[index].round.id)
+                    }
+                }
             }
         }
     }
