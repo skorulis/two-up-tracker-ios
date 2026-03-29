@@ -15,7 +15,10 @@ struct MainPathRenderer: CoordinatorPathRenderer {
             AnyView(ContentView(model: resolver.contentViewModel()))
         case .sessionDetail:
             AnyView(
-                SessionDetailView(model: SessionDetailViewModel.make(resolver: resolver))
+                SessionDetailView(
+                    model: SessionDetailViewModel.make(resolver: resolver),
+                    store: resolver.mainStore()
+                )
             )
         case .addRound:
             AnyView(

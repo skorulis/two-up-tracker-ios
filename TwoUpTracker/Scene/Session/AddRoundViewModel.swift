@@ -67,6 +67,11 @@ final class AddRoundViewModel {
         return true
     }
 
+    func resetForm() {
+        tossResult = .heads
+        betDrafts = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
+    }
+
     private func makeRound() -> Round? {
         let bets: [Bet] = betDrafts.compactMap { draft in
             let trimmed = draft.amountText.trimmingCharacters(in: .whitespacesAndNewlines)

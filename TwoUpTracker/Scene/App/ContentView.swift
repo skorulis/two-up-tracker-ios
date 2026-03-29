@@ -5,16 +5,24 @@ struct ContentView: View {
     @Bindable var model: ContentViewModel
     @Environment(\.resolver) private var resolver
 
-    @State var sessionCoordinator = Coordinator(root: MainPath.sessionDetail)
+    @State private var addRoundCoordinator = Coordinator(root: MainPath.addRound)
+    @State private var historyCoordinator = Coordinator(root: MainPath.sessionDetail)
 
     var body: some View {
         TabView(selection: $model.selectedTab) {
-            CoordinatorView(coordinator: sessionCoordinator)
+            CoordinatorView(coordinator: addRoundCoordinator)
                 .withRenderers(resolver: resolver!)
                 .tabItem {
-                    Label("Session", systemImage: "calendar")
+                    Label("Add", systemImage: "plus.circle.fill")
                 }
-                .tag(ContentTab.session)
+                .tag(ContentTab.addRound)
+
+            CoordinatorView(coordinator: historyCoordinator)
+                .withRenderers(resolver: resolver!)
+                .tabItem {
+                    Label("History", systemImage: "list.bullet.rectangle")
+                }
+                .tag(ContentTab.history)
 
             Text("Graph")
                 .tabItem {

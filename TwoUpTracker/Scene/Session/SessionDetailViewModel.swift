@@ -6,7 +6,7 @@ import Observation
 @MainActor
 @Observable
 final class SessionDetailViewModel {
-    @ObservationIgnored private let mainStore: MainStore
+    private let mainStore: MainStore
 
     @Resolvable<BaseResolver>
     init(mainStore: MainStore) {

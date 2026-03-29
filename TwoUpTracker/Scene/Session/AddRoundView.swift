@@ -56,8 +56,11 @@ struct AddRoundView: View {
                     model.addBet()
                 }
                 Button("Save round") {
-                    if model.saveRound() {
+                    guard model.saveRound() else { return }
+                    if coordinator?.canPop == true {
                         coordinator?.pop()
+                    } else {
+                        model.resetForm()
                     }
                 }
                 .buttonStyle(.primary)
@@ -68,8 +71,12 @@ struct AddRoundView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
-                    coordinator?.pop()
+                Button(coordinator?.canPop == true ? "Cancel" : "Clear") {
+                    if coordinator?.canPop == true {
+                        coordinator?.pop()
+                    } else {
+                        model.resetForm()
+                    }
                 }
             }
         }

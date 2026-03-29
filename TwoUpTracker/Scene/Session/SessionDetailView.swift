@@ -1,9 +1,8 @@
-import ASKCoordinator
 import SwiftUI
 
 struct SessionDetailView: View {
     @Bindable var model: SessionDetailViewModel
-    @Environment(\.coordinator) private var coordinator
+    @Bindable var store: MainStore
 
     var body: some View {
         Group {
@@ -12,21 +11,15 @@ struct SessionDetailView: View {
             } else {
                 EmptyState(
                     title: "No rounds yet",
-                    message: "Add a round to record the toss and your bets.",
+                    message: "Use the Add tab to record a toss and your bets.",
                     systemImage: "list.bullet.rectangle"
                 )
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .id(store.activeSession.rounds.count)
         .navigationTitle(model.sessionName)
         .navigationBarTitleDisplayMode(.large)
-        .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Button("Add round") {
-                    coordinator?.push(MainPath.addRound)
-                }
-            }
-        }
     }
 
     private var listContent: some View {
@@ -48,9 +41,11 @@ struct SessionDetailView: View {
                                 .font(DesignTokens.Typography.caption)
                                 .foregroundStyle(.secondary)
                             Spacer()
-                            Text(row.round.result.rawValue.capitalized)
-                                .font(DesignTokens.Typography.caption)
-                                .foregroundStyle(.secondary)
+                            if let result = row.round.result {
+                                Text(result.rawValue.capitalized)
+                                    .font(DesignTokens.Typography.caption)
+                                    .foregroundStyle(.secondary)
+                            }
                         }
                         HStack {
                             Text("Round P&L")

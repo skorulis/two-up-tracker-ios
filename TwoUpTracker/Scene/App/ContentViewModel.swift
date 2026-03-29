@@ -3,7 +3,10 @@ import Knit
 import Observation
 
 enum ContentTab: Hashable {
-    case session
+    /// Record a new toss and bets.
+    case addRound
+    /// Past rounds and running balance.
+    case history
     case graph
 }
 
@@ -11,7 +14,7 @@ enum ContentTab: Hashable {
 @Observable
 final class ContentViewModel {
 
-    var selectedTab: ContentTab = .session
+    var selectedTab: ContentTab = .addRound
 
     init() {}
 }
