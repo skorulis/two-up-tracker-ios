@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19DA008099A12120320FAD7A /* ModelPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43DE4E26EDA14BA191917B3 /* ModelPlaceholder.swift */; };
+		9A10F0022222222222222222 /* Outcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A10F0011111111111111111 /* Outcome.swift */; };
+		9A10F0044444444444444444 /* Bet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A10F0033333333333333333 /* Bet.swift */; };
+		9A10F0066666666666666666 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A10F0055555555555555555 /* Round.swift */; };
+		9A10F0088888888888888888 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A10F0077777777777777777 /* Session.swift */; };
 		30928BE53C4E202454BA46B4 /* TwoUpTrackerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B55089E0052135C1EC772E /* TwoUpTrackerAssembly.swift */; };
 		366E0B94BE9BB6A66B9C1D14 /* MainPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4ECA54B0D0C2C7DCBC589B /* MainPath.swift */; };
 		3CCD519B80BA98E56769625C /* TwoUpTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D875B8FC2954AA8137168D5D /* TwoUpTrackerApp.swift */; };
@@ -66,7 +69,10 @@
 		DF72DAB8653675CB10E7D845 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		E330C29CA08D50E62424A522 /* CoordinatorView+TwoUpTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoordinatorView+TwoUpTracker.swift"; sourceTree = "<group>"; };
 		F3B55089E0052135C1EC772E /* TwoUpTrackerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoUpTrackerAssembly.swift; sourceTree = "<group>"; };
-		F43DE4E26EDA14BA191917B3 /* ModelPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPlaceholder.swift; sourceTree = "<group>"; };
+		9A10F0011111111111111111 /* Outcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outcome.swift; sourceTree = "<group>"; };
+		9A10F0033333333333333333 /* Bet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bet.swift; sourceTree = "<group>"; };
+		9A10F0055555555555555555 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
+		9A10F0077777777777777777 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		F5FA353D83CAE43D83CCB3CC /* knitconfig.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = knitconfig.json; sourceTree = "<group>"; };
 		FDB6B3842FDFE077726FA9BE /* MainPathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPathRenderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,7 +158,10 @@
 		AE3C3D46DAC924DEF92E2BC0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F43DE4E26EDA14BA191917B3 /* ModelPlaceholder.swift */,
+				9A10F0011111111111111111 /* Outcome.swift */,
+				9A10F0033333333333333333 /* Bet.swift */,
+				9A10F0055555555555555555 /* Round.swift */,
+				9A10F0077777777777777777 /* Session.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,7 +341,10 @@
 				881A2B3D4E5F60718293A4C1 /* CurrencyLabel.swift in Sources */,
 				366E0B94BE9BB6A66B9C1D14 /* MainPath.swift in Sources */,
 				AF89CF64394036C80B5FA0F3 /* MainPathRenderer.swift in Sources */,
-				19DA008099A12120320FAD7A /* ModelPlaceholder.swift in Sources */,
+				9A10F0022222222222222222 /* Outcome.swift in Sources */,
+				9A10F0044444444444444444 /* Bet.swift in Sources */,
+				9A10F0066666666666666666 /* Round.swift in Sources */,
+				9A10F0088888888888888888 /* Session.swift in Sources */,
 				43F463FE5DC3726ECAA3F231 /* StorePlaceholder.swift in Sources */,
 				3CCD519B80BA98E56769625C /* TwoUpTrackerApp.swift in Sources */,
 				30928BE53C4E202454BA46B4 /* TwoUpTrackerAssembly.swift in Sources */,

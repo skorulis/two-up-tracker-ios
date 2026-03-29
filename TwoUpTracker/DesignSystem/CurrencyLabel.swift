@@ -48,5 +48,4 @@ struct CurrencyLabel: View {
         CurrencyLabel(amount: 200)
         CurrencyLabel(amount: -47.25)
     }
-    
 }
