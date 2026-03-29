@@ -7,7 +7,7 @@ struct PrimaryButtonStyle: ButtonStyle {
             .font(DesignTokens.Typography.headline)
             .frame(minHeight: DesignTokens.MinTapTarget.height)
             .frame(maxWidth: .infinity)
-            .padding(.horizontal, DesignTokens.Spacing.md)
+            .padding(.horizontal, DesignTokens.Spacing.medium)
             .background(Color.accentColor.opacity(configuration.isPressed ? 0.88 : 1))
             .foregroundStyle(.white)
             .clipShape(RoundedRectangle(cornerRadius: DesignTokens.CornerRadius.button, style: .continuous))

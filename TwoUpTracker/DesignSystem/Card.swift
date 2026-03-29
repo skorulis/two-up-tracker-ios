@@ -6,7 +6,7 @@ struct Card<Content: View>: View {
 
     var body: some View {
         content()
-            .padding(DesignTokens.Spacing.md)
+            .padding(DesignTokens.Spacing.medium)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(Colors.cardBackground)
             .clipShape(RoundedRectangle(cornerRadius: DesignTokens.CornerRadius.card, style: .continuous))
@@ -15,7 +15,7 @@ struct Card<Content: View>: View {
 
 #Preview("Card") {
     Card {
-        VStack(alignment: .leading, spacing: DesignTokens.Spacing.sm) {
+        VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
             Text("Total profit")
                 .font(DesignTokens.Typography.caption)
                 .foregroundStyle(.secondary)

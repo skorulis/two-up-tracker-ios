@@ -4,9 +4,9 @@ import SwiftUI
 enum DesignTokens {
     enum Spacing {
         static let xs: CGFloat = 4
-        static let sm: CGFloat = 8
-        static let md: CGFloat = 16
-        static let lg: CGFloat = 24
+        static let small: CGFloat = 8
+        static let medium: CGFloat = 16
+        static let large: CGFloat = 24
         static let xl: CGFloat = 32
     }
 

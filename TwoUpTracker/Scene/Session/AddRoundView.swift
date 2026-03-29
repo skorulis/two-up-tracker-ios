@@ -67,19 +67,18 @@ struct AddRoundView: View {
         }
 
         Section {
-            HStack(spacing: DesignTokens.Spacing.sm) {
+            HStack(spacing: DesignTokens.Spacing.medium) {
                 Text("Toss")
                     .font(DesignTokens.Typography.caption)
                     .foregroundStyle(.secondary)
                 Spacer()
-                Button("Heads") {
+                
+                CoinOutcomeButton(outcome: .heads) {
                     model.recordPendingOutcome(.heads)
                 }
-                .buttonStyle(.bordered)
-                Button("Tails") {
+                CoinOutcomeButton(outcome: .tails) {
                     model.recordPendingOutcome(.tails)
                 }
-                .buttonStyle(.bordered)
             }
             .accessibilityElement(children: .contain)
         } footer: {
@@ -92,7 +91,7 @@ struct AddRoundView: View {
         Group {
             Section {
                 ForEach(model.betDrafts) { draft in
-                    VStack(alignment: .leading, spacing: DesignTokens.Spacing.sm) {
+                    VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
                         BetAmountGrid(amountText: model.amountBinding(for: draft.id))
                         HStack {
                             TextField("Amount", text: model.amountBinding(for: draft.id))

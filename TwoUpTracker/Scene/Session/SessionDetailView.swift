@@ -52,19 +52,17 @@ struct SessionDetailView: View {
                             }
                         }
                         if row.round.result == nil {
-                            HStack(spacing: DesignTokens.Spacing.sm) {
+                            HStack(spacing: DesignTokens.Spacing.medium) {
                                 Text("Toss")
                                     .font(DesignTokens.Typography.caption)
                                     .foregroundStyle(.secondary)
                                 Spacer()
-                                Button("Heads") {
+                                CoinOutcomeButton(outcome: .heads) {
                                     model.recordOutcome(roundId: row.round.id, outcome: .heads)
                                 }
-                                .buttonStyle(.bordered)
-                                Button("Tails") {
+                                CoinOutcomeButton(outcome: .tails) {
                                     model.recordOutcome(roundId: row.round.id, outcome: .tails)
                                 }
-                                .buttonStyle(.bordered)
                             }
                             .accessibilityElement(children: .contain)
                         }

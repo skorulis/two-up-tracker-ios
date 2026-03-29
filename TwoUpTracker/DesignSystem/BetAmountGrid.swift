@@ -7,8 +7,8 @@ struct BetAmountGrid: View {
     @Binding var amountText: String
 
     private let columns = [
-        GridItem(.flexible(), spacing: DesignTokens.Spacing.sm),
-        GridItem(.flexible(), spacing: DesignTokens.Spacing.sm),
+        GridItem(.flexible(), spacing: DesignTokens.Spacing.small),
+        GridItem(.flexible(), spacing: DesignTokens.Spacing.small),
     ]
 
     private var currencyCode: String {
@@ -16,7 +16,7 @@ struct BetAmountGrid: View {
     }
 
     var body: some View {
-        LazyVGrid(columns: columns, spacing: DesignTokens.Spacing.sm) {
+        LazyVGrid(columns: columns, spacing: DesignTokens.Spacing.small) {
             ForEach(Self.presetAmounts, id: \.self) { amount in
                 let selected = isSelected(amount)
                 Button {
