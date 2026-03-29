@@ -21,4 +21,13 @@ extension Session {
             return (round, balance)
         }
     }
+
+    /// Cumulative balance after each round that has a recorded toss outcome, in chronological order.
+    func resolvedRunningBalances() -> [(round: Round, balance: Double)] {
+        var balance = 0.0
+        return roundsOrdered.filter { $0.result != nil }.map { round in
+            balance += round.profit
+            return (round, balance)
+        }
+    }
 }

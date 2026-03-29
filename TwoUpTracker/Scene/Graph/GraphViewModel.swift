@@ -24,19 +24,19 @@ final class GraphViewModel {
         mainStore.activeSession.name
     }
 
-    /// Chronological series: balance after each round, indexed 1…n.
+    /// Chronological series: balance after each resolved round, indexed 1…n.
     var balanceSeries: [BalanceChartPoint] {
-        let pairs = mainStore.activeSession.runningBalances()
+        let pairs = mainStore.activeSession.resolvedRunningBalances()
         return pairs.enumerated().map { index, pair in
             BalanceChartPoint(roundIndex: index + 1, balance: pair.balance)
         }
     }
 
     var hasData: Bool {
-        !mainStore.activeSession.rounds.isEmpty
+        !balanceSeries.isEmpty
     }
 
     var currentBalance: Double {
-        mainStore.activeSession.runningBalances().last?.balance ?? 0
+        mainStore.activeSession.resolvedRunningBalances().last?.balance ?? 0
     }
 }
