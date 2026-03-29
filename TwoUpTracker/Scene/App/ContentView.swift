@@ -13,7 +13,7 @@ struct ContentView: View {
             CoordinatorView(coordinator: addRoundCoordinator)
                 .withRenderers(resolver: resolver!)
                 .tabItem {
-                    Label("Add", systemImage: "plus.circle.fill")
+                    Label("Bets", systemImage: "plus.circle.fill")
                 }
                 .tag(ContentTab.addRound)
 

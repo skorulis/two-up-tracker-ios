@@ -10,6 +10,7 @@ struct AddRoundView: View {
             Section {
                 ForEach(model.betDrafts) { draft in
                     VStack(alignment: .leading, spacing: DesignTokens.Spacing.sm) {
+                        BetAmountGrid(amountText: model.amountBinding(for: draft.id))
                         HStack {
                             TextField("Amount", text: model.amountBinding(for: draft.id))
                                 .keyboardType(.decimalPad)
