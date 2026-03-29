@@ -13,4 +13,9 @@ extension Round {
         guard let result else { return 0 }
         return bets.reduce(0) { $0 + $1.profit(for: result) }
     }
+
+    /// Total amount staked across all bets in this round (before the toss).
+    var totalStaked: Double {
+        bets.reduce(0) { $0 + $1.amount }
+    }
 }

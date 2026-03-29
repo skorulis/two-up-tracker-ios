@@ -22,7 +22,10 @@ struct MainPathRenderer: CoordinatorPathRenderer {
             )
         case .addRound:
             AnyView(
-                AddRoundView(model: AddRoundViewModel.make(resolver: resolver))
+                AddRoundView(
+                    model: AddRoundViewModel.make(resolver: resolver),
+                    store: resolver.mainStore()
+                )
             )
         }
     }

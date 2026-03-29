@@ -26,6 +26,13 @@ final class AddRoundViewModel {
         makeRound() != nil
     }
 
+    /// Most recent round that still needs a toss result, if any.
+    var pendingRoundAwaitingResult: Round? {
+        mainStore.activeSession.roundsOrdered
+            .filter { $0.result == nil }
+            .max(by: { $0.date < $1.date })
+    }
+
     func addBet() {
         betDrafts.append(BetDraft(id: UUID(), amountText: "", prediction: .heads))
     }
@@ -68,6 +75,12 @@ final class AddRoundViewModel {
 
     func resetForm() {
         betDrafts = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
+    }
+
+    func recordPendingOutcome(_ outcome: Outcome) {
+        guard let id = pendingRoundAwaitingResult?.id else { return }
+        mainStore.setRoundResult(roundId: id, result: outcome)
+        resetForm()
     }
 
     private func makeRound() -> Round? {
