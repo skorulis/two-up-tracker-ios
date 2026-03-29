@@ -1,0 +1,50 @@
+import ASKCore
+import Foundation
+import Knit
+import KnitMacros
+
+final class TwoUpTrackerAssembly: AutoInitModuleAssembly {
+    static let dependencies: [any Knit.ModuleAssembly.Type] = []
+    typealias TargetResolver = BaseResolver
+
+    private let purpose: IOCPurpose
+
+    init() {
+        self.purpose = .testing
+    }
+
+    init(purpose: IOCPurpose) {
+        self.purpose = purpose
+    }
+
+    @MainActor func assemble(container: Container<TargetResolver>) {
+        ASKCoreAssembly(purpose: purpose).assemble(container: container)
+
+        registerMainPathRenderer(container: container)
+        registerServices(container: container)
+        registerStores(container: container)
+        registerViewModels(container: container)
+    }
+
+    @MainActor
+    private func registerMainPathRenderer(container: Container<TargetResolver>) {
+        container.register(MainPathRenderer.self) { MainPathRenderer(resolver: $0) }
+    }
+
+    @MainActor
+    private func registerServices(container: Container<TargetResolver>) {}
+
+    @MainActor
+    private func registerStores(container: Container<TargetResolver>) {}
+
+    @MainActor
+    private func registerViewModels(container: Container<TargetResolver>) {
+        container.register(ContentViewModel.self) { ContentViewModel.make(resolver: $0) }
+    }
+}
+
+extension TwoUpTrackerAssembly {
+    @MainActor static func testing() -> ScopedModuleAssembler<BaseResolver> {
+        ScopedModuleAssembler<BaseResolver>([TwoUpTrackerAssembly()])
+    }
+}

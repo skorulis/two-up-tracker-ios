@@ -1,0 +1,8 @@
+xcassets:
+  inputs:
+    - TwoUpTracker/Resource/Assets.xcassets
+  outputs:
+    - templatePath: Templates/xcassets/swift5.stencil
+      params:
+        forceProvidesNamespaces: true
+      output: TwoUpTracker/Resource/XCAssets+Generated.swift

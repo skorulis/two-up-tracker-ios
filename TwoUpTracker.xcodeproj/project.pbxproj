@@ -1,0 +1,641 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		19DA008099A12120320FAD7A /* ModelPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43DE4E26EDA14BA191917B3 /* ModelPlaceholder.swift */; };
+		30928BE53C4E202454BA46B4 /* TwoUpTrackerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B55089E0052135C1EC772E /* TwoUpTrackerAssembly.swift */; };
+		366E0B94BE9BB6A66B9C1D14 /* MainPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4ECA54B0D0C2C7DCBC589B /* MainPath.swift */; };
+		3CCD519B80BA98E56769625C /* TwoUpTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D875B8FC2954AA8137168D5D /* TwoUpTrackerApp.swift */; };
+		431FCD7F5C9A6C1DF2C505F4 /* ASKCore in Frameworks */ = {isa = PBXBuildFile; productRef = 597C86E113CB703592B33268 /* ASKCore */; };
+		43F463FE5DC3726ECAA3F231 /* StorePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DA14A7E3BC4EDDA87A1F52 /* StorePlaceholder.swift */; };
+		5CBC7DBAADC04A3F7009E801 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F349987768E650F417C5A95 /* ContentViewModel.swift */; };
+		5EE73F7F63C8E882C00D01EF /* UtilPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234587BF98C98F45A1B8D9B6 /* UtilPlaceholder.swift */; };
+		6B41C0DCACCD396F36441B07 /* CoordinatorView+TwoUpTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E330C29CA08D50E62424A522 /* CoordinatorView+TwoUpTracker.swift */; };
+		9449BBF997F1165520CB9602 /* ASKCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC81680AC7E4D5AC424E3DA /* ASKCoordinator */; };
+		98E12E732611CDCAB271712B /* DesignSystemPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED9837B9F814C7BFEA37C40 /* DesignSystemPlaceholder.swift */; };
+		AF89CF64394036C80B5FA0F3 /* MainPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB6B3842FDFE077726FA9BE /* MainPathRenderer.swift */; };
+		B2B10347A61A49E8764DF491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53224A99EC8A747374A0D44A /* Assets.xcassets */; };
+		B6124C5E12970F619EA53673 /* KnitMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 5EEE554B454885BDCB0FF15E /* KnitMacros */; };
+		BC79861000BFA5B846789AE3 /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF72DAB8653675CB10E7D845 /* XCAssets+Generated.swift */; };
+		C531F994072F4D0F751F9F51 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F237BCE720AA86D1723BB91 /* ContentView.swift */; };
+		D782859A38CE61127839C4E3 /* TwoUpTrackerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D6DFA5A6F1E9549A749B11 /* TwoUpTrackerUnitTests.swift */; };
+		D8127338B39EDA5D628B3960 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 3C1F350B6C0E1022A0ED3DCD /* PrivacyInfo.xcprivacy */; };
+		E2D8185759B706FC5E4396E7 /* Knit in Frameworks */ = {isa = PBXBuildFile; productRef = 3B6E474A8E3A9C3F015AA952 /* Knit */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FB168A392DDFB358CDA6FBE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B2E96151B6ADE1371AF5D4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AEBA6118CCC07D5D90D0A1E7;
+			remoteInfo = TwoUpTracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0F237BCE720AA86D1723BB91 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		234587BF98C98F45A1B8D9B6 /* UtilPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilPlaceholder.swift; sourceTree = "<group>"; };
+		2D388E4876A521C3D0D672BD /* TwoUpTrackerUnitTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TwoUpTrackerUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2ED9837B9F814C7BFEA37C40 /* DesignSystemPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystemPlaceholder.swift; sourceTree = "<group>"; };
+		3C1F350B6C0E1022A0ED3DCD /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		53224A99EC8A747374A0D44A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		66D6DFA5A6F1E9549A749B11 /* TwoUpTrackerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoUpTrackerUnitTests.swift; sourceTree = "<group>"; };
+		6F349987768E650F417C5A95 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		98DA14A7E3BC4EDDA87A1F52 /* StorePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePlaceholder.swift; sourceTree = "<group>"; };
+		9E4ECA54B0D0C2C7DCBC589B /* MainPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPath.swift; sourceTree = "<group>"; };
+		C30AB8A28116E03BFDA13BCD /* TwoUpTracker.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TwoUpTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D875B8FC2954AA8137168D5D /* TwoUpTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoUpTrackerApp.swift; sourceTree = "<group>"; };
+		DF72DAB8653675CB10E7D845 /* XCAssets+Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
+		E330C29CA08D50E62424A522 /* CoordinatorView+TwoUpTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoordinatorView+TwoUpTracker.swift"; sourceTree = "<group>"; };
+		F3B55089E0052135C1EC772E /* TwoUpTrackerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoUpTrackerAssembly.swift; sourceTree = "<group>"; };
+		F43DE4E26EDA14BA191917B3 /* ModelPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPlaceholder.swift; sourceTree = "<group>"; };
+		F5FA353D83CAE43D83CCB3CC /* knitconfig.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = knitconfig.json; sourceTree = "<group>"; };
+		FDB6B3842FDFE077726FA9BE /* MainPathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPathRenderer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE8A6B6B12B757CDCE5E3087 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9449BBF997F1165520CB9602 /* ASKCoordinator in Frameworks */,
+				431FCD7F5C9A6C1DF2C505F4 /* ASKCore in Frameworks */,
+				E2D8185759B706FC5E4396E7 /* Knit in Frameworks */,
+				B6124C5E12970F619EA53673 /* KnitMacros in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1831613F0EC808B5D91CF8CC /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				98DA14A7E3BC4EDDA87A1F52 /* StorePlaceholder.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		2ADD93E261CD1D0C2329EDF5 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0F237BCE720AA86D1723BB91 /* ContentView.swift */,
+				6F349987768E650F417C5A95 /* ContentViewModel.swift */,
+				D875B8FC2954AA8137168D5D /* TwoUpTrackerApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4DBC6F4EFBFFD8A7E02E780B /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E330C29CA08D50E62424A522 /* CoordinatorView+TwoUpTracker.swift */,
+				9E4ECA54B0D0C2C7DCBC589B /* MainPath.swift */,
+				FDB6B3842FDFE077726FA9BE /* MainPathRenderer.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		5EE7D421439060EC8818225C /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				2ADD93E261CD1D0C2329EDF5 /* App */,
+				4DBC6F4EFBFFD8A7E02E780B /* Coordinator */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		65D881597C85D5E1D7CF355A = {
+			isa = PBXGroup;
+			children = (
+				C0380DB4C29C5B6E6C4DBA12 /* TwoUpTracker */,
+				9721002FE1515BA45025FFEC /* TwoUpTrackerUnitTests */,
+				F5FA353D83CAE43D83CCB3CC /* knitconfig.json */,
+				B2C11C1BF9418747B255ED8A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9721002FE1515BA45025FFEC /* TwoUpTrackerUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				66D6DFA5A6F1E9549A749B11 /* TwoUpTrackerUnitTests.swift */,
+			);
+			path = TwoUpTrackerUnitTests;
+			sourceTree = "<group>";
+		};
+		AE009A62EF5AFE13B3E58E6C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F3B55089E0052135C1EC772E /* TwoUpTrackerAssembly.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AE3C3D46DAC924DEF92E2BC0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F43DE4E26EDA14BA191917B3 /* ModelPlaceholder.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B2C11C1BF9418747B255ED8A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C30AB8A28116E03BFDA13BCD /* TwoUpTracker.app */,
+				2D388E4876A521C3D0D672BD /* TwoUpTrackerUnitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B5172159D3287A7A78195D16 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				2ED9837B9F814C7BFEA37C40 /* DesignSystemPlaceholder.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		B7F789D5C400A297C5694B16 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				AE009A62EF5AFE13B3E58E6C /* App */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C0380DB4C29C5B6E6C4DBA12 /* TwoUpTracker */ = {
+			isa = PBXGroup;
+			children = (
+				B5172159D3287A7A78195D16 /* DesignSystem */,
+				AE3C3D46DAC924DEF92E2BC0 /* Model */,
+				F394DA5CEA9A3E57A82A5B3B /* Resource */,
+				5EE7D421439060EC8818225C /* Scene */,
+				B7F789D5C400A297C5694B16 /* Service */,
+				1831613F0EC808B5D91CF8CC /* Store */,
+				F4B861DE322698F065AC4223 /* Util */,
+				3C1F350B6C0E1022A0ED3DCD /* PrivacyInfo.xcprivacy */,
+			);
+			path = TwoUpTracker;
+			sourceTree = "<group>";
+		};
+		F394DA5CEA9A3E57A82A5B3B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				53224A99EC8A747374A0D44A /* Assets.xcassets */,
+				DF72DAB8653675CB10E7D845 /* XCAssets+Generated.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F4B861DE322698F065AC4223 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				234587BF98C98F45A1B8D9B6 /* UtilPlaceholder.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AEBA6118CCC07D5D90D0A1E7 /* TwoUpTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D38CC67D68831BE87D01B9DF /* Build configuration list for PBXNativeTarget "TwoUpTracker" */;
+			buildPhases = (
+				397958B277FF5BD12D4D901F /* Sources */,
+				3E7492D0FDD70A0EF435E174 /* Resources */,
+				CE8A6B6B12B757CDCE5E3087 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E40F67BA12A8414015318587 /* PBXTargetDependency */,
+				EB9805C7F431C54778F51AE5 /* PBXTargetDependency */,
+			);
+			name = TwoUpTracker;
+			packageProductDependencies = (
+				1FC81680AC7E4D5AC424E3DA /* ASKCoordinator */,
+				597C86E113CB703592B33268 /* ASKCore */,
+				3B6E474A8E3A9C3F015AA952 /* Knit */,
+				5EEE554B454885BDCB0FF15E /* KnitMacros */,
+			);
+			productName = TwoUpTracker;
+			productReference = C30AB8A28116E03BFDA13BCD /* TwoUpTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F4A23BA9F5E282C03D11A27A /* TwoUpTrackerUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DC9883CD37C999CC895FD6C /* Build configuration list for PBXNativeTarget "TwoUpTrackerUnitTests" */;
+			buildPhases = (
+				8D9EF70FDD44E0E8F52263FA /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5A6658CE5AB26FDF1581A73 /* PBXTargetDependency */,
+			);
+			name = TwoUpTrackerUnitTests;
+			packageProductDependencies = (
+			);
+			productName = TwoUpTrackerUnitTests;
+			productReference = 2D388E4876A521C3D0D672BD /* TwoUpTrackerUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5B2E96151B6ADE1371AF5D4F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = A6D338206637254DC4335E79 /* Build configuration list for PBXProject "TwoUpTracker" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 65D881597C85D5E1D7CF355A;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				57EF43E428A327B1766BEBA3 /* XCRemoteSwiftPackageReference "ASKCoordinator" */,
+				1BE92299E97AF486458EB21E /* XCRemoteSwiftPackageReference "ASKCore" */,
+				88D81E6F01ACC87463D6776C /* XCRemoteSwiftPackageReference "knit" */,
+				6B8B6839F173B8709D9BF762 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B2C11C1BF9418747B255ED8A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AEBA6118CCC07D5D90D0A1E7 /* TwoUpTracker */,
+				F4A23BA9F5E282C03D11A27A /* TwoUpTrackerUnitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3E7492D0FDD70A0EF435E174 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2B10347A61A49E8764DF491 /* Assets.xcassets in Resources */,
+				D8127338B39EDA5D628B3960 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		397958B277FF5BD12D4D901F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C531F994072F4D0F751F9F51 /* ContentView.swift in Sources */,
+				5CBC7DBAADC04A3F7009E801 /* ContentViewModel.swift in Sources */,
+				6B41C0DCACCD396F36441B07 /* CoordinatorView+TwoUpTracker.swift in Sources */,
+				98E12E732611CDCAB271712B /* DesignSystemPlaceholder.swift in Sources */,
+				366E0B94BE9BB6A66B9C1D14 /* MainPath.swift in Sources */,
+				AF89CF64394036C80B5FA0F3 /* MainPathRenderer.swift in Sources */,
+				19DA008099A12120320FAD7A /* ModelPlaceholder.swift in Sources */,
+				43F463FE5DC3726ECAA3F231 /* StorePlaceholder.swift in Sources */,
+				3CCD519B80BA98E56769625C /* TwoUpTrackerApp.swift in Sources */,
+				30928BE53C4E202454BA46B4 /* TwoUpTrackerAssembly.swift in Sources */,
+				5EE73F7F63C8E882C00D01EF /* UtilPlaceholder.swift in Sources */,
+				BC79861000BFA5B846789AE3 /* XCAssets+Generated.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D9EF70FDD44E0E8F52263FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D782859A38CE61127839C4E3 /* TwoUpTrackerUnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B5A6658CE5AB26FDF1581A73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AEBA6118CCC07D5D90D0A1E7 /* TwoUpTracker */;
+			targetProxy = FB168A392DDFB358CDA6FBE1 /* PBXContainerItemProxy */;
+		};
+		E40F67BA12A8414015318587 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 410DF970F352D58CEC505C1E /* KnitBuildPlugin */;
+		};
+		EB9805C7F431C54778F51AE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 88ACCD7C283CB173910A0E3A /* SwiftLintBuildToolPlugin */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00C0E69D643C196874134C3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex.TwoUpTracker;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0337D78F1980CC50CE2523B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex.TwoUpTracker;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1687D54E91D1E60CB7EA74C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TwoUpTracker;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		1B9A49F8FB4825B1BA02322D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TwoUpTracker;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		C11BE1B21D86DC1D7554181B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex.TwoUpTrackerUnitTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwoUpTracker.app/TwoUpTracker";
+			};
+			name = Debug;
+		};
+		DFC355F2FAB52478C676F90D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alex.TwoUpTrackerUnitTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwoUpTracker.app/TwoUpTracker";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4DC9883CD37C999CC895FD6C /* Build configuration list for PBXNativeTarget "TwoUpTrackerUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C11BE1B21D86DC1D7554181B /* Debug */,
+				DFC355F2FAB52478C676F90D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A6D338206637254DC4335E79 /* Build configuration list for PBXProject "TwoUpTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B9A49F8FB4825B1BA02322D /* Debug */,
+				1687D54E91D1E60CB7EA74C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D38CC67D68831BE87D01B9DF /* Build configuration list for PBXNativeTarget "TwoUpTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0337D78F1980CC50CE2523B2 /* Debug */,
+				00C0E69D643C196874134C3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1BE92299E97AF486458EB21E /* XCRemoteSwiftPackageReference "ASKCore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/skorulis/ASKCore";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		57EF43E428A327B1766BEBA3 /* XCRemoteSwiftPackageReference "ASKCoordinator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/skorulis/ASKCoordinator";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		6B8B6839F173B8709D9BF762 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.60.0;
+			};
+		};
+		88D81E6F01ACC87463D6776C /* XCRemoteSwiftPackageReference "knit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cashapp/knit";
+			requirement = {
+				branch = "skorulis/resolver-class";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1FC81680AC7E4D5AC424E3DA /* ASKCoordinator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57EF43E428A327B1766BEBA3 /* XCRemoteSwiftPackageReference "ASKCoordinator" */;
+			productName = ASKCoordinator;
+		};
+		3B6E474A8E3A9C3F015AA952 /* Knit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88D81E6F01ACC87463D6776C /* XCRemoteSwiftPackageReference "knit" */;
+			productName = Knit;
+		};
+		410DF970F352D58CEC505C1E /* KnitBuildPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88D81E6F01ACC87463D6776C /* XCRemoteSwiftPackageReference "knit" */;
+			productName = "plugin:KnitBuildPlugin";
+		};
+		597C86E113CB703592B33268 /* ASKCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BE92299E97AF486458EB21E /* XCRemoteSwiftPackageReference "ASKCore" */;
+			productName = ASKCore;
+		};
+		5EEE554B454885BDCB0FF15E /* KnitMacros */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88D81E6F01ACC87463D6776C /* XCRemoteSwiftPackageReference "knit" */;
+			productName = KnitMacros;
+		};
+		88ACCD7C283CB173910A0E3A /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B8B6839F173B8709D9BF762 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5B2E96151B6ADE1371AF5D4F /* Project object */;
+}
