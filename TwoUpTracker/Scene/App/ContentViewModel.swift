@@ -1,17 +1,17 @@
+import ASKCoordinator
 import Knit
-import KnitMacros
 import Observation
 
+enum ContentTab: Hashable {
+    case session
+    case graph
+}
+
+@MainActor
 @Observable
 final class ContentViewModel {
-    var title: String
 
-    @Resolvable<BaseResolver>
-    init() {
-        title = "TwoUpTracker"
-    }
+    var selectedTab: ContentTab = .session
 
-    func refreshTitle() {
-        title = "TwoUpTracker (updated)"
-    }
+    init() {}
 }

@@ -4,15 +4,23 @@ import SwiftUI
 
 struct MainPathRenderer: CoordinatorPathRenderer {
     typealias PathType = MainPath
-    typealias ViewType = ContentView
+    typealias ViewType = AnyView
 
     let resolver: BaseResolver
 
     @MainActor
-    func render(path: MainPath, in coordinator: Coordinator) -> ContentView {
+    func render(path: MainPath, in coordinator: Coordinator) -> AnyView {
         switch path {
         case .content:
-            ContentView(model: ContentViewModel.make(resolver: resolver))
+            AnyView(ContentView(model: resolver.contentViewModel()))
+        case .sessionDetail:
+            AnyView(
+                SessionDetailView(model: SessionDetailViewModel.make(resolver: resolver))
+            )
+        case .addRound:
+            AnyView(
+                AddRoundView(model: AddRoundViewModel.make(resolver: resolver))
+            )
         }
     }
 }
