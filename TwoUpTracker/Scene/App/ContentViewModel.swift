@@ -8,6 +8,7 @@ enum ContentTab: Hashable {
     /// Past rounds and running balance.
     case history
     case graph
+    case settings
 }
 
 @MainActor

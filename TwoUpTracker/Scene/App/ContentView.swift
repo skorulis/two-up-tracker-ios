@@ -29,6 +29,12 @@ struct ContentView: View {
                     Label("Graph", systemImage: "chart.line.uptrend.xyaxis")
                 }
                 .tag(ContentTab.graph)
+
+            SettingsView(model: resolver!.settingsViewModel())
+                .tabItem {
+                    Label("Settings", systemImage: "gearshape.fill")
+                }
+                .tag(ContentTab.settings)
         }
     }
 }

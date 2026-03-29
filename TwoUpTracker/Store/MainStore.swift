@@ -11,40 +11,42 @@ final class MainStore {
     private let keyValueStore: PKeyValueStore
 
     private static let activeSessionKey = "twoUpTracker.sessions.v1"
+    private static let appSettingsKey = "twoUpTracker.appSettings.v1"
 
-    private(set) var activeSession: Session
+    private(set) var activeSession: Session {
+        didSet {
+            try? keyValueStore.set(codable: activeSession, forKey: Self.activeSessionKey)
+        }
+    }
+
+    private(set) var settings: Settings {
+        didSet {
+            try? keyValueStore.set(settings, forKey: Self.appSettingsKey)
+        }
+    }
 
     @Resolvable<BaseResolver>
     init(keyValueStore: PKeyValueStore) {
         self.keyValueStore = keyValueStore
-        if let data = keyValueStore.data(forKey: Self.activeSessionKey),
-           let session = Self.decodeSession(from: data) {
-            activeSession = session
-        } else {
-            activeSession = Self.makeDefaultSession()
-            persist()
-        }
+        activeSession = (try? keyValueStore.codable(forKey: Self.activeSessionKey)) ?? Self.makeDefaultSession()
+        settings = (try? keyValueStore.codable(forKey: Self.appSettingsKey)) ?? .init()
+    }
+
+    func setLossLimit(_ value: Double?) {
+        settings.lossLimit = value
     }
 
     func appendRound(_ round: Round) {
         activeSession.rounds.append(round)
-        persist()
     }
 
     func setRoundResult(roundId: UUID, result: Outcome) {
         guard let index = activeSession.rounds.firstIndex(where: { $0.id == roundId }) else { return }
         activeSession.rounds[index].result = result
-        persist()
     }
 
     func removeRound(id: UUID) {
         activeSession.rounds.removeAll { $0.id == id }
-        persist()
-    }
-
-    private func persist() {
-        guard let data = Self.encodeSession(activeSession) else { return }
-        keyValueStore.set(data, forKey: Self.activeSessionKey)
     }
 
     private static func makeDefaultSession() -> Session {
@@ -55,18 +57,5 @@ final class MainStore {
             date: Date(),
             rounds: []
         )
-    }
-
-    private static func encodeSession(_ session: Session) -> Data? {
-        let encoder = JSONEncoder()
-        encoder.dateEncodingStrategy = .iso8601
-        encoder.outputFormatting = [.sortedKeys]
-        return try? encoder.encode(session)
-    }
-
-    private static func decodeSession(from data: Data) -> Session? {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        return try? decoder.decode(Session.self, from: data)
     }
 }

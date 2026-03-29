@@ -45,6 +45,7 @@ final class TwoUpTrackerAssembly: AutoInitModuleAssembly {
         container.register(ContentViewModel.self) { _ in ContentViewModel() }
         container.register(SessionDetailViewModel.self) { SessionDetailViewModel.make(resolver: $0) }
         container.register(AddRoundViewModel.self) { AddRoundViewModel.make(resolver: $0) }
+        container.register(SettingsViewModel.self) { SettingsViewModel.make(resolver: $0) }
     }
 }
 
