@@ -24,7 +24,7 @@ struct ContentView: View {
                 }
                 .tag(ContentTab.history)
 
-            Text("Graph")
+            GraphView(model: resolver!.graphViewModel(), store: resolver!.mainStore())
                 .tabItem {
                     Label("Graph", systemImage: "chart.line.uptrend.xyaxis")
                 }
