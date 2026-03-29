@@ -4,7 +4,7 @@ import Knit
 import KnitMacros
 
 final class TwoUpTrackerAssembly: AutoInitModuleAssembly {
-    static let dependencies: [any Knit.ModuleAssembly.Type] = []
+    static var dependencies: [any Knit.ModuleAssembly.Type] { [] }
     typealias TargetResolver = BaseResolver
 
     private let purpose: IOCPurpose
@@ -35,7 +35,10 @@ final class TwoUpTrackerAssembly: AutoInitModuleAssembly {
     private func registerServices(container: Container<TargetResolver>) {}
 
     @MainActor
-    private func registerStores(container: Container<TargetResolver>) {}
+    private func registerStores(container: Container<TargetResolver>) {
+        container.register(MainStore.self) { MainStore.make(resolver: $0) }
+            .inObjectScope(.container)
+    }
 
     @MainActor
     private func registerViewModels(container: Container<TargetResolver>) {
