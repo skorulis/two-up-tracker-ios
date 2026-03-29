@@ -15,7 +15,6 @@ struct BetDraft: Identifiable, Equatable {
 final class AddRoundViewModel {
     @ObservationIgnored private let mainStore: MainStore
 
-    var tossResult: Outcome = .heads
     var betDrafts: [BetDraft] = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
 
     @Resolvable<BaseResolver>
@@ -68,7 +67,6 @@ final class AddRoundViewModel {
     }
 
     func resetForm() {
-        tossResult = .heads
         betDrafts = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
     }
 
@@ -79,6 +77,6 @@ final class AddRoundViewModel {
             return Bet(id: UUID(), amount: value, prediction: draft.prediction)
         }
         guard !bets.isEmpty else { return nil }
-        return Round(id: UUID(), date: Date(), result: tossResult, bets: bets)
+        return Round(id: UUID(), date: Date(), result: nil, bets: bets)
     }
 }

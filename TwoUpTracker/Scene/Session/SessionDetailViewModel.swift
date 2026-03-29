@@ -29,4 +29,8 @@ final class SessionDetailViewModel {
     var hasRounds: Bool {
         !mainStore.activeSession.rounds.isEmpty
     }
+
+    func recordOutcome(roundId: UUID, outcome: Outcome) {
+        mainStore.setRoundResult(roundId: roundId, result: outcome)
+    }
 }

@@ -31,6 +31,12 @@ final class MainStore {
         persist()
     }
 
+    func setRoundResult(roundId: UUID, result: Outcome) {
+        guard let index = activeSession.rounds.firstIndex(where: { $0.id == roundId }) else { return }
+        activeSession.rounds[index].result = result
+        persist()
+    }
+
     private func persist() {
         guard let data = Self.encodeSession(activeSession) else { return }
         keyValueStore.set(data, forKey: Self.activeSessionKey)

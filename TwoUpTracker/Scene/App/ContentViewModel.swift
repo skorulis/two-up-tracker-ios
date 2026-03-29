@@ -3,7 +3,7 @@ import Knit
 import Observation
 
 enum ContentTab: Hashable {
-    /// Record a new toss and bets.
+    /// Enter outstanding bets for a round (toss recorded later from History).
     case addRound
     /// Past rounds and running balance.
     case history

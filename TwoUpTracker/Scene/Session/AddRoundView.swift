@@ -8,18 +8,6 @@ struct AddRoundView: View {
     var body: some View {
         Form {
             Section {
-                Picker("Toss result", selection: $model.tossResult) {
-                    ForEach(Outcome.allCases, id: \.self) { outcome in
-                        Text(outcome.rawValue.capitalized).tag(outcome)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .accessibilityLabel("Toss result")
-            } header: {
-                Text("Result")
-            }
-
-            Section {
                 ForEach(model.betDrafts) { draft in
                     VStack(alignment: .leading, spacing: DesignTokens.Spacing.sm) {
                         HStack {
@@ -47,7 +35,7 @@ struct AddRoundView: View {
             } header: {
                 Text("Bets")
             } footer: {
-                Text("At least one bet with a positive amount is required.")
+                Text("Enter your outstanding bets for this round. You can record the toss outcome later from the session.")
                     .font(DesignTokens.Typography.caption)
             }
 
@@ -55,7 +43,7 @@ struct AddRoundView: View {
                 Button("Add another bet") {
                     model.addBet()
                 }
-                Button("Save round") {
+                Button("Save outstanding bets") {
                     guard model.saveRound() else { return }
                     if coordinator?.canPop == true {
                         coordinator?.pop()
@@ -67,7 +55,7 @@ struct AddRoundView: View {
                 .disabled(!model.canSave)
             }
         }
-        .navigationTitle("New round")
+        .navigationTitle("Outstanding bets")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {

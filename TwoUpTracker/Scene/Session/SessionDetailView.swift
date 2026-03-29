@@ -11,7 +11,7 @@ struct SessionDetailView: View {
             } else {
                 EmptyState(
                     title: "No rounds yet",
-                    message: "Use the Add tab to record a toss and your bets.",
+                    message: "Use the Add tab to enter your outstanding bets, then record the toss outcome here when you know it.",
                     systemImage: "list.bullet.rectangle"
                 )
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -45,7 +45,28 @@ struct SessionDetailView: View {
                                 Text(result.rawValue.capitalized)
                                     .font(DesignTokens.Typography.caption)
                                     .foregroundStyle(.secondary)
+                            } else {
+                                Text("Outcome pending")
+                                    .font(DesignTokens.Typography.caption)
+                                    .foregroundStyle(.secondary)
                             }
+                        }
+                        if row.round.result == nil {
+                            HStack(spacing: DesignTokens.Spacing.sm) {
+                                Text("Toss")
+                                    .font(DesignTokens.Typography.caption)
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                                Button("Heads") {
+                                    model.recordOutcome(roundId: row.round.id, outcome: .heads)
+                                }
+                                .buttonStyle(.bordered)
+                                Button("Tails") {
+                                    model.recordOutcome(roundId: row.round.id, outcome: .tails)
+                                }
+                                .buttonStyle(.bordered)
+                            }
+                            .accessibilityElement(children: .contain)
                         }
                         HStack {
                             Text("Round P&L")
