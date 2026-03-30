@@ -4,17 +4,45 @@ struct Session: Identifiable, Codable, Hashable, Sendable {
     var id: UUID
     var name: String
     var date: Date
+    /// Calendar year for this session (e.g. which Anzac Day season).
+    var year: Int
     var rounds: [Round]
+
+    enum CodingKeys: String, CodingKey {
+        case id, name, date, year, rounds
+    }
+
+    init(id: UUID, name: String, date: Date, year: Int, rounds: [Round]) {
+        self.id = id
+        self.name = name
+        self.date = date
+        self.year = year
+        self.rounds = rounds
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        date = try container.decode(Date.self, forKey: .date)
+        rounds = try container.decode([Round].self, forKey: .rounds)
+        if let decodedYear = try container.decodeIfPresent(Int.self, forKey: .year) {
+            year = decodedYear
+        } else {
+            year = Calendar.current.component(.year, from: date)
+        }
+    }
 }
 
 extension Session {
-    
+
     static func defaultSession() -> Session {
         let year = Calendar.current.component(.year, from: Date())
         return Session(
             id: UUID(),
             name: "Anzac Day \(year)",
             date: Date(),
+            year: year,
             rounds: []
         )
     }
@@ -40,7 +68,7 @@ extension Session {
             return (round, balance)
         }
     }
-    
+
     mutating func resetOutstanding() {
         let index = rounds.firstIndex(where: { $0.result == nil })
         guard let index else { return}
