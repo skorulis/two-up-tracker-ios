@@ -47,4 +47,10 @@ final class MainStore: ObservableObject {
     func removeRound(id: UUID) {
         activeSession.rounds.removeAll { $0.id == id }
     }
+
+    /// Clears persisted session and preferences to their default state.
+    func resetAllData() {
+        activeSession = .defaultSession()
+        settings = .default
+    }
 }

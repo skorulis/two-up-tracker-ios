@@ -29,6 +29,11 @@ final class SettingsViewModel {
         }
     }
 
+    func resetAllData() {
+        mainStore.resetAllData()
+        syncFromStore()
+    }
+
     func applyLossLimitFromField() {
         let trimmed = lossLimitText.trimmingCharacters(in: .whitespacesAndNewlines)
         if trimmed.isEmpty {

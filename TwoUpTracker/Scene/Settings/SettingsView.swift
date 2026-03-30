@@ -3,6 +3,7 @@ import SwiftUI
 struct SettingsView: View {
     @Bindable var model: SettingsViewModel
     @FocusState private var lossLimitFocused: Bool
+    @State private var showResetConfirmation = false
 
     var body: some View {
         NavigationStack {
@@ -20,6 +21,25 @@ struct SettingsView: View {
                     )
                     .font(DesignTokens.Typography.caption)
                 }
+
+                Section {
+                    Button(role: .destructive) {
+                        showResetConfirmation = true
+                    } label: {
+                        Text("Reset all data")
+                    }
+                } footer: {
+                    Text("Clears your session and loss limit. This cannot be undone.")
+                        .font(DesignTokens.Typography.caption)
+                }
+            }
+            .alert("Reset all data?", isPresented: $showResetConfirmation) {
+                Button("Cancel", role: .cancel) {}
+                Button("Reset", role: .destructive) {
+                    model.resetAllData()
+                }
+            } message: {
+                Text("This will delete your current session and restore default settings.")
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
