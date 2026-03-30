@@ -12,6 +12,7 @@
 		B6124C5E12970F619EA53673 /* KnitMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 5EEE554B454885BDCB0FF15E /* KnitMacros */; };
 		D782859A38CE61127839C4E3 /* TwoUpTrackerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D6DFA5A6F1E9549A749B11 /* TwoUpTrackerUnitTests.swift */; };
 		E2D8185759B706FC5E4396E7 /* Knit in Frameworks */ = {isa = PBXBuildFile; productRef = 3B6E474A8E3A9C3F015AA952 /* Knit */; };
+		FA94ECCD2F7A70B000F7DB4D /* AmplitudeUnified in Frameworks */ = {isa = PBXBuildFile; productRef = FA94ECCC2F7A70B000F7DB4D /* AmplitudeUnified */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA94ECCD2F7A70B000F7DB4D /* AmplitudeUnified in Frameworks */,
 				9449BBF997F1165520CB9602 /* ASKCoordinator in Frameworks */,
 				431FCD7F5C9A6C1DF2C505F4 /* ASKCore in Frameworks */,
 				E2D8185759B706FC5E4396E7 /* Knit in Frameworks */,
@@ -107,6 +109,7 @@
 				597C86E113CB703592B33268 /* ASKCore */,
 				3B6E474A8E3A9C3F015AA952 /* Knit */,
 				5EEE554B454885BDCB0FF15E /* KnitMacros */,
+				FA94ECCC2F7A70B000F7DB4D /* AmplitudeUnified */,
 			);
 			productName = TwoUpTracker;
 			productReference = C30AB8A28116E03BFDA13BCD /* TwoUpTracker.app */;
@@ -153,6 +156,7 @@
 				1BE92299E97AF486458EB21E /* XCRemoteSwiftPackageReference "ASKCore" */,
 				88D81E6F01ACC87463D6776C /* XCRemoteSwiftPackageReference "knit" */,
 				6B8B6839F173B8709D9BF762 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				FA94ECCB2F7A70B000F7DB4D /* XCRemoteSwiftPackageReference "AmplitudeUnified-Swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B2C11C1BF9418747B255ED8A /* Products */;
@@ -468,6 +472,14 @@
 				kind = branch;
 			};
 		};
+		FA94ECCB2F7A70B000F7DB4D /* XCRemoteSwiftPackageReference "AmplitudeUnified-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amplitude/AmplitudeUnified-Swift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -500,6 +512,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6B8B6839F173B8709D9BF762 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
 			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		FA94ECCC2F7A70B000F7DB4D /* AmplitudeUnified */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA94ECCB2F7A70B000F7DB4D /* XCRemoteSwiftPackageReference "AmplitudeUnified-Swift" */;
+			productName = AmplitudeUnified;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

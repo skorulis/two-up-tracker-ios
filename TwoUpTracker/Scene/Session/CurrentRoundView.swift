@@ -44,16 +44,17 @@ struct CurrentRoundView: View {
     private func pendingTossContent(for round: Round) -> some View {
         VStack(spacing: DesignTokens.Spacing.medium) {
             Card {
-                VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-                    HStack {
-                        Text("Total staked")
-                            .font(DesignTokens.Typography.headline)
-                        Spacer()
-                        Text(round.totalStaked, format: currencyDisplayFormat)
-                            .font(DesignTokens.Typography.statValue.monospacedDigit())
-                    }
-                    .accessibilityElement(children: .combine)
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
+                    Text(round.totalStaked, format: currencyDisplayFormat)
+                        .font(DesignTokens.Typography.title.monospacedDigit())
+                        .accessibilityLabel("Total staked")
+
+                    Text("Total staked")
+                        .font(DesignTokens.Typography.caption)
+                        .foregroundStyle(.secondary)
+                        .accessibilityHidden(true)
                 }
+                .accessibilityElement(children: .combine)
             }
 
             bets(round: round)

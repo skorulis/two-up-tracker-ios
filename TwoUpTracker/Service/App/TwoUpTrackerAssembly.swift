@@ -32,7 +32,16 @@ final class TwoUpTrackerAssembly: AutoInitModuleAssembly {
     }
 
     @MainActor
-    private func registerServices(container: Container<TargetResolver>) {}
+    private func registerServices(container: Container<TargetResolver>) {
+        if purpose == .normal {
+            container.register(AnalyticsService.self) { AmplitudeAnalyticsService.make(resolver: $0) }
+                .inObjectScope(.container)
+        } else {
+            // @knit ignore
+            container.register(AnalyticsService.self) { _ in FakeAnalyticsService() }
+                .inObjectScope(.container)
+        }
+    }
 
     @MainActor
     private func registerStores(container: Container<TargetResolver>) {

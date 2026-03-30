@@ -10,3 +10,4 @@ xcuserdata/
 *.dSYM
 .swiftpm/
 .netrc
+AppEnvironment.swift
