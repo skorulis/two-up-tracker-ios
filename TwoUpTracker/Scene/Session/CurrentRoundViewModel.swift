@@ -11,7 +11,7 @@ import Observation
 final class CurrentRoundViewModel: CoordinatorViewModel {
     weak var coordinator: ASKCoordinator.Coordinator?
 
-    private let mainStore: MainStore
+    let mainStore: MainStore
 
     private var cancellables: Set<AnyCancellable> = []
 
