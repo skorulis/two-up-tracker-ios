@@ -13,6 +13,7 @@ struct CurrentRoundViewSnapshotTests {
     @Test func pendingRound() async throws {
         let viewModel = assembler.resolver.currentRoundViewModel()
         viewModel.mainStore.activeSession = sessionWithPendingRound()
+        viewModel.model.bettingAvailable = true
 
         let view = CurrentRoundView(viewModel: viewModel)
         assertSnapshot(of: view, as: .image(on: .iPhoneSe))
@@ -21,6 +22,7 @@ struct CurrentRoundViewSnapshotTests {
     @Test func pendingRoundDarkMode() async throws {
         let viewModel = assembler.resolver.currentRoundViewModel()
         viewModel.mainStore.activeSession = sessionWithPendingRound()
+        viewModel.model.bettingAvailable = true
 
         let view = CurrentRoundView(viewModel: viewModel)
         assertSnapshot(of: view, as: .image(on: .iPhoneSe), style: .dark)
@@ -30,6 +32,7 @@ struct CurrentRoundViewSnapshotTests {
     @Test func addBetBettingWindowOpen() async throws {
         let viewModel = assembler.resolver.currentRoundViewModel()
         viewModel.mainStore.activeSession = sessionWithBettingStartInThePast()
+        viewModel.model.bettingAvailable = true
 
         let view = CurrentRoundView(viewModel: viewModel)
         assertSnapshot(of: view, as: .image(on: .iPhoneSe))
@@ -38,6 +41,7 @@ struct CurrentRoundViewSnapshotTests {
     @Test func addBetBettingWindowOpenDarkMode() async throws {
         let viewModel = assembler.resolver.currentRoundViewModel()
         viewModel.mainStore.activeSession = sessionWithBettingStartInThePast()
+        viewModel.model.bettingAvailable = true
 
         let view = CurrentRoundView(viewModel: viewModel)
         assertSnapshot(of: view, as: .image(on: .iPhoneSe), style: .dark)

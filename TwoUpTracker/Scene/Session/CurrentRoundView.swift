@@ -12,6 +12,14 @@ struct CurrentRoundView: View {
     }
 
     var body: some View {
+        if viewModel.model.bettingAvailable {
+            mainContent
+        } else {
+            countdownDisplay
+        }
+    }
+
+    private var mainContent: some View {
         ScrollView {
             VStack(spacing: DesignTokens.Spacing.medium) {
                 PageHeader(title: viewModel.model.session.name)
@@ -26,19 +34,10 @@ struct CurrentRoundView: View {
                     .frame(maxWidth: .infinity)
                     .accessibilityLabel("Clear bet fields")
                 } else {
-                    TimelineView(.periodic(from: .now, by: 1)) { context in
-                        let now = context.date
-                        let bettingStartReached = viewModel.model.session.bettingStartTime <= now
-
-                        if bettingStartReached || viewModel.model.bettingAvailable {
-                            Card {
-                                AddBetView(
-                                    onSetBet: { viewModel.saveRound(bet: $0) }
-                                )
-                            }
-                        } else {
-                            countdownSection
-                        }
+                    Card {
+                        AddBetView(
+                            onSetBet: { viewModel.saveRound(bet: $0) }
+                        )
                     }
                 }
             }
@@ -49,8 +48,10 @@ struct CurrentRoundView: View {
         .background(Colors.groupedBackground)
     }
 
-    private var countdownSection: some View {
+    private var countdownDisplay: some View {
         VStack(spacing: DesignTokens.Spacing.medium) {
+            PageHeader(title: viewModel.model.session.name)
+            Spacer()
             CountdownTimer(
                 session: viewModel.model.session,
                 onInfoTapped: { viewModel.showTwoUpAvailabilityInfo() }
@@ -61,8 +62,10 @@ struct CurrentRoundView: View {
             }
             .buttonStyle(.primary)
             .frame(maxWidth: .infinity)
-            .accessibilityLabel("Start betting early")
+            Spacer()
         }
+        .padding(.horizontal, DesignTokens.Spacing.medium)
+        .padding(.vertical, DesignTokens.Spacing.medium)
     }
 
     @ViewBuilder

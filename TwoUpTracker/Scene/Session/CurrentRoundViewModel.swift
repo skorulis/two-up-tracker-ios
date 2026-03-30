@@ -18,10 +18,15 @@ final class CurrentRoundViewModel: CoordinatorViewModel {
     var model: CurrentRoundView.Model = .init()
 
     @Resolvable<BaseResolver>
-    init(mainStore: MainStore) {
+    init(mainStore: MainStore, countdownService: CountdownService) {
         self.mainStore = mainStore
         mainStore.$activeSession.sink { [unowned self] session in
             self.model.session = session
+        }
+        .store(in: &cancellables)
+        
+        countdownService.$countdownFinished.sink { [unowned self] in
+            self.model.bettingAvailable = $0
         }
         .store(in: &cancellables)
     }
