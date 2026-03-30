@@ -8,13 +8,18 @@ struct AddBetView: View {
         Group {
             Section {
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-                    Picker("Prediction", selection: $draft.prediction) {
+                    Text("What are you betting on?")
+                    HStack(spacing: DesignTokens.Spacing.large) {
                         ForEach(Outcome.allCases, id: \.self) { outcome in
-                            Text(outcome.rawValue.capitalized).tag(outcome)
+                            CoinOutcomeButton(
+                                outcome: outcome,
+                                isSelected: draft.prediction == outcome
+                            ) {
+                                draft.prediction = outcome
+                            }
                         }
                     }
-                    .pickerStyle(.segmented)
-                    .frame(minWidth: 160)
+                    .frame(maxWidth: .infinity)
                     
                     BetAmountGrid(amountText: $draft.amountText)
                     HStack {

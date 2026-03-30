@@ -4,6 +4,7 @@ import SwiftUI
 struct CoinOutcomeButton: View {
     let outcome: Outcome
     var diameter: CGFloat = 72
+    var isSelected: Bool = false
     let action: () -> Void
 
     var body: some View {
@@ -18,6 +19,13 @@ struct CoinOutcomeButton: View {
                         Circle()
                             .strokeBorder(Color.primary.opacity(0.35), lineWidth: 2)
                     )
+                    .overlay {
+                        if isSelected {
+                            Circle()
+                                .strokeBorder(Color.accentColor, lineWidth: 3)
+                                .frame(width: diameter + 8, height: diameter + 8)
+                        }
+                    }
 
                 Text(label)
                     .font(DesignTokens.Typography.caption)
@@ -30,6 +38,7 @@ struct CoinOutcomeButton: View {
         }
         .buttonStyle(CoinOutcomeButtonPressStyle())
         .accessibilityLabel(label)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 
     private var label: String {

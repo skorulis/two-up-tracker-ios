@@ -87,25 +87,11 @@ struct CurrentRoundView: View {
 
             Card {
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
-                    HStack(spacing: DesignTokens.Spacing.medium) {
-                        Text("Toss")
-                            .font(DesignTokens.Typography.caption)
-                            .foregroundStyle(.secondary)
-                        Spacer()
-
-                        CoinOutcomeButton(outcome: .heads) {
-                            viewModel.recordPendingOutcome(.heads)
-                        }
-                        CoinOutcomeButton(outcome: .tails) {
-                            viewModel.recordPendingOutcome(.tails)
-                        }
-                    }
-                    .accessibilityElement(children: .contain)
-
-                    Text("Choose the coin toss result to update your P&L for this round.")
+                    Text("What is the result")
                         .font(DesignTokens.Typography.caption)
                         .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
+
+                    CoinOutcomeRow(action: viewModel.recordPendingOutcome)
                 }
             }
         }
