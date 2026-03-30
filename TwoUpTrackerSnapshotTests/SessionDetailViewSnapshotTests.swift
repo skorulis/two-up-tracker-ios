@@ -14,7 +14,7 @@ struct SessionDetailViewSnapshotTests {
         let viewModel = assembler.resolver.sessionDetailViewModel()
         viewModel.mainStore.activeSession = testData.realisticSession()
 
-        let view = SessionDetailView(model: viewModel)
+        let view = SessionDetailView(viewModel: viewModel)
 
         assertSnapshot(of: view, as: .image(on: .iPhoneSe))
     }
@@ -23,7 +23,7 @@ struct SessionDetailViewSnapshotTests {
         let viewModel = assembler.resolver.sessionDetailViewModel()
         viewModel.mainStore.activeSession = testData.realisticSession()
 
-        let view = SessionDetailView(model: viewModel)
+        let view = SessionDetailView(viewModel: viewModel)
 
         assertSnapshot(of: view, as: .image(on: .iPhoneSe), style: .dark)
     }

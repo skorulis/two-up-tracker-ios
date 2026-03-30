@@ -15,14 +15,14 @@ struct MainPathRenderer: CoordinatorPathRenderer {
             AnyView(ContentView(model: resolver.contentViewModel()))
         case .sessionDetail:
             AnyView(
-                SessionDetailView(model: resolver.sessionDetailViewModel())
+                SessionDetailView(viewModel: resolver.sessionDetailViewModel())
             )
         case .currentRound:
             AnyView(
                 CurrentRoundView(viewModel: coordinator.apply(resolver.currentRoundViewModel()))
             )
         case .settings:
-            AnyView(SettingsView(model: coordinator.apply(resolver.settingsViewModel())))
+            AnyView(SettingsView(viewModel: coordinator.apply(resolver.settingsViewModel())))
         case .whatIsTwoUp:
             AnyView(WhatIsTwoUpView())
         case let .addBet(onSetBet):

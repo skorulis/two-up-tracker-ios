@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct SessionDetailView: View {
-    @State var model: SessionDetailViewModel
+    @State var viewModel: SessionDetailViewModel
 
     var body: some View {
         PageLayout {
-            PageHeader(title: model.sessionName)
+            PageHeader(title: viewModel.sessionName)
         } content: {
-            if model.hasRounds {
+            if viewModel.hasRounds {
                 listContent
             } else {
                 EmptyState(
@@ -19,7 +19,7 @@ struct SessionDetailView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-        .id(model.mainStore.activeSession.rounds.count)
+        .id(viewModel.mainStore.activeSession.rounds.count)
         .navigationBarHidden(true)
     }
 
@@ -28,14 +28,14 @@ struct SessionDetailView: View {
             balance
             Text("Rounds")
             Section {
-                ForEach(Array(model.roundRows), id: \.round.id) { row in
+                ForEach(Array(viewModel.roundRows), id: \.round.id) { row in
                     roundRow(round: row.round, balance: row.balance)
                 }
                 .onDelete { indexSet in
-                    let rows = model.roundRows
+                    let rows = viewModel.roundRows
                     for index in indexSet {
                         guard rows.indices.contains(index) else { continue }
-                        model.deleteRound(id: rows[index].round.id)
+                        viewModel.deleteRound(id: rows[index].round.id)
                     }
                 }
             }
@@ -70,10 +70,10 @@ struct SessionDetailView: View {
                         .foregroundStyle(.secondary)
                     Spacer()
                     CoinOutcomeButton(outcome: .heads) {
-                        model.recordOutcome(roundId: round.id, outcome: .heads)
+                        viewModel.recordOutcome(roundId: round.id, outcome: .heads)
                     }
                     CoinOutcomeButton(outcome: .tails) {
-                        model.recordOutcome(roundId: round.id, outcome: .tails)
+                        viewModel.recordOutcome(roundId: round.id, outcome: .tails)
                     }
                 }
                 .accessibilityElement(children: .contain)
@@ -103,7 +103,7 @@ struct SessionDetailView: View {
                     Text("Balance")
                         .font(DesignTokens.Typography.headline)
                     Spacer()
-                    CurrencyLabel(amount: model.currentBalance)
+                    CurrencyLabel(amount: viewModel.currentBalance)
                 }
                 .accessibilityElement(children: .combine)
             }

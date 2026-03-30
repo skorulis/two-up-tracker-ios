@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State var model: SettingsViewModel
+    @State var viewModel: SettingsViewModel
     @FocusState private var lossLimitFocused: Bool
     @State private var showResetConfirmation = false
 
@@ -14,7 +14,7 @@ struct SettingsView: View {
         .alert("Reset all data?", isPresented: $showResetConfirmation) {
             Button("Cancel", role: .cancel) {}
             Button("Reset", role: .destructive) {
-                model.resetAllData()
+                viewModel.resetAllData()
             }
         } message: {
             Text("This will delete your current session and restore default settings.")
@@ -28,11 +28,11 @@ struct SettingsView: View {
             }
         }
         .onAppear {
-            model.syncFromStore()
+            viewModel.syncFromStore()
         }
         .onChange(of: lossLimitFocused) { wasFocused, isFocused in
             if wasFocused, !isFocused {
-                model.applyLossLimitFromField()
+                viewModel.applyLossLimitFromField()
             }
         }
         .navigationBarHidden(true)
@@ -41,7 +41,7 @@ struct SettingsView: View {
     private var content: some View {
         Form {
             Section {
-                TextField("Amount", text: $model.lossLimitText)
+                TextField("Amount", text: $viewModel.lossLimitText)
                     .keyboardType(.decimalPad)
                     .font(DesignTokens.Typography.body.monospacedDigit())
                     .focused($lossLimitFocused)
@@ -67,7 +67,7 @@ struct SettingsView: View {
 
             Section {
                 Button {
-                    model.showWhatIsTwoUp()
+                    viewModel.showWhatIsTwoUp()
                 } label: {
                     HStack {
                         Text("What is Two-Up?")

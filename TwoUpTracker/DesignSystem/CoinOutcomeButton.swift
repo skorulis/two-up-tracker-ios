@@ -54,15 +54,21 @@ struct CoinOutcomeButton: View {
 
 struct CoinOutcomeRow: View {
 
-    let action: (Outcome) -> Void
+    @Binding var selectedOutcome: Outcome?
 
     var body: some View {
         HStack(spacing: DesignTokens.Spacing.large) {
-            CoinOutcomeButton(outcome: .heads, borderColor: Colors.australianGreen) {
-                action(.heads)
+            CoinOutcomeButton(
+                outcome: .heads,
+                borderColor: selectedOutcome == .heads ? Colors.australianGreen : .clear
+            ) {
+                selectedOutcome = .heads
             }
-            CoinOutcomeButton(outcome: .tails, borderColor: Colors.australianGold) {
-                action(.tails)
+            CoinOutcomeButton(
+                outcome: .tails,
+                borderColor: selectedOutcome == .tails ? Colors.australianGold : .clear
+            ) {
+                selectedOutcome = .tails
             }
         }
     }
@@ -78,7 +84,7 @@ private struct CoinOutcomeButtonPressStyle: ButtonStyle {
 }
 
 #Preview("Coin outcome buttons") {
-    CoinOutcomeRow(action: { _ in })
+    CoinOutcomeRow(selectedOutcome: .constant(nil))
     .padding()
     .background(Colors.groupedBackground)
 }

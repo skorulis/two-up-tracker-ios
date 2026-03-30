@@ -107,7 +107,17 @@ struct CurrentRoundView: View {
                         .font(DesignTokens.Typography.caption)
                         .foregroundStyle(.secondary)
 
-                    CoinOutcomeRow(action: viewModel.recordPendingOutcome)
+                    CoinOutcomeRow(selectedOutcome: $viewModel.model.pendingResultSelection)
+
+                    Button("Confirm") {
+                        guard let outcome = viewModel.model.pendingResultSelection else { return }
+                        viewModel.recordPendingOutcome(outcome)
+                        viewModel.model.pendingResultSelection = nil
+                    }
+                    .buttonStyle(.primary)
+                    .frame(maxWidth: .infinity)
+                    .disabled(viewModel.model.pendingResultSelection == nil)
+                    .accessibilityLabel("Confirm toss result")
                 }
             }
         }
@@ -158,6 +168,7 @@ extension CurrentRoundView {
     struct Model {
         var session: Session = .defaultSession()
         var bettingAvailable: Bool = false
+        var pendingResultSelection: Outcome?
 
         /// Most recent round that still needs a toss result, if any.
         var pendingRoundAwaitingResult: Round? {

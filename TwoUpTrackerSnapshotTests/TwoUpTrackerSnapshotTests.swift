@@ -13,7 +13,7 @@ struct SettingsViewSnapshotTests {
 
     @Test func settings() async throws {
         let viewModel = assembler.resolver.settingsViewModel()
-        let view = SettingsView(model: viewModel)
+        let view = SettingsView(viewModel: viewModel)
 
         assertSnapshot(of: view, as: .image(on: .iPhoneSe))
     }
