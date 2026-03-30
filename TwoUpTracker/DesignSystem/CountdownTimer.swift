@@ -1,9 +1,8 @@
 import SwiftUI
 
-/// Counts down to a fixed instant: **25 April, 12:00** in **Australia/Sydney** (legal Two-Up window on ANZAC Day).
 struct CountdownTimer: View {
     let session: Session
-    var onInfoTapped: (() -> Void)? = nil
+    var onInfoTapped: (() -> Void)?
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
@@ -66,16 +65,8 @@ struct CountdownTimer: View {
 }
 
 #Preview {
-    CountdownTimerPreviewSamples()
-}
-
-private struct CountdownTimerPreviewSamples: View {
-    private static let soon = Date().addingTimeInterval(280_000)
-
-    var body: some View {
-        VStack(spacing: DesignTokens.Spacing.large) {
-            CountdownTimer(session: .defaultSession())
-        }
-        .padding()
+    VStack(spacing: DesignTokens.Spacing.large) {
+        CountdownTimer(session: .defaultSession())
     }
+    .padding()
 }
