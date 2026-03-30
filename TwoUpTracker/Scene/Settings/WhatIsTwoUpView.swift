@@ -7,6 +7,8 @@ struct WhatIsTwoUpView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {
+                PageHeader(title: "What is Two-Up")
+
                 Card {
                     VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
                         SectionHeader(title: "What is Two-Up?")
@@ -102,7 +104,5 @@ struct WhatIsTwoUpView: View {
             .padding(DesignTokens.Spacing.medium)
         }
         .background(Colors.groupedBackground)
-        .navigationTitle("What is Two-Up")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }

@@ -8,22 +8,30 @@ struct SessionDetailView: View {
             if model.hasRounds {
                 listContent
             } else {
-                EmptyState(
-                    title: "No rounds yet",
-                    message: "Use the Add tab to enter your outstanding bets, then record the toss outcome " +
-                        "here when you know it.",
-                    systemImage: "list.bullet.rectangle"
-                )
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
+                    PageHeader(title: model.sessionName)
+                    EmptyState(
+                        title: "No rounds yet",
+                        message: "Use the Add tab to enter your outstanding bets, then record the toss outcome " +
+                            "here when you know it.",
+                        systemImage: "list.bullet.rectangle"
+                    )
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                .padding(DesignTokens.Spacing.medium)
             }
         }
         .id(model.mainStore.activeSession.rounds.count)
-        .navigationTitle(model.sessionName)
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarHidden(true)
     }
 
     private var listContent: some View {
         List {
+            Section {
+                PageHeader(title: model.sessionName)
+                    .listRowBackground(Color.clear)
+            }
+
             Section {
                 HStack {
                     Text("Balance")

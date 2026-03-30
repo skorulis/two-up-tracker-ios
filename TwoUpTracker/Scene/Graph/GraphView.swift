@@ -10,23 +10,28 @@ struct GraphView: View {
 
     var body: some View {
         NavigationStack {
-            Group {
-                if model.hasData {
-                    scrollContent
-                } else {
-                    EmptyState(
-                        title: "No data yet",
-                        message:
-                            "Add rounds from the Bets tab and record outcomes in History "
-                            + "to see your running balance.",
-                        systemImage: "chart.line.uptrend.xyaxis"
-                    )
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
+                PageHeader(title: model.sessionName)
+                    .padding(.horizontal, DesignTokens.Spacing.medium)
+                    .padding(.top, DesignTokens.Spacing.medium)
+
+                Group {
+                    if model.hasData {
+                        scrollContent
+                    } else {
+                        EmptyState(
+                            title: "No data yet",
+                            message:
+                                "Add rounds from the Bets tab and record outcomes in History "
+                                + "to see your running balance.",
+                            systemImage: "chart.line.uptrend.xyaxis"
+                        )
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding(.horizontal, DesignTokens.Spacing.medium)
+                    }
                 }
             }
             .background(Colors.groupedBackground)
-            .navigationTitle(model.sessionName)
-            .navigationBarTitleDisplayMode(.large)
             .id(model.mainStore.activeSession.rounds.count)
         }
     }

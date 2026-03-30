@@ -15,6 +15,8 @@ struct CurrentRoundView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: DesignTokens.Spacing.medium) {
+                PageHeader(title: viewModel.model.session.name)
+
                 if let pending = viewModel.model.pendingRoundAwaitingResult {
                     pendingTossContent(for: pending)
 
