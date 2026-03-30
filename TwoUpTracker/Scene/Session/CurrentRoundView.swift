@@ -12,78 +12,114 @@ struct CurrentRoundView: View {
     }
 
     var body: some View {
-        Form {
-            if let pending = viewModel.model.pendingRoundAwaitingResult {
-                pendingTossSection(for: pending)
+        ScrollView {
+            VStack(spacing: DesignTokens.Spacing.medium) {
+                if let pending = viewModel.model.pendingRoundAwaitingResult {
+                    pendingTossContent(for: pending)
 
-                Button("Reset") {
-                    viewModel.resetForm()
+                    Button("Reset") {
+                        viewModel.resetForm()
+                    }
+                    .buttonStyle(.bordered)
+                    .frame(maxWidth: .infinity)
+                    .accessibilityLabel("Clear bet fields")
+                } else {
+                    CountdownTimer(session: viewModel.model.session)
+
+                    Card {
+                        AddBetView(
+                            onSetBet: { viewModel.saveRound(bet: $0) }
+                        )
+                    }
                 }
-                .accessibilityLabel("Clear bet fields")
-            } else {
-                CountdownTimer(session: viewModel.model.session)
-                AddBetView(
-                    onSetBet: { viewModel.saveRound(bet: $0) }
-                )
+            }
+            .padding(.horizontal, DesignTokens.Spacing.medium)
+            .padding(.vertical, DesignTokens.Spacing.medium)
+            .frame(maxWidth: .infinity)
+        }
+        .background(Colors.groupedBackground)
+    }
+
+    @ViewBuilder
+    private func pendingTossContent(for round: Round) -> some View {
+        VStack(spacing: DesignTokens.Spacing.medium) {
+            Card {
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+                    HStack {
+                        Text("Round time")
+                            .font(DesignTokens.Typography.body)
+                        Spacer()
+                        Text(round.date, format: .dateTime.day().month().year().hour().minute())
+                            .font(DesignTokens.Typography.caption)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    Divider()
+
+                    HStack {
+                        Text("Total staked")
+                            .font(DesignTokens.Typography.headline)
+                        Spacer()
+                        Text(round.totalStaked, format: currencyDisplayFormat)
+                            .font(DesignTokens.Typography.statValue.monospacedDigit())
+                    }
+                    .accessibilityElement(children: .combine)
+                }
+            }
+
+            Card {
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+                    Text("Your bets")
+                        .font(DesignTokens.Typography.headline)
+                        .foregroundStyle(.secondary)
+
+                    VStack(spacing: 0) {
+                        ForEach(Array(round.bets.enumerated()), id: \.element.id) { index, bet in
+                            betRow(bet)
+                            if index < round.bets.count - 1 {
+                                Divider()
+                                    .padding(.vertical, DesignTokens.Spacing.xs)
+                            }
+                        }
+                    }
+                }
+            }
+
+            Card {
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
+                    HStack(spacing: DesignTokens.Spacing.medium) {
+                        Text("Toss")
+                            .font(DesignTokens.Typography.caption)
+                            .foregroundStyle(.secondary)
+                        Spacer()
+
+                        CoinOutcomeButton(outcome: .heads) {
+                            viewModel.recordPendingOutcome(.heads)
+                        }
+                        CoinOutcomeButton(outcome: .tails) {
+                            viewModel.recordPendingOutcome(.tails)
+                        }
+                    }
+                    .accessibilityElement(children: .contain)
+
+                    Text("Choose the coin toss result to update your P&L for this round.")
+                        .font(DesignTokens.Typography.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
         }
     }
 
-    @ViewBuilder
-    private func pendingTossSection(for round: Round) -> some View {
-        Section {
-            HStack {
-                Text("Round time")
-                    .font(DesignTokens.Typography.body)
-                Spacer()
-                Text(round.date, format: .dateTime.day().month().year().hour().minute())
-                    .font(DesignTokens.Typography.caption)
-                    .foregroundStyle(.secondary)
-            }
-            HStack {
-                Text("Total staked")
-                    .font(DesignTokens.Typography.headline)
-                Spacer()
-                Text(round.totalStaked, format: currencyDisplayFormat)
-                    .font(DesignTokens.Typography.statValue.monospacedDigit())
-            }
-            .accessibilityElement(children: .combine)
+    private func betRow(_ bet: Bet) -> some View {
+        HStack {
+            Text(bet.prediction.rawValue.capitalized)
+                .font(DesignTokens.Typography.body)
+            Spacer()
+            Text(bet.amount, format: currencyDisplayFormat)
+                .font(DesignTokens.Typography.body.monospacedDigit())
         }
-
-        Section {
-            ForEach(round.bets) { bet in
-                HStack {
-                    Text(bet.prediction.rawValue.capitalized)
-                        .font(DesignTokens.Typography.body)
-                    Spacer()
-                    Text(bet.amount, format: currencyDisplayFormat)
-                        .font(DesignTokens.Typography.body.monospacedDigit())
-                }
-                .accessibilityElement(children: .combine)
-            }
-        } header: {
-            Text("Your bets")
-        }
-
-        Section {
-            HStack(spacing: DesignTokens.Spacing.medium) {
-                Text("Toss")
-                    .font(DesignTokens.Typography.caption)
-                    .foregroundStyle(.secondary)
-                Spacer()
-
-                CoinOutcomeButton(outcome: .heads) {
-                    viewModel.recordPendingOutcome(.heads)
-                }
-                CoinOutcomeButton(outcome: .tails) {
-                    viewModel.recordPendingOutcome(.tails)
-                }
-            }
-            .accessibilityElement(children: .contain)
-        } footer: {
-            Text("Choose the coin toss result to update your P&L for this round.")
-                .font(DesignTokens.Typography.caption)
-        }
+        .accessibilityElement(children: .combine)
     }
 
 }
