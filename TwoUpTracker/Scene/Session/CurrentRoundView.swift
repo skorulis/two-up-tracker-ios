@@ -46,17 +46,6 @@ struct CurrentRoundView: View {
             Card {
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
                     HStack {
-                        Text("Round time")
-                            .font(DesignTokens.Typography.body)
-                        Spacer()
-                        Text(round.date, format: .dateTime.day().month().year().hour().minute())
-                            .font(DesignTokens.Typography.caption)
-                            .foregroundStyle(.secondary)
-                    }
-
-                    Divider()
-
-                    HStack {
                         Text("Total staked")
                             .font(DesignTokens.Typography.headline)
                         Spacer()
@@ -67,31 +56,7 @@ struct CurrentRoundView: View {
                 }
             }
 
-            Card {
-                VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-                    Text("Your bets")
-                        .font(DesignTokens.Typography.headline)
-                        .foregroundStyle(.secondary)
-
-                    VStack(spacing: 0) {
-                        ForEach(Array(round.bets.enumerated()), id: \.element.id) { index, bet in
-                            betRow(bet)
-                            if index < round.bets.count - 1 {
-                                Divider()
-                                    .padding(.vertical, DesignTokens.Spacing.xs)
-                            }
-                        }
-                    }
-
-                    Button(action: viewModel.addAnotherBet) {
-                        HStack {
-                            Spacer()
-                            Text("Add another bet to this round")
-                            Image(systemName: "plus.circle.fill")
-                        }
-                    }
-                }
-            }
+            bets(round: round)
 
             Card {
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
@@ -100,6 +65,34 @@ struct CurrentRoundView: View {
                         .foregroundStyle(.secondary)
 
                     CoinOutcomeRow(action: viewModel.recordPendingOutcome)
+                }
+            }
+        }
+    }
+    
+    private func bets(round: Round) -> some View {
+        Card {
+            VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+                Text("Round \(viewModel.model.session.rounds.count) bets")
+                    .font(DesignTokens.Typography.headline)
+                    .foregroundStyle(.secondary)
+
+                VStack(spacing: 0) {
+                    ForEach(Array(round.bets.enumerated()), id: \.element.id) { index, bet in
+                        betRow(bet)
+                        if index < round.bets.count - 1 {
+                            Divider()
+                                .padding(.vertical, DesignTokens.Spacing.xs)
+                        }
+                    }
+                }
+
+                Button(action: viewModel.addAnotherBet) {
+                    HStack {
+                        Spacer()
+                        Text("Add another bet to this round")
+                        Image(systemName: "plus.circle.fill")
+                    }
                 }
             }
         }
