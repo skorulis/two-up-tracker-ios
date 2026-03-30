@@ -5,9 +5,9 @@ struct SessionDetailView: View {
 
     var body: some View {
         PageLayout {
-            PageHeader(title: viewModel.sessionName)
+            PageHeader(title: viewModel.model.sessionName)
         } content: {
-            if viewModel.hasRounds {
+            if viewModel.model.hasRounds {
                 listContent
             } else {
                 EmptyState(
@@ -28,11 +28,11 @@ struct SessionDetailView: View {
             balance
             Text("Rounds")
             Section {
-                ForEach(Array(viewModel.roundRows), id: \.round.id) { row in
+                ForEach(Array(viewModel.model.roundRows), id: \.round.id) { row in
                     roundRow(round: row.round, balance: row.balance)
                 }
                 .onDelete { indexSet in
-                    let rows = viewModel.roundRows
+                    let rows = viewModel.model.roundRows
                     for index in indexSet {
                         guard rows.indices.contains(index) else { continue }
                         viewModel.deleteRound(id: rows[index].round.id)
@@ -103,11 +103,26 @@ struct SessionDetailView: View {
                     Text("Balance")
                         .font(DesignTokens.Typography.headline)
                     Spacer()
-                    CurrencyLabel(amount: viewModel.currentBalance)
+                    CurrencyLabel(amount: viewModel.model.currentBalance)
                 }
                 .accessibilityElement(children: .combine)
             }
             .listRowSeparator(.hidden)
+        }
+    }
+}
+
+extension SessionDetailView {
+    struct Model {
+        var session: Session = .defaultSession()
+
+        var sessionName: String { session.name }
+        var currentBalance: Double { session.runningBalances().last?.1 ?? 0 }
+        var hasRounds: Bool { !session.rounds.isEmpty }
+
+        /// Newest rounds first; each pair is the round and running balance after that round.
+        var roundRows: [(round: Round, balance: Double)] {
+            session.runningBalances().reversed()
         }
     }
 }

@@ -97,12 +97,6 @@ struct CurrentRoundView: View {
 
             Card {
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
-                    HStack {
-                        Spacer(minLength: 0)
-                        SpinningCoinView(diameter: 96)
-                        Spacer(minLength: 0)
-                    }
-
                     Text("What is the result")
                         .font(DesignTokens.Typography.caption)
                         .foregroundStyle(.secondary)

@@ -5,7 +5,7 @@ import SwiftUI
 enum Outcome: String, Codable, CaseIterable, Sendable {
     case heads
     case tails
-    
+
     var borderColor: Color {
         switch self {
         case .heads:
