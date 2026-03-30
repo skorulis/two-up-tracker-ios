@@ -2,8 +2,7 @@ import Charts
 import SwiftUI
 
 struct GraphView: View {
-    @Bindable var model: GraphViewModel
-    @Bindable var store: MainStore
+    @State var model: GraphViewModel
 
     private var currencyCode: String {
         Locale.current.currency?.identifier ?? "USD"
@@ -28,7 +27,7 @@ struct GraphView: View {
             .background(Colors.groupedBackground)
             .navigationTitle(model.sessionName)
             .navigationBarTitleDisplayMode(.large)
-            .id(store.activeSession.rounds.count)
+            .id(model.mainStore.activeSession.rounds.count)
         }
     }
 
@@ -133,6 +132,6 @@ struct GraphView: View {
         }
         .accessibilityLabel("Running balance by round")
         .accessibilityHint("Line chart of cumulative profit or loss after each round.")
-        .animation(.smooth(duration: 0.35), value: store.activeSession.rounds.count)
+        .animation(.smooth(duration: 0.35), value: model.mainStore.activeSession.rounds.count)
     }
 }

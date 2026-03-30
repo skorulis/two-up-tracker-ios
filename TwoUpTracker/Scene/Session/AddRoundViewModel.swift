@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 import Knit
 import SwiftUI
@@ -8,23 +9,22 @@ import Observation
 @Observable
 final class AddRoundViewModel {
     private let mainStore: MainStore
+    
+    private var cancellables: Set<AnyCancellable> = []
 
     var model: AddRoundView.Model = .init()
 
     @Resolvable<BaseResolver>
     init(mainStore: MainStore) {
         self.mainStore = mainStore
+        mainStore.$activeSession.sink { [unowned self] session in
+            self.model.session = session
+        }
+        .store(in: &cancellables)
     }
 
     var canSave: Bool {
         makeRound() != nil
-    }
-
-    /// Most recent round that still needs a toss result, if any.
-    var pendingRoundAwaitingResult: Round? {
-        mainStore.activeSession.roundsOrdered
-            .filter { $0.result == nil }
-            .max(by: { $0.date < $1.date })
     }
 
     func addBet() {
@@ -69,10 +69,11 @@ final class AddRoundViewModel {
 
     func resetForm() {
         model.betDrafts = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
+        mainStore.activeSession.resetOutstanding()
     }
 
     func recordPendingOutcome(_ outcome: Outcome) {
-        guard let id = pendingRoundAwaitingResult?.id else { return }
+        guard let id = model.pendingRoundAwaitingResult?.id else { return }
         mainStore.setRoundResult(roundId: id, result: outcome)
         resetForm()
     }

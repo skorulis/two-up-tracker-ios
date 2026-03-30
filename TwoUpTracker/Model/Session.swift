@@ -8,6 +8,16 @@ struct Session: Identifiable, Codable, Hashable, Sendable {
 }
 
 extension Session {
+    
+    static func defaultSession() -> Session {
+        let year = Calendar.current.component(.year, from: Date())
+        return Session(
+            id: UUID(),
+            name: "Anzac Day \(year)",
+            date: Date(),
+            rounds: []
+        )
+    }
 
     var roundsOrdered: [Round] {
         rounds.sorted { $0.date < $1.date }
@@ -29,5 +39,11 @@ extension Session {
             balance += round.profit
             return (round, balance)
         }
+    }
+    
+    mutating func resetOutstanding() {
+        let index = rounds.firstIndex(where: { $0.result == nil })
+        guard let index else { return}
+        rounds.remove(at: index)
     }
 }

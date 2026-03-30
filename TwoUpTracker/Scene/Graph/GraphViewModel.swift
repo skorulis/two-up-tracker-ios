@@ -13,7 +13,7 @@ struct BalanceChartPoint: Identifiable, Equatable, Sendable {
 @MainActor
 @Observable
 final class GraphViewModel {
-    private let mainStore: MainStore
+    let mainStore: MainStore
 
     @Resolvable<BaseResolver>
     init(mainStore: MainStore) {

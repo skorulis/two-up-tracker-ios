@@ -1,8 +1,7 @@
 import SwiftUI
 
 struct SessionDetailView: View {
-    @Bindable var model: SessionDetailViewModel
-    @Bindable var store: MainStore
+    @State var model: SessionDetailViewModel
 
     var body: some View {
         Group {
@@ -17,7 +16,7 @@ struct SessionDetailView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-        .id(store.activeSession.rounds.count)
+        .id(model.mainStore.activeSession.rounds.count)
         .navigationTitle(model.sessionName)
         .navigationBarTitleDisplayMode(.large)
     }

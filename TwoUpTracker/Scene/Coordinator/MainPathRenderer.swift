@@ -17,7 +17,6 @@ struct MainPathRenderer: CoordinatorPathRenderer {
             AnyView(
                 SessionDetailView(
                     model: SessionDetailViewModel.make(resolver: resolver),
-                    store: resolver.mainStore()
                 )
             )
         case .addRound:

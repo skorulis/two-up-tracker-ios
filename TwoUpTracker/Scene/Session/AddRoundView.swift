@@ -13,7 +13,7 @@ struct AddRoundView: View {
 
     var body: some View {
         Form {
-            if let pending = viewModel.pendingRoundAwaitingResult {
+            if let pending = viewModel.model.pendingRoundAwaitingResult {
                 pendingTossSection(for: pending)
 
                 Button("Reset") {
@@ -128,5 +128,13 @@ struct BetDraft: Identifiable, Equatable {
 extension AddRoundView {
     struct Model {
         var betDrafts: [BetDraft] = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
+        var session: Session = .defaultSession()
+        
+        /// Most recent round that still needs a toss result, if any.
+        var pendingRoundAwaitingResult: Round? {
+            session.roundsOrdered
+                .filter { $0.result == nil }
+                .max(by: { $0.date < $1.date })
+        }
     }
 }
