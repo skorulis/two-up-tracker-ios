@@ -11,6 +11,8 @@ final class MainStore: ObservableObject {
 
     private static let activeSessionKey = "twoUpTracker.sessions.v1"
     private static let appSettingsKey = "twoUpTracker.appSettings.v1"
+    private static let userInfoKey = "twoUpTracker.userInfo.v1"
+    
 
     @Published var activeSession: Session {
         didSet {
@@ -23,12 +25,24 @@ final class MainStore: ObservableObject {
             try? keyValueStore.set(codable: settings, forKey: Self.appSettingsKey)
         }
     }
+    
+    @Published var userInfo: UserInfo {
+        didSet {
+            try? keyValueStore.set(codable: userInfo, forKey: Self.userInfoKey)
+        }
+    }
 
     @Resolvable<BaseResolver>
     init(keyValueStore: PKeyValueStore) {
         self.keyValueStore = keyValueStore
         activeSession = (try? keyValueStore.codable(forKey: Self.activeSessionKey)) ?? .defaultSession()
         settings = (try? keyValueStore.codable(forKey: Self.appSettingsKey)) ?? .init()
+        if let existingUser: UserInfo = (try? keyValueStore.codable(forKey: Self.userInfoKey)) {
+            self.userInfo = existingUser
+        } else {
+            self.userInfo = UserInfo()
+            try? keyValueStore.set(codable: userInfo, forKey: Self.userInfoKey)
+        }
     }
 
     func setLossLimit(_ value: Double?) {
