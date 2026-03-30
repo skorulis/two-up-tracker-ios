@@ -38,19 +38,7 @@ struct CurrentRoundView: View {
                                 )
                             }
                         } else {
-                            VStack(spacing: DesignTokens.Spacing.medium) {
-                                CountdownTimer(
-                                    session: viewModel.model.session,
-                                    onInfoTapped: { viewModel.showTwoUpAvailabilityInfo() }
-                                )
-
-                                Button("start betting") {
-                                    hasStartedBettingManually = true
-                                }
-                                .buttonStyle(.primary)
-                                .frame(maxWidth: .infinity)
-                                .accessibilityLabel("Start betting early")
-                            }
+                            countdownSection
                         }
                     }
                 }
@@ -62,6 +50,22 @@ struct CurrentRoundView: View {
         .background(Colors.groupedBackground)
         .onChange(of: viewModel.model.session.id) { _, _ in
             hasStartedBettingManually = false
+        }
+    }
+    
+    private var countdownSection: some View {
+        VStack(spacing: DesignTokens.Spacing.medium) {
+            CountdownTimer(
+                session: viewModel.model.session,
+                onInfoTapped: { viewModel.showTwoUpAvailabilityInfo() }
+            )
+
+            Button("start betting") {
+                hasStartedBettingManually = true
+            }
+            .buttonStyle(.primary)
+            .frame(maxWidth: .infinity)
+            .accessibilityLabel("Start betting early")
         }
     }
 
