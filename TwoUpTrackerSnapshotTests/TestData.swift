@@ -38,7 +38,7 @@ struct TestData {
             id: UUID(),
             date: base.addingTimeInterval(TimeInterval(index * 420)),
             result: result,
-            bets: bets.enumerated().map { betIndex, bet in
+            bets: bets.enumerated().map { _, bet in
                 Bet(
                     id: UUID(),
                     amount: bet.0,

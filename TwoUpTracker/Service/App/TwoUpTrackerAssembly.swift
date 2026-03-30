@@ -33,6 +33,9 @@ final class TwoUpTrackerAssembly: AutoInitModuleAssembly {
 
     @MainActor
     private func registerServices(container: Container<TargetResolver>) {
+        container.register(CountdownService.self) { CountdownService(mainStore: $0.mainStore()) }
+            .inObjectScope(.container)
+
         if purpose == .normal {
             container.register(AnalyticsService.self) { AmplitudeAnalyticsService.make(resolver: $0) }
                 .inObjectScope(.container)

@@ -3,7 +3,6 @@ import SwiftUI
 
 struct CurrentRoundView: View {
     @State var viewModel: CurrentRoundViewModel
-    @State private var hasStartedBettingManually = false
 
     private var currencyCode: String { "AUD" }
 
@@ -31,7 +30,7 @@ struct CurrentRoundView: View {
                         let now = context.date
                         let bettingStartReached = viewModel.model.session.bettingStartTime <= now
 
-                        if bettingStartReached || hasStartedBettingManually {
+                        if bettingStartReached || viewModel.model.bettingAvailable {
                             Card {
                                 AddBetView(
                                     onSetBet: { viewModel.saveRound(bet: $0) }
@@ -48,11 +47,8 @@ struct CurrentRoundView: View {
             .frame(maxWidth: .infinity)
         }
         .background(Colors.groupedBackground)
-        .onChange(of: viewModel.model.session.id) { _, _ in
-            hasStartedBettingManually = false
-        }
     }
-    
+
     private var countdownSection: some View {
         VStack(spacing: DesignTokens.Spacing.medium) {
             CountdownTimer(
@@ -61,7 +57,7 @@ struct CurrentRoundView: View {
             )
 
             Button("start betting") {
-                hasStartedBettingManually = true
+                viewModel.model.bettingAvailable = true
             }
             .buttonStyle(.primary)
             .frame(maxWidth: .infinity)
@@ -151,6 +147,7 @@ extension CurrentRoundView {
     struct Model {
         var betDrafts: [BetDraft] = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
         var session: Session = .defaultSession()
+        var bettingAvailable: Bool = false
 
         /// Most recent round that still needs a toss result, if any.
         var pendingRoundAwaitingResult: Round? {

@@ -26,5 +26,4 @@ struct GraphViewSnapshotTests {
         assertSnapshot(of: view, as: .image(on: .iPhoneSe), style: .dark)
     }
 
-    
 }

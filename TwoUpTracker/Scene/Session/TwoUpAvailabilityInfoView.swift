@@ -19,4 +19,3 @@ struct TwoUpAvailabilityInfoView: View {
         }
     }
 }
-

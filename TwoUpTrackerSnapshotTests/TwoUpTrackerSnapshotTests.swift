@@ -8,13 +8,13 @@ import Testing
 
 @MainActor @Suite(.snapshots(record: .failed))
 struct SettingsViewSnapshotTests {
-    
+
     private let assembler = TwoUpTrackerAssembly.testing()
 
     @Test func settings() async throws {
         let viewModel = assembler.resolver.settingsViewModel()
         let view = SettingsView(model: viewModel)
-        
+
         assertSnapshot(of: view, as: .image(on: .iPhoneSe))
     }
 
