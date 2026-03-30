@@ -22,7 +22,7 @@ struct BetAmountGrid: View {
                 Button {
                     amountText = String(Int(amount))
                 } label: {
-                    Text(amount, format: .currency(code: currencyCode))
+                    Text(amount, format: .currency(code: currencyCode).precision(.fractionLength(0)))
                         .font(DesignTokens.Typography.body.monospacedDigit())
                         .frame(maxWidth: .infinity)
                         .frame(minHeight: DesignTokens.MinTapTarget.height)

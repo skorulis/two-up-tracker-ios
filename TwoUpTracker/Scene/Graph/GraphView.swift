@@ -46,11 +46,44 @@ struct GraphView: View {
                 }
 
                 Card {
+                    VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
+                        ratioRow(
+                            title: "Win percentage",
+                            value: model.winPercentageText,
+                            detail: model.winLossRecordText
+                        )
+                        ratioRow(
+                            title: "Heads vs tails",
+                            value: model.headsTailsPercentageText,
+                            detail: nil
+                        )
+                    }
+                }
+
+                Card {
                     chart
                         .frame(minHeight: 260)
                 }
             }
             .padding(DesignTokens.Spacing.medium)
+        }
+    }
+
+    private func ratioRow(title: String, value: String, detail: String?) -> some View {
+        VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
+            HStack(alignment: .firstTextBaseline) {
+                Text(title)
+                    .font(DesignTokens.Typography.caption)
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Text(value)
+                    .font(DesignTokens.Typography.statValue)
+            }
+            if let detail, !detail.isEmpty {
+                Text(detail)
+                    .font(DesignTokens.Typography.caption)
+                    .foregroundStyle(.secondary)
+            }
         }
     }
 
