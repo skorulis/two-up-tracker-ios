@@ -32,6 +32,19 @@ struct SettingsView: View {
                     Text("Clears your session and loss limit. This cannot be undone.")
                         .font(DesignTokens.Typography.caption)
                 }
+
+                Section {
+                    NavigationLink {
+                        WhatIsTwoUpView()
+                    } label: {
+                        Text("What is Two-Up?")
+                    }
+                } header: {
+                    Text("About")
+                } footer: {
+                    Text("Learn the rules, terminology, and history.")
+                        .font(DesignTokens.Typography.caption)
+                }
             }
             .alert("Reset all data?", isPresented: $showResetConfirmation) {
                 Button("Cancel", role: .cancel) {}

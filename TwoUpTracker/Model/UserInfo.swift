@@ -11,4 +11,3 @@ struct UserInfo: Codable, Equatable {
         self.localId = localId
     }
 }
-

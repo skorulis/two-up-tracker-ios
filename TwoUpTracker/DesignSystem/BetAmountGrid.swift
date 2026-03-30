@@ -35,7 +35,10 @@ struct BetAmountGrid: View {
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: DesignTokens.CornerRadius.chip, style: .continuous)
-                        .strokeBorder(selected ? Color.accentColor : Color.secondary.opacity(0.35), lineWidth: selected ? 2 : 1)
+                        .strokeBorder(
+                            selected ? Color.accentColor : Color.secondary.opacity(0.35),
+                            lineWidth: selected ? 2 : 1
+                        )
                 )
                 .foregroundStyle(selected ? Color.accentColor : .primary)
                 .accessibilityLabel("Bet amount \(Int(amount))")

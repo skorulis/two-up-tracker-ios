@@ -70,7 +70,7 @@ struct CurrentRoundView: View {
             }
         }
     }
-    
+
     private func bets(round: Round) -> some View {
         Card {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {

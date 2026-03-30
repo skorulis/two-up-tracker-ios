@@ -10,7 +10,8 @@ struct SessionDetailView: View {
             } else {
                 EmptyState(
                     title: "No rounds yet",
-                    message: "Use the Add tab to enter your outstanding bets, then record the toss outcome here when you know it.",
+                    message: "Use the Add tab to enter your outstanding bets, then record the toss outcome " +
+                        "here when you know it.",
                     systemImage: "list.bullet.rectangle"
                 )
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

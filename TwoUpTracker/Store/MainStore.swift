@@ -12,7 +12,6 @@ final class MainStore: ObservableObject {
     private static let activeSessionKey = "twoUpTracker.sessions.v1"
     private static let appSettingsKey = "twoUpTracker.appSettings.v1"
     private static let userInfoKey = "twoUpTracker.userInfo.v1"
-    
 
     @Published var activeSession: Session {
         didSet {
@@ -25,7 +24,7 @@ final class MainStore: ObservableObject {
             try? keyValueStore.set(codable: settings, forKey: Self.appSettingsKey)
         }
     }
-    
+
     @Published var userInfo: UserInfo {
         didSet {
             try? keyValueStore.set(codable: userInfo, forKey: Self.userInfoKey)
