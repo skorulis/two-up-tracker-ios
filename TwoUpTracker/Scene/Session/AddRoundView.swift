@@ -4,6 +4,13 @@ import SwiftUI
 struct AddRoundView: View {
     @State var viewModel: AddRoundViewModel
 
+    private var currencyCode: String { "AUD" }
+
+    /// Whole dollars without “.00”; cents shown when needed (e.g. $10.50).
+    private var currencyDisplayFormat: FloatingPointFormatStyle<Double>.Currency {
+        .currency(code: currencyCode).precision(.fractionLength(0...2))
+    }
+
     var body: some View {
         Form {
             if let pending = viewModel.pendingRoundAwaitingResult {
@@ -34,7 +41,7 @@ struct AddRoundView: View {
                 Text("Total staked")
                     .font(DesignTokens.Typography.headline)
                 Spacer()
-                Text(round.totalStaked, format: .currency(code: Locale.current.currency?.identifier ?? "AUD"))
+                Text(round.totalStaked, format: currencyDisplayFormat)
                     .font(DesignTokens.Typography.statValue.monospacedDigit())
             }
             .accessibilityElement(children: .combine)
@@ -46,7 +53,7 @@ struct AddRoundView: View {
                     Text(bet.prediction.rawValue.capitalized)
                         .font(DesignTokens.Typography.body)
                     Spacer()
-                    Text(bet.amount, format: .currency(code: Locale.current.currency?.identifier ?? "AUD"))
+                    Text(bet.amount, format: currencyDisplayFormat)
                         .font(DesignTokens.Typography.body.monospacedDigit())
                 }
                 .accessibilityElement(children: .combine)
