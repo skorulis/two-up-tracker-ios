@@ -19,6 +19,7 @@ struct CardPathWrapper<Content: View>: View {
                 .opacity(animatingOut ? 0 : 1)
 
             content()
+                .padding(16)
                 .background(CardBackground())
                 .padding(16)
                 .opacity(isVisible ? 1 : 0)

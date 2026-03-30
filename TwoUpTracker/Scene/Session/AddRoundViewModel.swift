@@ -1,3 +1,4 @@
+import ASKCoordinator
 import Combine
 import Foundation
 import Knit
@@ -7,7 +8,9 @@ import Observation
 
 @MainActor
 @Observable
-final class AddRoundViewModel {
+final class AddRoundViewModel: CoordinatorViewModel {
+    weak var coordinator: ASKCoordinator.Coordinator?
+
     private let mainStore: MainStore
 
     private var cancellables: Set<AnyCancellable> = []
@@ -33,7 +36,7 @@ final class AddRoundViewModel {
             model.betDrafts = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
         }
     }
-    
+
     func addAnotherBet() {
         let path = MainPath.addBet { [unowned self] bet in
             var session = self.mainStore.activeSession
@@ -44,6 +47,7 @@ final class AddRoundViewModel {
             session.rounds[session.rounds.count - 1] = round
             self.mainStore.activeSession = session
         }
+        coordinator?.custom(overlay: .card, path)
     }
 
     @discardableResult

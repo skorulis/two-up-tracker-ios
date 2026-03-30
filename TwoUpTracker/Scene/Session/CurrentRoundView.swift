@@ -82,6 +82,14 @@ struct CurrentRoundView: View {
                             }
                         }
                     }
+
+                    Button(action: viewModel.addAnotherBet) {
+                        HStack {
+                            Spacer()
+                            Text("Add another bet to this round")
+                            Image(systemName: "plus.circle.fill")
+                        }
+                    }
                 }
             }
 
