@@ -7,6 +7,7 @@ struct ContentView: View {
 
     @State private var currentoundCoordinator = Coordinator(root: MainPath.currentRound)
     @State private var historyCoordinator = Coordinator(root: MainPath.sessionDetail)
+    @State private var settingsCoordinator = Coordinator(root: MainPath.settings)
 
     var body: some View {
         TabView(selection: $model.selectedTab) {
@@ -30,7 +31,8 @@ struct ContentView: View {
                 }
                 .tag(ContentTab.graph)
 
-            SettingsView(model: resolver!.settingsViewModel())
+            CoordinatorView(coordinator: settingsCoordinator)
+                .withRenderers(resolver: resolver!)
                 .tabItem {
                     Label("Settings", systemImage: "gearshape.fill")
                 }
