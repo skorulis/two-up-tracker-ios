@@ -15,10 +15,11 @@ struct AddBetView: View {
                         ForEach(Outcome.allCases, id: \.self) { outcome in
                             CoinOutcomeButton(
                                 outcome: outcome,
-                                isSelected: draft.prediction == outcome
+                                borderColor: draft.prediction == outcome ? outcome.borderColor : .clear
                             ) {
                                 draft.prediction = outcome
                             }
+                            .accessibilityAddTraits(draft.prediction == outcome ? .isSelected : [])
                         }
                     }
                     .frame(maxWidth: .infinity)
