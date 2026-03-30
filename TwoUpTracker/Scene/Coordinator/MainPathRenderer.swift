@@ -25,6 +25,8 @@ struct MainPathRenderer: CoordinatorPathRenderer {
             )
         case let .addBet(onSetBet):
             AnyView(AddBetView(onSetBet: onSetBet))
+        case .twoUpAvailabilityInfo:
+            AnyView(TwoUpAvailabilityInfoView())
         }
     }
 }

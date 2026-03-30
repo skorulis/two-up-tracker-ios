@@ -5,6 +5,7 @@ enum MainPath: CoordinatorPath {
     case sessionDetail
     case currentRound
     case addBet((Bet) -> Void)
+    case twoUpAvailabilityInfo
 
     var id: String {
         switch self {
@@ -15,6 +16,8 @@ enum MainPath: CoordinatorPath {
         case .currentRound:
             "currentRound"
         case .addBet: "addBet"
+        case .twoUpAvailabilityInfo:
+            "twoUpAvailabilityInfo"
         }
     }
 }

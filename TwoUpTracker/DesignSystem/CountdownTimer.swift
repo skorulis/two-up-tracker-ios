@@ -3,6 +3,7 @@ import SwiftUI
 /// Counts down to a fixed instant: **25 April, 12:00** in **Australia/Sydney** (legal Two-Up window on ANZAC Day).
 struct CountdownTimer: View {
     let session: Session
+    var onInfoTapped: (() -> Void)? = nil
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
@@ -16,17 +17,30 @@ struct CountdownTimer: View {
     }
 
     private func timeRemaining(now: Date) -> some View {
-        VStack(spacing: DesignTokens.Spacing.small) {
-            Text("Betting starts in")
-                .font(DesignTokens.Typography.caption)
-                .foregroundStyle(.secondary)
+        HStack(alignment: .top, spacing: DesignTokens.Spacing.medium) {
+            VStack(spacing: DesignTokens.Spacing.small) {
+                Text("Betting starts in")
+                    .font(DesignTokens.Typography.caption)
+                    .foregroundStyle(.secondary)
 
-            Text(Self.formatRemaining(until: session.bettingStartTime, from: now))
-                .font(countdownFont)
-                .monospacedDigit()
-                .multilineTextAlignment(.center)
-                .minimumScaleFactor(0.45)
-                .lineLimit(1)
+                Text(Self.formatRemaining(until: session.bettingStartTime, from: now))
+                    .font(countdownFont)
+                    .monospacedDigit()
+                    .multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.45)
+                    .lineLimit(1)
+            }
+
+            if let onInfoTapped {
+                Button(action: onInfoTapped) {
+                    Image(systemName: "info.circle")
+                        .font(.title3)
+                        .accessibilityLabel("Two-Up availability info")
+                }
+                .buttonStyle(.plain)
+                .padding(.top, 2)
+                .accessibilityLabel("Two-Up availability info")
+            }
         }
         .accessibilityElement(children: .combine)
     }

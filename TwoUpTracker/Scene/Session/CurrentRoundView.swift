@@ -37,7 +37,10 @@ struct CurrentRoundView: View {
                             }
                         } else {
                             VStack(spacing: DesignTokens.Spacing.medium) {
-                                CountdownTimer(session: viewModel.model.session)
+                                CountdownTimer(
+                                    session: viewModel.model.session,
+                                    onInfoTapped: { viewModel.showTwoUpAvailabilityInfo() }
+                                )
 
                                 Button("start betting") {
                                     hasStartedBettingManually = true
