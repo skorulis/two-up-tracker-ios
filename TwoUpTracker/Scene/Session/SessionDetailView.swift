@@ -73,19 +73,20 @@ struct SessionDetailView: View {
                                 }
                             }
                             .accessibilityElement(children: .contain)
-                        }
-                        HStack {
-                            Text("Result")
-                                .font(DesignTokens.Typography.body)
-                            Spacer()
-                            CurrencyLabel(amount: row.round.profit)
-                        }
-                        HStack {
-                            Text("Running Balance")
-                                .font(DesignTokens.Typography.caption)
-                                .foregroundStyle(.secondary)
-                            Spacer()
-                            CurrencyLabel(amount: row.balance)
+                        } else {
+                            HStack {
+                                Text("Result")
+                                    .font(DesignTokens.Typography.body)
+                                Spacer()
+                                CurrencyLabel(amount: row.round.profit)
+                            }
+                            HStack {
+                                Text("Running Balance")
+                                    .font(DesignTokens.Typography.caption)
+                                    .foregroundStyle(.secondary)
+                                Spacer()
+                                CurrencyLabel(amount: row.balance)
+                            }
                         }
                     }
                     .padding(.vertical, DesignTokens.Spacing.xs)
