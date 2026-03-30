@@ -66,10 +66,16 @@ struct SettingsView: View {
             }
 
             Section {
-                NavigationLink {
-                    WhatIsTwoUpView()
+                Button {
+                    model.showWhatIsTwoUp()
                 } label: {
-                    Text("What is Two-Up?")
+                    HStack {
+                        Text("What is Two-Up?")
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.footnote.weight(.semibold))
+                            .foregroundStyle(.tertiary)
+                    }
                 }
             } header: {
                 Text("About")

@@ -5,6 +5,7 @@ enum MainPath: CoordinatorPath {
     case sessionDetail
     case currentRound
     case settings
+    case whatIsTwoUp
     case addBet((Bet) -> Void)
     case twoUpAvailabilityInfo
 
@@ -18,6 +19,8 @@ enum MainPath: CoordinatorPath {
             "currentRound"
         case .settings:
             "settings"
+        case .whatIsTwoUp:
+            "whatIsTwoUp"
         case .addBet: "addBet"
         case .twoUpAvailabilityInfo:
             "twoUpAvailabilityInfo"

@@ -1,3 +1,4 @@
+import ASKCoordinator
 import Foundation
 import Knit
 import KnitMacros
@@ -5,7 +6,9 @@ import Observation
 
 @MainActor
 @Observable
-final class SettingsViewModel {
+final class SettingsViewModel: CoordinatorViewModel {
+    weak var coordinator: ASKCoordinator.Coordinator?
+
     private let mainStore: MainStore
 
     /// Editable text for loss limit (currency); empty means no limit.
@@ -32,6 +35,10 @@ final class SettingsViewModel {
     func resetAllData() {
         mainStore.resetAllData()
         syncFromStore()
+    }
+
+    func showWhatIsTwoUp() {
+        coordinator?.push(MainPath.whatIsTwoUp)
     }
 
     func applyLossLimitFromField() {

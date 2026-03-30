@@ -64,6 +64,10 @@ final class CurrentRoundViewModel: CoordinatorViewModel {
         coordinator?.custom(overlay: .card, MainPath.twoUpAvailabilityInfo)
     }
 
+    func showWhatIsTwoUp() {
+        coordinator?.push(MainPath.whatIsTwoUp)
+    }
+
     func recordPendingOutcome(_ outcome: Outcome) {
         guard let id = model.pendingRoundAwaitingResult?.id else { return }
         mainStore.setRoundResult(roundId: id, result: outcome)

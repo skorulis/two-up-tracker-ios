@@ -64,6 +64,13 @@ struct CurrentRoundView: View {
                 }
                 .buttonStyle(.primary)
                 .frame(maxWidth: .infinity)
+                
+                Button("What is Two-Up?") {
+                    viewModel.showWhatIsTwoUp()
+                }
+                .buttonStyle(.bordered)
+                .frame(maxWidth: .infinity)
+                
                 Spacer()
             }
         }
