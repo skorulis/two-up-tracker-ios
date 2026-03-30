@@ -3,10 +3,10 @@ import Knit
 import KnitMacros
 import Observation
 
-/// One point on the running-balance line (PRD: X = round index, Y = cumulative balance).
+/// One point on the running-balance line: X = time, Y = cumulative balance after that moment.
 struct BalanceChartPoint: Identifiable, Equatable, Sendable {
-    var id: Int { roundIndex }
-    let roundIndex: Int
+    let id: Int
+    let date: Date
     let balance: Double
 }
 
@@ -24,12 +24,23 @@ final class GraphViewModel {
         mainStore.activeSession.name
     }
 
-    /// Chronological series: balance after each resolved round, indexed 1…n.
+    /// Chronological series: opens at $0 on the first round’s `startDate`, then one point per resolved
+    /// round at that round’s `endDate` (fallback `startDate` if legacy data has no `endDate`).
     var balanceSeries: [BalanceChartPoint] {
         let pairs = mainStore.activeSession.resolvedRunningBalances()
-        return pairs.enumerated().map { index, pair in
-            BalanceChartPoint(roundIndex: index + 1, balance: pair.balance)
+        guard let originDate = mainStore.activeSession.roundsOrdered.first?.startDate,
+              !pairs.isEmpty
+        else { return [] }
+
+        var points: [BalanceChartPoint] = [
+            BalanceChartPoint(id: 0, date: originDate, balance: 0),
+        ]
+        for (index, pair) in pairs.enumerated() {
+            let round = pair.round
+            let date = round.endDate ?? round.startDate
+            points.append(BalanceChartPoint(id: index + 1, date: date, balance: pair.balance))
         }
+        return points
     }
 
     var hasData: Bool {

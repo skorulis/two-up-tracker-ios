@@ -88,23 +88,15 @@ struct GraphView: View {
         Chart {
             ForEach(model.balanceSeries) { point in
                 LineMark(
-                    x: .value("Round", point.roundIndex),
+                    x: .value("Time", point.date),
                     y: .value("Balance", point.balance)
                 )
                 .interpolationMethod(.catmullRom)
                 .lineStyle(StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round))
                 .foregroundStyle(Color.accentColor)
             }
-            if model.balanceSeries.count == 1, let only = model.balanceSeries.first {
-                PointMark(
-                    x: .value("Round", only.roundIndex),
-                    y: .value("Balance", only.balance)
-                )
-                .foregroundStyle(Color.accentColor)
-                .symbolSize(72)
-            }
         }
-        .chartXAxisLabel("Round", alignment: .trailing)
+        .chartXAxisLabel("Time", alignment: .trailing)
         .chartYAxisLabel("Balance", alignment: .leading)
         .chartYAxis {
             AxisMarks(position: .leading) { value in
@@ -122,14 +114,14 @@ struct GraphView: View {
                 AxisGridLine()
                 AxisTick()
                 AxisValueLabel {
-                    if let round = value.as(Int.self) {
-                        Text("\(round)")
+                    if let date = value.as(Date.self) {
+                        Text(date, format: .dateTime.month(.abbreviated).day().hour().minute())
                     }
                 }
             }
         }
-        .accessibilityLabel("Running balance by round")
-        .accessibilityHint("Line chart of cumulative profit or loss after each round.")
+        .accessibilityLabel("Running balance over time")
+        .accessibilityHint("Line chart of cumulative profit or loss after each resolved round.")
         .animation(.smooth(duration: 0.35), value: model.mainStore.activeSession.rounds.count)
     }
 }
