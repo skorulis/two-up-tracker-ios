@@ -16,7 +16,6 @@ func assertSnapshot<V: View>(
     sourceLocation: SourceLocation = #_sourceLocation,
 ) {
     // Enforce running on an iPhone 17 device to keep snapshots stable.
-    let device = UIDevice.current
     guard let model = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] else {
         Issue.record(
             "Could not get simulator model",

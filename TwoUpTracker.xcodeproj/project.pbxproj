@@ -10,7 +10,6 @@
 		431FCD7F5C9A6C1DF2C505F4 /* ASKCore in Frameworks */ = {isa = PBXBuildFile; productRef = 597C86E113CB703592B33268 /* ASKCore */; };
 		9449BBF997F1165520CB9602 /* ASKCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC81680AC7E4D5AC424E3DA /* ASKCoordinator */; };
 		B6124C5E12970F619EA53673 /* KnitMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 5EEE554B454885BDCB0FF15E /* KnitMacros */; };
-		D782859A38CE61127839C4E3 /* TwoUpTrackerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D6DFA5A6F1E9549A749B11 /* TwoUpTrackerUnitTests.swift */; };
 		E2D8185759B706FC5E4396E7 /* Knit in Frameworks */ = {isa = PBXBuildFile; productRef = 3B6E474A8E3A9C3F015AA952 /* Knit */; };
 		FA2F9D7F2F7B190300E9FB08 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = FA2F9D7E2F7B190300E9FB08 /* SnapshotTesting */; };
 		FA94ECCD2F7A70B000F7DB4D /* AmplitudeUnified in Frameworks */ = {isa = PBXBuildFile; productRef = FA94ECCC2F7A70B000F7DB4D /* AmplitudeUnified */; };
@@ -35,7 +34,6 @@
 
 /* Begin PBXFileReference section */
 		2D388E4876A521C3D0D672BD /* TwoUpTrackerUnitTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = TwoUpTrackerUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		66D6DFA5A6F1E9549A749B11 /* TwoUpTrackerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoUpTrackerUnitTests.swift; sourceTree = "<group>"; };
 		C30AB8A28116E03BFDA13BCD /* TwoUpTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwoUpTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5FA353D83CAE43D83CCB3CC /* knitconfig.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = knitconfig.json; sourceTree = "<group>"; };
 		FA2F9D6E2F7B18CE00E9FB08 /* TwoUpTrackerSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwoUpTrackerSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +43,11 @@
 		FA2F9D6F2F7B18CE00E9FB08 /* TwoUpTrackerSnapshotTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TwoUpTrackerSnapshotTests;
+			sourceTree = "<group>";
+		};
+		FA2F9DB22F7B213D00E9FB08 /* TwoUpTrackerUnitTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TwoUpTrackerUnitTests;
 			sourceTree = "<group>";
 		};
 		FA94E95A2F78F1FB00F7DB4D /* TwoUpTracker */ = {
@@ -82,19 +85,11 @@
 			isa = PBXGroup;
 			children = (
 				FA94E95A2F78F1FB00F7DB4D /* TwoUpTracker */,
-				9721002FE1515BA45025FFEC /* TwoUpTrackerUnitTests */,
+				FA2F9DB22F7B213D00E9FB08 /* TwoUpTrackerUnitTests */,
 				F5FA353D83CAE43D83CCB3CC /* knitconfig.json */,
 				FA2F9D6F2F7B18CE00E9FB08 /* TwoUpTrackerSnapshotTests */,
 				B2C11C1BF9418747B255ED8A /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		9721002FE1515BA45025FFEC /* TwoUpTrackerUnitTests */ = {
-			isa = PBXGroup;
-			children = (
-				66D6DFA5A6F1E9549A749B11 /* TwoUpTrackerUnitTests.swift */,
-			);
-			path = TwoUpTrackerUnitTests;
 			sourceTree = "<group>";
 		};
 		B2C11C1BF9418747B255ED8A /* Products */ = {
@@ -149,6 +144,9 @@
 			);
 			dependencies = (
 				B5A6658CE5AB26FDF1581A73 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FA2F9DB22F7B213D00E9FB08 /* TwoUpTrackerUnitTests */,
 			);
 			name = TwoUpTrackerUnitTests;
 			packageProductDependencies = (
@@ -255,7 +253,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D782859A38CE61127839C4E3 /* TwoUpTrackerUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
