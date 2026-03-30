@@ -3,7 +3,7 @@ import ASKCoordinator
 enum MainPath: CoordinatorPath {
     case content
     case sessionDetail
-    case addRound
+    case currentRound
 
     var id: String {
         switch self {
@@ -11,8 +11,8 @@ enum MainPath: CoordinatorPath {
             "content"
         case .sessionDetail:
             "sessionDetail"
-        case .addRound:
-            "addRound"
+        case .currentRound:
+            "currentRound"
         }
     }
 }

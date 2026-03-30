@@ -12,7 +12,7 @@ final class AddRoundViewModel {
     
     private var cancellables: Set<AnyCancellable> = []
 
-    var model: AddRoundView.Model = .init()
+    var model: CurrentRoundView.Model = .init()
 
     @Resolvable<BaseResolver>
     init(mainStore: MainStore) {

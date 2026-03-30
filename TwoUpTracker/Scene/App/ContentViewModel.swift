@@ -4,7 +4,7 @@ import Observation
 
 enum ContentTab: Hashable {
     /// Enter outstanding bets for a round (toss recorded later from History).
-    case addRound
+    case currentRound
     /// Past rounds and running balance.
     case history
     case graph
@@ -15,7 +15,7 @@ enum ContentTab: Hashable {
 @Observable
 final class ContentViewModel {
 
-    var selectedTab: ContentTab = .addRound
+    var selectedTab: ContentTab = .currentRound
 
     init() {}
 }

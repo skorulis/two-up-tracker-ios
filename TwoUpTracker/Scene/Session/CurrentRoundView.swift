@@ -1,7 +1,7 @@
 import ASKCoordinator
 import SwiftUI
 
-struct AddRoundView: View {
+struct CurrentRoundView: View {
     @State var viewModel: AddRoundViewModel
 
     private var currencyCode: String { "AUD" }
@@ -125,7 +125,7 @@ struct BetDraft: Identifiable, Equatable {
     var prediction: Outcome
 }
 
-extension AddRoundView {
+extension CurrentRoundView {
     struct Model {
         var betDrafts: [BetDraft] = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
         var session: Session = .defaultSession()

@@ -19,9 +19,9 @@ struct MainPathRenderer: CoordinatorPathRenderer {
                     model: SessionDetailViewModel.make(resolver: resolver),
                 )
             )
-        case .addRound:
+        case .currentRound:
             AnyView(
-                AddRoundView(
+                CurrentRoundView(
                     viewModel: AddRoundViewModel.make(resolver: resolver),
                 )
             )
