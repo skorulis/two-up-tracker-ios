@@ -3,6 +3,7 @@ import SwiftUI
 
 struct CurrentRoundView: View {
     @State var viewModel: CurrentRoundViewModel
+    @State private var hasStartedBettingManually = false
 
     private var currencyCode: String { "AUD" }
 
@@ -24,12 +25,28 @@ struct CurrentRoundView: View {
                     .frame(maxWidth: .infinity)
                     .accessibilityLabel("Clear bet fields")
                 } else {
-                    CountdownTimer(session: viewModel.model.session)
+                    TimelineView(.periodic(from: .now, by: 1)) { context in
+                        let now = context.date
+                        let bettingStartReached = viewModel.model.session.bettingStartTime <= now
 
-                    Card {
-                        AddBetView(
-                            onSetBet: { viewModel.saveRound(bet: $0) }
-                        )
+                        if bettingStartReached || hasStartedBettingManually {
+                            Card {
+                                AddBetView(
+                                    onSetBet: { viewModel.saveRound(bet: $0) }
+                                )
+                            }
+                        } else {
+                            VStack(spacing: DesignTokens.Spacing.medium) {
+                                CountdownTimer(session: viewModel.model.session)
+
+                                Button("start betting") {
+                                    hasStartedBettingManually = true
+                                }
+                                .buttonStyle(.primary)
+                                .frame(maxWidth: .infinity)
+                                .accessibilityLabel("Start betting early")
+                            }
+                        }
                     }
                 }
             }
@@ -38,6 +55,9 @@ struct CurrentRoundView: View {
             .frame(maxWidth: .infinity)
         }
         .background(Colors.groupedBackground)
+        .onChange(of: viewModel.model.session.id) { _, _ in
+            hasStartedBettingManually = false
+        }
     }
 
     @ViewBuilder
