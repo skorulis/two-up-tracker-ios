@@ -103,15 +103,26 @@ struct CurrentRoundView: View {
 
                     CoinOutcomeRow(selectedOutcome: $viewModel.model.pendingResultSelection)
 
-                    Button("Confirm") {
+                    Button {
                         guard let outcome = viewModel.model.pendingResultSelection else { return }
                         viewModel.recordPendingOutcome(outcome)
                         viewModel.model.pendingResultSelection = nil
+                    } label: {
+                        Text(confirmButtonTitle(round: round, selection: viewModel.model.pendingResultSelection))
                     }
-                    .buttonStyle(.primary)
+                    .buttonStyle(
+                        PrimaryButtonStyle(
+                            backgroundColor: confirmButtonBackground(
+                                round: round,
+                                selection: viewModel.model.pendingResultSelection,
+                            )
+                        )
+                    )
                     .frame(maxWidth: .infinity)
                     .disabled(viewModel.model.pendingResultSelection == nil)
-                    .accessibilityLabel("Confirm toss result")
+                    .accessibilityLabel(
+                        confirmButtonTitle(round: round, selection: viewModel.model.pendingResultSelection)
+                    )
                 }
             }
         }
@@ -154,6 +165,26 @@ struct CurrentRoundView: View {
                 .font(DesignTokens.Typography.body.monospacedDigit())
         }
         .accessibilityElement(children: .combine)
+    }
+
+    private func confirmButtonTitle(round: Round, selection: Outcome?) -> String {
+        guard let selection else { return "Confirm" }
+        let net = round.netProfit(for: selection)
+        if net > 0 {
+            return "Confirm \(net.formatted(currencyDisplayFormat)) win"
+        }
+        if net < 0 {
+            return "Confirm \((-net).formatted(currencyDisplayFormat)) loss"
+        }
+        return "Confirm even"
+    }
+
+    private func confirmButtonBackground(round: Round, selection: Outcome?) -> Color {
+        guard let selection else { return Color.accentColor }
+        let net = round.netProfit(for: selection)
+        if net > 0 { return Colors.profit }
+        if net < 0 { return Colors.loss }
+        return Color.accentColor
     }
 
 }

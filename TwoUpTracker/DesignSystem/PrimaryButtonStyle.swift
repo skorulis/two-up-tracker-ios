@@ -2,13 +2,15 @@ import SwiftUI
 
 /// Primary action style with a full-width minimum height for large tap targets.
 struct PrimaryButtonStyle: ButtonStyle {
+    var backgroundColor: Color = Color.accentColor
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(DesignTokens.Typography.headline)
             .frame(minHeight: DesignTokens.MinTapTarget.height)
             .frame(maxWidth: .infinity)
             .padding(.horizontal, DesignTokens.Spacing.medium)
-            .background(Color.accentColor.opacity(configuration.isPressed ? 0.88 : 1))
+            .background(backgroundColor.opacity(configuration.isPressed ? 0.88 : 1))
             .foregroundStyle(.white)
             .clipShape(RoundedRectangle(cornerRadius: DesignTokens.CornerRadius.button, style: .continuous))
     }
