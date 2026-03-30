@@ -21,10 +21,10 @@ struct MainPathRenderer: CoordinatorPathRenderer {
             )
         case .currentRound:
             AnyView(
-                CurrentRoundView(
-                    viewModel: AddRoundViewModel.make(resolver: resolver),
-                )
+                coordinator.apply(CurrentRoundView(viewModel: AddRoundViewModel.make(resolver: resolver)))
             )
+        case let .addBet(onSetBet):
+            AnyView(AddBetView(onSetBet: onSetBet))
         }
     }
 }

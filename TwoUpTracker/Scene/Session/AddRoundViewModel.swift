@@ -33,27 +33,17 @@ final class AddRoundViewModel {
             model.betDrafts = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
         }
     }
-
-    func amountBinding(for id: UUID) -> Binding<String> {
-        Binding(
-            get: { self.model.betDrafts.first { $0.id == id }?.amountText ?? "" },
-            set: { newValue in
-                if let index = self.model.betDrafts.firstIndex(where: { $0.id == id }) {
-                    self.model.betDrafts[index].amountText = newValue
-                }
+    
+    func addAnotherBet() {
+        let path = MainPath.addBet { [unowned self] bet in
+            var session = self.mainStore.activeSession
+            guard var round = session.rounds.last else {
+                return
             }
-        )
-    }
-
-    func predictionBinding(for id: UUID) -> Binding<Outcome> {
-        Binding(
-            get: { self.model.betDrafts.first { $0.id == id }?.prediction ?? .heads },
-            set: { newValue in
-                if let index = self.model.betDrafts.firstIndex(where: { $0.id == id }) {
-                    self.model.betDrafts[index].prediction = newValue
-                }
-            }
-        )
+            round.bets.append(bet)
+            session.rounds[session.rounds.count - 1] = round
+            self.mainStore.activeSession = session
+        }
     }
 
     @discardableResult
