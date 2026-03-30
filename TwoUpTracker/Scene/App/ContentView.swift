@@ -2,7 +2,7 @@ import ASKCoordinator
 import SwiftUI
 
 struct ContentView: View {
-    @Bindable var model: ContentViewModel
+    @State var model: ContentViewModel
     @Environment(\.resolver) private var resolver
 
     @State private var currentoundCoordinator = Coordinator(root: MainPath.currentRound)

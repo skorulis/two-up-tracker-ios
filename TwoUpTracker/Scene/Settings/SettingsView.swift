@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @Bindable var model: SettingsViewModel
+    @State var model: SettingsViewModel
     @FocusState private var lossLimitFocused: Bool
     @State private var showResetConfirmation = false
 
