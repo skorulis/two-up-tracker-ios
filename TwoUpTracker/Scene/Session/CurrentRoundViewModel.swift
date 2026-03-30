@@ -24,7 +24,7 @@ final class CurrentRoundViewModel: CoordinatorViewModel {
             self.model.session = session
         }
         .store(in: &cancellables)
-        
+
         countdownService.$countdownFinished.sink { [unowned self] in
             self.model.bettingAvailable = $0
         }

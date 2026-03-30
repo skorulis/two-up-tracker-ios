@@ -20,52 +20,53 @@ struct CurrentRoundView: View {
     }
 
     private var mainContent: some View {
-        ScrollView {
-            VStack(spacing: DesignTokens.Spacing.medium) {
-                PageHeader(title: viewModel.model.session.name)
+        PageLayout {
+            PageHeader(title: viewModel.model.session.name)
+        } content: {
+            ScrollView {
+                VStack(spacing: DesignTokens.Spacing.medium) {
+                    if let pending = viewModel.model.pendingRoundAwaitingResult {
+                        pendingTossContent(for: pending)
 
-                if let pending = viewModel.model.pendingRoundAwaitingResult {
-                    pendingTossContent(for: pending)
-
-                    Button("Reset") {
-                        viewModel.resetForm()
-                    }
-                    .buttonStyle(.bordered)
-                    .frame(maxWidth: .infinity)
-                    .accessibilityLabel("Clear bet fields")
-                } else {
-                    Card {
-                        AddBetView(
-                            onSetBet: { viewModel.saveRound(bet: $0) }
-                        )
+                        Button("Reset") {
+                            viewModel.resetForm()
+                        }
+                        .buttonStyle(.bordered)
+                        .frame(maxWidth: .infinity)
+                        .accessibilityLabel("Clear bet fields")
+                    } else {
+                        Card {
+                            AddBetView(
+                                onSetBet: { viewModel.saveRound(bet: $0) }
+                            )
+                        }
                     }
                 }
+                .padding(.bottom, DesignTokens.Spacing.medium)
+                .frame(maxWidth: .infinity)
             }
-            .padding(.horizontal, DesignTokens.Spacing.medium)
-            .padding(.vertical, DesignTokens.Spacing.medium)
-            .frame(maxWidth: .infinity)
         }
-        .background(Colors.groupedBackground)
     }
 
     private var countdownDisplay: some View {
-        VStack(spacing: DesignTokens.Spacing.medium) {
+        PageLayout {
             PageHeader(title: viewModel.model.session.name)
-            Spacer()
-            CountdownTimer(
-                session: viewModel.model.session,
-                onInfoTapped: { viewModel.showTwoUpAvailabilityInfo() }
-            )
+        } content: {
+            VStack(spacing: DesignTokens.Spacing.medium) {
+                Spacer()
+                CountdownTimer(
+                    session: viewModel.model.session,
+                    onInfoTapped: { viewModel.showTwoUpAvailabilityInfo() }
+                )
 
-            Button("start betting") {
-                viewModel.model.bettingAvailable = true
+                Button("start betting") {
+                    viewModel.model.bettingAvailable = true
+                }
+                .buttonStyle(.primary)
+                .frame(maxWidth: .infinity)
+                Spacer()
             }
-            .buttonStyle(.primary)
-            .frame(maxWidth: .infinity)
-            Spacer()
         }
-        .padding(.horizontal, DesignTokens.Spacing.medium)
-        .padding(.vertical, DesignTokens.Spacing.medium)
     }
 
     @ViewBuilder

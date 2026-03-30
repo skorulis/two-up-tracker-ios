@@ -85,9 +85,9 @@ struct CurrentRoundViewSnapshotTests {
     private func sessionWithBettingStartInThePast() -> Session {
         Session(
             id: UUID(),
-            name: "Anzac Day 2000",
+            name: "Anzac Day 2026",
             date: baseDate,
-            year: 2000,
+            year: 2026,
             rounds: []
         )
     }

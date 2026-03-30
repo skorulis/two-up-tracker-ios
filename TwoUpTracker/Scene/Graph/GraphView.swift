@@ -10,28 +10,22 @@ struct GraphView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
+            PageLayout {
                 PageHeader(title: model.sessionName)
-                    .padding(.horizontal, DesignTokens.Spacing.medium)
-                    .padding(.top, DesignTokens.Spacing.medium)
-
-                Group {
-                    if model.hasData {
-                        scrollContent
-                    } else {
-                        EmptyState(
-                            title: "No data yet",
-                            message:
-                                "Add rounds from the Bets tab and record outcomes in History "
-                                + "to see your running balance.",
-                            systemImage: "chart.line.uptrend.xyaxis"
-                        )
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .padding(.horizontal, DesignTokens.Spacing.medium)
-                    }
+            } content: {
+                if model.hasData {
+                    scrollContent
+                } else {
+                    EmptyState(
+                        title: "No data yet",
+                        message:
+                            "Add rounds from the Bets tab and record outcomes in History "
+                            + "to see your running balance.",
+                        systemImage: "chart.line.uptrend.xyaxis"
+                    )
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
-            .background(Colors.groupedBackground)
             .id(model.mainStore.activeSession.rounds.count)
         }
     }
@@ -69,7 +63,6 @@ struct GraphView: View {
                         .frame(minHeight: 260)
                 }
             }
-            .padding(DesignTokens.Spacing.medium)
         }
     }
 
