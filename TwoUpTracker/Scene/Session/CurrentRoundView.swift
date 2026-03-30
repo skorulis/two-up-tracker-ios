@@ -141,15 +141,8 @@ struct CurrentRoundView: View {
 
 }
 
-struct BetDraft: Identifiable, Equatable {
-    let id: UUID
-    var amountText: String
-    var prediction: Outcome
-}
-
 extension CurrentRoundView {
     struct Model {
-        var betDrafts: [BetDraft] = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
         var session: Session = .defaultSession()
         var bettingAvailable: Bool = false
 

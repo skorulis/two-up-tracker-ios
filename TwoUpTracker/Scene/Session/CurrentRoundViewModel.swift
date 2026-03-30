@@ -22,24 +22,18 @@ final class CurrentRoundViewModel: CoordinatorViewModel {
         self.mainStore = mainStore
         mainStore.$activeSession.sink { [unowned self] session in
             self.model.session = session
+            if session.rounds.count > 0 && !self.model.bettingAvailable {
+                self.model.bettingAvailable = true
+            }
         }
         .store(in: &cancellables)
 
         countdownService.$countdownFinished.sink { [unowned self] in
-            self.model.bettingAvailable = $0
+            if $0 && !self.model.bettingAvailable {
+                self.model.bettingAvailable = true
+            }
         }
         .store(in: &cancellables)
-    }
-
-    func addBet() {
-        model.betDrafts.append(BetDraft(id: UUID(), amountText: "", prediction: .heads))
-    }
-
-    func removeBet(id: UUID) {
-        model.betDrafts.removeAll { $0.id == id }
-        if model.betDrafts.isEmpty {
-            model.betDrafts = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
-        }
     }
 
     func addAnotherBet() {
@@ -63,7 +57,6 @@ final class CurrentRoundViewModel: CoordinatorViewModel {
     }
 
     func resetForm() {
-        model.betDrafts = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
         mainStore.activeSession.resetOutstanding()
     }
 

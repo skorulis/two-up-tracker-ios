@@ -48,3 +48,9 @@ struct AddBetView: View {
         return Bet(id: draft.id, amount: value, prediction: draft.prediction)
     }
 }
+
+struct BetDraft: Identifiable, Equatable {
+    let id: UUID
+    var amountText: String
+    var prediction: Outcome
+}
