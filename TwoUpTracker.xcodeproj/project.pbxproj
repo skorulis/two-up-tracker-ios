@@ -12,10 +12,18 @@
 		B6124C5E12970F619EA53673 /* KnitMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 5EEE554B454885BDCB0FF15E /* KnitMacros */; };
 		D782859A38CE61127839C4E3 /* TwoUpTrackerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D6DFA5A6F1E9549A749B11 /* TwoUpTrackerUnitTests.swift */; };
 		E2D8185759B706FC5E4396E7 /* Knit in Frameworks */ = {isa = PBXBuildFile; productRef = 3B6E474A8E3A9C3F015AA952 /* Knit */; };
+		FA2F9D7F2F7B190300E9FB08 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = FA2F9D7E2F7B190300E9FB08 /* SnapshotTesting */; };
 		FA94ECCD2F7A70B000F7DB4D /* AmplitudeUnified in Frameworks */ = {isa = PBXBuildFile; productRef = FA94ECCC2F7A70B000F7DB4D /* AmplitudeUnified */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FA2F9D722F7B18CE00E9FB08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B2E96151B6ADE1371AF5D4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AEBA6118CCC07D5D90D0A1E7;
+			remoteInfo = TwoUpTracker;
+		};
 		FB168A392DDFB358CDA6FBE1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5B2E96151B6ADE1371AF5D4F /* Project object */;
@@ -30,9 +38,15 @@
 		66D6DFA5A6F1E9549A749B11 /* TwoUpTrackerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoUpTrackerUnitTests.swift; sourceTree = "<group>"; };
 		C30AB8A28116E03BFDA13BCD /* TwoUpTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwoUpTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5FA353D83CAE43D83CCB3CC /* knitconfig.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = knitconfig.json; sourceTree = "<group>"; };
+		FA2F9D6E2F7B18CE00E9FB08 /* TwoUpTrackerSnapshotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwoUpTrackerSnapshotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		FA2F9D6F2F7B18CE00E9FB08 /* TwoUpTrackerSnapshotTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TwoUpTrackerSnapshotTests;
+			sourceTree = "<group>";
+		};
 		FA94E95A2F78F1FB00F7DB4D /* TwoUpTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TwoUpTracker;
@@ -53,6 +67,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA2F9D6B2F7B18CE00E9FB08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA2F9D7F2F7B190300E9FB08 /* SnapshotTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -62,6 +84,7 @@
 				FA94E95A2F78F1FB00F7DB4D /* TwoUpTracker */,
 				9721002FE1515BA45025FFEC /* TwoUpTrackerUnitTests */,
 				F5FA353D83CAE43D83CCB3CC /* knitconfig.json */,
+				FA2F9D6F2F7B18CE00E9FB08 /* TwoUpTrackerSnapshotTests */,
 				B2C11C1BF9418747B255ED8A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,6 +102,7 @@
 			children = (
 				C30AB8A28116E03BFDA13BCD /* TwoUpTracker.app */,
 				2D388E4876A521C3D0D672BD /* TwoUpTrackerUnitTests.xctest */,
+				FA2F9D6E2F7B18CE00E9FB08 /* TwoUpTrackerSnapshotTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +157,30 @@
 			productReference = 2D388E4876A521C3D0D672BD /* TwoUpTrackerUnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		FA2F9D6D2F7B18CE00E9FB08 /* TwoUpTrackerSnapshotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA2F9D762F7B18CE00E9FB08 /* Build configuration list for PBXNativeTarget "TwoUpTrackerSnapshotTests" */;
+			buildPhases = (
+				FA2F9D6A2F7B18CE00E9FB08 /* Sources */,
+				FA2F9D6B2F7B18CE00E9FB08 /* Frameworks */,
+				FA2F9D6C2F7B18CE00E9FB08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA2F9D732F7B18CE00E9FB08 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FA2F9D6F2F7B18CE00E9FB08 /* TwoUpTrackerSnapshotTests */,
+			);
+			name = TwoUpTrackerSnapshotTests;
+			packageProductDependencies = (
+				FA2F9D7E2F7B190300E9FB08 /* SnapshotTesting */,
+			);
+			productName = TwoUpTrackerSnapshotTests;
+			productReference = FA2F9D6E2F7B18CE00E9FB08 /* TwoUpTrackerSnapshotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -140,7 +188,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 2630;
 				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					FA2F9D6D2F7B18CE00E9FB08 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = AEBA6118CCC07D5D90D0A1E7;
+					};
+				};
 			};
 			buildConfigurationList = A6D338206637254DC4335E79 /* Build configuration list for PBXProject "TwoUpTracker" */;
 			developmentRegion = en;
@@ -157,6 +212,7 @@
 				88D81E6F01ACC87463D6776C /* XCRemoteSwiftPackageReference "knit" */,
 				6B8B6839F173B8709D9BF762 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 				FA94ECCB2F7A70B000F7DB4D /* XCRemoteSwiftPackageReference "AmplitudeUnified-Swift" */,
+				FA2F9D7D2F7B190300E9FB08 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B2C11C1BF9418747B255ED8A /* Products */;
@@ -165,12 +221,20 @@
 			targets = (
 				AEBA6118CCC07D5D90D0A1E7 /* TwoUpTracker */,
 				F4A23BA9F5E282C03D11A27A /* TwoUpTrackerUnitTests */,
+				FA2F9D6D2F7B18CE00E9FB08 /* TwoUpTrackerSnapshotTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3E7492D0FDD70A0EF435E174 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA2F9D6C2F7B18CE00E9FB08 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -195,6 +259,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA2F9D6A2F7B18CE00E9FB08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -210,6 +281,11 @@
 		EB9805C7F431C54778F51AE5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 88ACCD7C283CB173910A0E3A /* SwiftLintBuildToolPlugin */;
+		};
+		FA2F9D732F7B18CE00E9FB08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AEBA6118CCC07D5D90D0A1E7 /* TwoUpTracker */;
+			targetProxy = FA2F9D722F7B18CE00E9FB08 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -423,6 +499,66 @@
 			};
 			name = Release;
 		};
+		FA2F9D742F7B18CE00E9FB08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X4S6MUZL2D;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skorulis.TwoUpTrackerSnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwoUpTracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TwoUpTracker";
+			};
+			name = Debug;
+		};
+		FA2F9D752F7B18CE00E9FB08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X4S6MUZL2D;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skorulis.TwoUpTrackerSnapshotTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwoUpTracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TwoUpTracker";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -449,6 +585,15 @@
 			buildConfigurations = (
 				0337D78F1980CC50CE2523B2 /* Debug */,
 				00C0E69D643C196874134C3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FA2F9D762F7B18CE00E9FB08 /* Build configuration list for PBXNativeTarget "TwoUpTrackerSnapshotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA2F9D742F7B18CE00E9FB08 /* Debug */,
+				FA2F9D752F7B18CE00E9FB08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -486,6 +631,14 @@
 			requirement = {
 				branch = "skorulis/resolver-class";
 				kind = branch;
+			};
+		};
+		FA2F9D7D2F7B190300E9FB08 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.19.2;
 			};
 		};
 		FA94ECCB2F7A70B000F7DB4D /* XCRemoteSwiftPackageReference "AmplitudeUnified-Swift" */ = {
@@ -528,6 +681,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6B8B6839F173B8709D9BF762 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
 			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		FA2F9D7E2F7B190300E9FB08 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA2F9D7D2F7B190300E9FB08 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 		FA94ECCC2F7A70B000F7DB4D /* AmplitudeUnified */ = {
 			isa = XCSwiftPackageProductDependency;
