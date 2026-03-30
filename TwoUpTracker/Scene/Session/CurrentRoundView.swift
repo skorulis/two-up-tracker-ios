@@ -21,7 +21,9 @@ struct CurrentRoundView: View {
                 }
                 .accessibilityLabel("Clear bet fields")
             } else {
-                addBetsSections
+                AddBetView(
+                    onSetBet: { viewModel.saveRound(bet: $0) }
+                )
             }
         }
     }
@@ -83,40 +85,6 @@ struct CurrentRoundView: View {
         }
     }
 
-    private var addBetsSections: some View {
-        Group {
-            Section {
-                ForEach(viewModel.model.betDrafts) { draft in
-                    VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-                        BetAmountGrid(amountText: viewModel.amountBinding(for: draft.id))
-                        HStack {
-                            TextField("Amount", text: viewModel.amountBinding(for: draft.id))
-                                .keyboardType(.decimalPad)
-                                .font(DesignTokens.Typography.body.monospacedDigit())
-                            Picker("Prediction", selection: viewModel.predictionBinding(for: draft.id)) {
-                                ForEach(Outcome.allCases, id: \.self) { outcome in
-                                    Text(outcome.rawValue.capitalized).tag(outcome)
-                                }
-                            }
-                            .pickerStyle(.segmented)
-                            .frame(minWidth: 160)
-                        }
-                        saveButton
-                    }
-                }
-            } header: {
-                Text("Bets")
-            }
-        }
-    }
-
-    private var saveButton: some View {
-        Button("Set bet") {
-            viewModel.saveRound()
-        }
-        .buttonStyle(.primary)
-        .disabled(!viewModel.canSave)
-    }
 }
 
 struct BetDraft: Identifiable, Equatable {
@@ -129,7 +97,7 @@ extension CurrentRoundView {
     struct Model {
         var betDrafts: [BetDraft] = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
         var session: Session = .defaultSession()
-        
+
         /// Most recent round that still needs a toss result, if any.
         var pendingRoundAwaitingResult: Round? {
             session.roundsOrdered

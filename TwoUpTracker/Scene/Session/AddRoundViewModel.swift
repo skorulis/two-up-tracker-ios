@@ -9,7 +9,7 @@ import Observation
 @Observable
 final class AddRoundViewModel {
     private let mainStore: MainStore
-    
+
     private var cancellables: Set<AnyCancellable> = []
 
     var model: CurrentRoundView.Model = .init()
@@ -21,10 +21,6 @@ final class AddRoundViewModel {
             self.model.session = session
         }
         .store(in: &cancellables)
-    }
-
-    var canSave: Bool {
-        makeRound() != nil
     }
 
     func addBet() {
@@ -61,8 +57,8 @@ final class AddRoundViewModel {
     }
 
     @discardableResult
-    func saveRound() -> Bool {
-        guard let round = makeRound() else { return false }
+    func saveRound(bet: Bet) -> Bool {
+        let round = Round(id: UUID(), date: Date(), result: nil, bets: [bet])
         mainStore.appendRound(round)
         return true
     }
@@ -76,15 +72,5 @@ final class AddRoundViewModel {
         guard let id = model.pendingRoundAwaitingResult?.id else { return }
         mainStore.setRoundResult(roundId: id, result: outcome)
         resetForm()
-    }
-
-    private func makeRound() -> Round? {
-        let bets: [Bet] = model.betDrafts.compactMap { draft in
-            let trimmed = draft.amountText.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard let value = Double(trimmed), value > 0 else { return nil }
-            return Bet(id: UUID(), amount: value, prediction: draft.prediction)
-        }
-        guard !bets.isEmpty else { return nil }
-        return Round(id: UUID(), date: Date(), result: nil, bets: bets)
     }
 }
