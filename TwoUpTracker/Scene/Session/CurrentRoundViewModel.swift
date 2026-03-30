@@ -8,7 +8,7 @@ import Observation
 
 @MainActor
 @Observable
-final class AddRoundViewModel: CoordinatorViewModel {
+final class CurrentRoundViewModel: CoordinatorViewModel {
     weak var coordinator: ASKCoordinator.Coordinator?
 
     private let mainStore: MainStore

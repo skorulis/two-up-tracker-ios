@@ -2,7 +2,7 @@ import ASKCoordinator
 import SwiftUI
 
 struct CurrentRoundView: View {
-    @State var viewModel: AddRoundViewModel
+    @State var viewModel: CurrentRoundViewModel
 
     private var currencyCode: String { "AUD" }
 

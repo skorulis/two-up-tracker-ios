@@ -44,7 +44,7 @@ final class TwoUpTrackerAssembly: AutoInitModuleAssembly {
     private func registerViewModels(container: Container<TargetResolver>) {
         container.register(ContentViewModel.self) { _ in ContentViewModel() }
         container.register(SessionDetailViewModel.self) { SessionDetailViewModel.make(resolver: $0) }
-        container.register(AddRoundViewModel.self) { AddRoundViewModel.make(resolver: $0) }
+        container.register(CurrentRoundViewModel.self) { CurrentRoundViewModel.make(resolver: $0) }
         container.register(SettingsViewModel.self) { SettingsViewModel.make(resolver: $0) }
         container.register(GraphViewModel.self) { GraphViewModel.make(resolver: $0) }
     }
