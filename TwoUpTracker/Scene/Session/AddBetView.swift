@@ -8,18 +8,19 @@ struct AddBetView: View {
         Group {
             Section {
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+                    Picker("Prediction", selection: $draft.prediction) {
+                        ForEach(Outcome.allCases, id: \.self) { outcome in
+                            Text(outcome.rawValue.capitalized).tag(outcome)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .frame(minWidth: 160)
+                    
                     BetAmountGrid(amountText: $draft.amountText)
                     HStack {
                         TextField("Amount", text: $draft.amountText)
                             .keyboardType(.decimalPad)
                             .font(DesignTokens.Typography.body.monospacedDigit())
-                        Picker("Prediction", selection: $draft.prediction) {
-                            ForEach(Outcome.allCases, id: \.self) { outcome in
-                                Text(outcome.rawValue.capitalized).tag(outcome)
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                        .frame(minWidth: 160)
                     }
                     Button("Set Bet") {
                         if let bet {
