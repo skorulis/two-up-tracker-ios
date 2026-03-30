@@ -2,30 +2,19 @@ import ASKCoordinator
 import SwiftUI
 
 struct AddRoundView: View {
-    @Bindable var model: AddRoundViewModel
-    @Bindable var store: MainStore
-    @Environment(\.coordinator) private var coordinator
+    @State var viewModel: AddRoundViewModel
 
     var body: some View {
         Form {
-            if let pending = model.pendingRoundAwaitingResult {
+            if let pending = viewModel.pendingRoundAwaitingResult {
                 pendingTossSection(for: pending)
+
+                Button("Reset") {
+                    viewModel.resetForm()
+                }
+                .accessibilityLabel("Clear bet fields")
             } else {
                 addBetsSections
-            }
-        }
-        .id("\(store.activeSession.rounds.count)-\(model.pendingRoundAwaitingResult?.id.uuidString ?? "no-pending")")
-        .navigationTitle(model.pendingRoundAwaitingResult != nil ? "Record toss" : "Outstanding bets")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button(coordinator?.canPop == true ? "Cancel" : "Clear") {
-                    if coordinator?.canPop == true {
-                        coordinator?.pop()
-                    } else {
-                        model.resetForm()
-                    }
-                }
             }
         }
     }
@@ -72,12 +61,12 @@ struct AddRoundView: View {
                     .font(DesignTokens.Typography.caption)
                     .foregroundStyle(.secondary)
                 Spacer()
-                
+
                 CoinOutcomeButton(outcome: .heads) {
-                    model.recordPendingOutcome(.heads)
+                    viewModel.recordPendingOutcome(.heads)
                 }
                 CoinOutcomeButton(outcome: .tails) {
-                    model.recordPendingOutcome(.tails)
+                    viewModel.recordPendingOutcome(.tails)
                 }
             }
             .accessibilityElement(children: .contain)
@@ -90,14 +79,14 @@ struct AddRoundView: View {
     private var addBetsSections: some View {
         Group {
             Section {
-                ForEach(model.betDrafts) { draft in
+                ForEach(viewModel.model.betDrafts) { draft in
                     VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-                        BetAmountGrid(amountText: model.amountBinding(for: draft.id))
+                        BetAmountGrid(amountText: viewModel.amountBinding(for: draft.id))
                         HStack {
-                            TextField("Amount", text: model.amountBinding(for: draft.id))
+                            TextField("Amount", text: viewModel.amountBinding(for: draft.id))
                                 .keyboardType(.decimalPad)
                                 .font(DesignTokens.Typography.body.monospacedDigit())
-                            Picker("Prediction", selection: model.predictionBinding(for: draft.id)) {
+                            Picker("Prediction", selection: viewModel.predictionBinding(for: draft.id)) {
                                 ForEach(Outcome.allCases, id: \.self) { outcome in
                                     Text(outcome.rawValue.capitalized).tag(outcome)
                                 }
@@ -116,14 +105,21 @@ struct AddRoundView: View {
 
     private var saveButton: some View {
         Button("Set bet") {
-            guard model.saveRound() else { return }
-            if coordinator?.canPop == true {
-                coordinator?.pop()
-            } else {
-                model.resetForm()
-            }
+            viewModel.saveRound()
         }
         .buttonStyle(.primary)
-        .disabled(!model.canSave)
+        .disabled(!viewModel.canSave)
+    }
+}
+
+struct BetDraft: Identifiable, Equatable {
+    let id: UUID
+    var amountText: String
+    var prediction: Outcome
+}
+
+extension AddRoundView {
+    struct Model {
+        var betDrafts: [BetDraft] = [BetDraft(id: UUID(), amountText: "", prediction: .heads)]
     }
 }
