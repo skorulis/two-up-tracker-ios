@@ -7,20 +7,28 @@ struct CountdownTimer: View {
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
             let now = context.date
-            VStack(spacing: DesignTokens.Spacing.small) {
-                Text("Betting starts in")
-                    .font(DesignTokens.Typography.caption)
-                    .foregroundStyle(.secondary)
-                
-                Text(Self.formatRemaining(until: session.bettingStartTime, from: now))
-                    .font(countdownFont)
-                    .monospacedDigit()
-                    .multilineTextAlignment(.center)
-                    .minimumScaleFactor(0.45)
-                    .lineLimit(1)
+            if session.bettingStartTime <= now {
+               EmptyView()
+            } else {
+                timeRemaining(now: now)
             }
-            .accessibilityElement(children: .combine)
         }
+    }
+
+    private func timeRemaining(now: Date) -> some View {
+        VStack(spacing: DesignTokens.Spacing.small) {
+            Text("Betting starts in")
+                .font(DesignTokens.Typography.caption)
+                .foregroundStyle(.secondary)
+
+            Text(Self.formatRemaining(until: session.bettingStartTime, from: now))
+                .font(countdownFont)
+                .monospacedDigit()
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.45)
+                .lineLimit(1)
+        }
+        .accessibilityElement(children: .combine)
     }
 
     private var countdownFont: Font {

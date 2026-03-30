@@ -21,6 +21,7 @@ struct CurrentRoundView: View {
                 }
                 .accessibilityLabel("Clear bet fields")
             } else {
+                CountdownTimer(session: viewModel.model.session)
                 AddBetView(
                     onSetBet: { viewModel.saveRound(bet: $0) }
                 )

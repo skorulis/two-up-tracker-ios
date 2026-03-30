@@ -29,8 +29,6 @@ struct AddBetView: View {
                     .buttonStyle(.primary)
                     .disabled(bet == nil)
                 }
-            } header: {
-                Text("Bets")
             }
         }
     }
