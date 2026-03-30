@@ -6,12 +6,40 @@ struct SettingsView: View {
     @State private var showResetConfirmation = false
 
     var body: some View {
-        Form {
-            Section {
-                PageHeader(title: "Settings")
-                    .listRowBackground(Color.clear)
+        PageLayout {
+            PageHeader(title: "Settings")
+        } content: {
+            content
+        }
+        .alert("Reset all data?", isPresented: $showResetConfirmation) {
+            Button("Cancel", role: .cancel) {}
+            Button("Reset", role: .destructive) {
+                model.resetAllData()
             }
-
+        } message: {
+            Text("This will delete your current session and restore default settings.")
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    lossLimitFocused = false
+                }
+            }
+        }
+        .onAppear {
+            model.syncFromStore()
+        }
+        .onChange(of: lossLimitFocused) { wasFocused, isFocused in
+            if wasFocused, !isFocused {
+                model.applyLossLimitFromField()
+            }
+        }
+        .navigationBarHidden(true)
+    }
+    
+    private var content: some View {
+        Form {
             Section {
                 TextField("Amount", text: $model.lossLimitText)
                     .keyboardType(.decimalPad)
@@ -50,30 +78,7 @@ struct SettingsView: View {
                     .font(DesignTokens.Typography.caption)
             }
         }
-        .alert("Reset all data?", isPresented: $showResetConfirmation) {
-            Button("Cancel", role: .cancel) {}
-            Button("Reset", role: .destructive) {
-                model.resetAllData()
-            }
-        } message: {
-            Text("This will delete your current session and restore default settings.")
-        }
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button("Done") {
-                    lossLimitFocused = false
-                }
-            }
-        }
-        .onAppear {
-            model.syncFromStore()
-        }
-        .onChange(of: lossLimitFocused) { wasFocused, isFocused in
-            if wasFocused, !isFocused {
-                model.applyLossLimitFromField()
-            }
-        }
-        .navigationBarHidden(true)
+        .scrollContentBackground(.hidden)
+        .background(Color.clear)
     }
 }
