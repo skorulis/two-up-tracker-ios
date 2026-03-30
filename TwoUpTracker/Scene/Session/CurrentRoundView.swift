@@ -64,13 +64,13 @@ struct CurrentRoundView: View {
                 }
                 .buttonStyle(.primary)
                 .frame(maxWidth: .infinity)
-                
+
                 Button("What is Two-Up?") {
                     viewModel.showWhatIsTwoUp()
                 }
                 .buttonStyle(.bordered)
                 .frame(maxWidth: .infinity)
-                
+
                 Spacer()
             }
         }
@@ -157,7 +157,7 @@ extension CurrentRoundView {
         var pendingRoundAwaitingResult: Round? {
             session.roundsOrdered
                 .filter { $0.result == nil }
-                .max(by: { $0.date < $1.date })
+                .max(by: { $0.startDate < $1.startDate })
         }
     }
 }

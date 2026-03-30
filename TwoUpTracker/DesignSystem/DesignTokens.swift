@@ -21,17 +21,6 @@ enum DesignTokens {
     }
 
     enum Typography {
-        /// WW2-inspired typography:
-        /// - Gill Sans for headings/labels (official Commonwealth document feel)
-        /// - Baskerville for longer reading text (historical print tone)
-        private enum Family {
-            static let heading = "GillSans"
-            static let headingSemibold = "GillSans-SemiBold"
-            static let headingBold = "GillSans-Bold"
-            static let body = "Baskerville"
-            static let bodySemibold = "Baskerville-SemiBold"
-        }
-
         // Core semantic scale
         static let display = Font.custom(Family.headingBold, size: 34, relativeTo: .largeTitle)
         static let sectionTitle = Font.custom(Family.headingSemibold, size: 22, relativeTo: .title2)
@@ -47,5 +36,18 @@ enum DesignTokens {
         static let body = bodyPrimary
         static let caption = captionSmall
         static let statValue = value
+    }
+}
+
+extension DesignTokens.Typography {
+    /// WW2-inspired typography:
+    /// - Gill Sans for headings/labels (official Commonwealth document feel)
+    /// - Baskerville for longer reading text (historical print tone)
+    private enum Family {
+        static let heading = "GillSans"
+        static let headingSemibold = "GillSans-SemiBold"
+        static let headingBold = "GillSans-Bold"
+        static let body = "Helvetica"
+        static let bodySemibold = "Baskerville-SemiBold"
     }
 }

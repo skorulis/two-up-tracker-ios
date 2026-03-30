@@ -37,7 +37,7 @@ struct SettingsView: View {
         }
         .navigationBarHidden(true)
     }
-    
+
     private var content: some View {
         Form {
             Section {

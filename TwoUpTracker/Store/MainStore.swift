@@ -55,6 +55,7 @@ final class MainStore: ObservableObject {
     func setRoundResult(roundId: UUID, result: Outcome) {
         guard let index = activeSession.rounds.firstIndex(where: { $0.id == roundId }) else { return }
         activeSession.rounds[index].result = result
+        activeSession.rounds[index].endDate = Date()
     }
 
     func removeRound(id: UUID) {

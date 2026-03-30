@@ -34,9 +34,12 @@ struct TestData {
 
     func makeRound(index: Int, result: Outcome?, bets: [(Double, Outcome)]) -> Round {
         let base = Date(timeIntervalSince1970: 1_745_462_400)
+        let startDate = base.addingTimeInterval(TimeInterval(index * 420))
+        let endDate: Date? = result == nil ? nil : startDate.addingTimeInterval(120)
         return Round(
             id: UUID(),
-            date: base.addingTimeInterval(TimeInterval(index * 420)),
+            startDate: startDate,
+            endDate: endDate,
             result: result,
             bets: bets.enumerated().map { _, bet in
                 Bet(

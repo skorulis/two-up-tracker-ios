@@ -58,7 +58,8 @@ struct CurrentRoundViewSnapshotTests {
             rounds: [
                 Round(
                     id: UUID(),
-                    date: baseDate.addingTimeInterval(300),
+                    startDate: baseDate.addingTimeInterval(300),
+                    endDate: nil,
                     result: nil,
                     bets: [
                         Bet(

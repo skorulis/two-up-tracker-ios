@@ -49,7 +49,7 @@ struct SessionDetailView: View {
     private func roundRow(round: Round, balance: Double) -> some View {
         VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
             HStack {
-                Text(round.date, format: .dateTime.hour().minute())
+                Text((round.endDate ?? round.startDate), format: .dateTime.hour().minute())
                     .font(DesignTokens.Typography.caption)
                     .foregroundStyle(.secondary)
                 Spacer()

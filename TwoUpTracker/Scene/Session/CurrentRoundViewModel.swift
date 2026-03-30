@@ -51,7 +51,7 @@ final class CurrentRoundViewModel: CoordinatorViewModel {
 
     @discardableResult
     func saveRound(bet: Bet) -> Bool {
-        let round = Round(id: UUID(), date: Date(), result: nil, bets: [bet])
+        let round = Round(id: UUID(), startDate: Date(), endDate: nil, result: nil, bets: [bet])
         mainStore.appendRound(round)
         return true
     }

@@ -35,7 +35,7 @@ extension Session {
     }
 
     var roundsOrdered: [Round] {
-        rounds.sorted { $0.date < $1.date }
+        rounds.sorted { $0.startDate < $1.startDate }
     }
 
     /// Cumulative balance after each round, in chronological order.
