@@ -13,6 +13,8 @@ extension DesignTokens {
         static let bodyStrong = Font.custom(Family.bodySemibold, size: 17, relativeTo: .body)
         static let captionSmall = Font.custom(Family.heading, size: 13, relativeTo: .caption)
         static let value = Font.custom(Family.headingSemibold, size: 20, relativeTo: .title3).monospacedDigit()
+        /// Large currency figure for emphasis (e.g. pending round total staked).
+        static let heroValue = Font.custom(Family.headingBold, size: 52, relativeTo: .largeTitle)
 
         // Backward-compatible aliases used by existing views
         static let title = sectionTitle

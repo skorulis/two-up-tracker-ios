@@ -1,4 +1,5 @@
 import ASKCoordinator
+import Knit
 import SwiftUI
 
 struct CurrentRoundView: View {
@@ -79,51 +80,64 @@ struct CurrentRoundView: View {
     @ViewBuilder
     private func pendingTossContent(for round: Round) -> some View {
         VStack(spacing: DesignTokens.Spacing.medium) {
-            Card {
-                VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
-                    Text(round.totalStaked, format: currencyDisplayFormat)
-                        .font(DesignTokens.Typography.title.monospacedDigit())
-                        .accessibilityLabel("Total staked")
-
-                    Text("Total staked")
-                        .font(DesignTokens.Typography.caption)
-                        .foregroundStyle(.secondary)
-                        .accessibilityHidden(true)
-                }
-                .accessibilityElement(children: .combine)
-            }
+            totalStakedHero(for: round)
 
             bets(round: round)
+            outcome(round: round)
+        }
+    }
 
-            Card {
-                VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
-                    Text("What is the result")
-                        .font(DesignTokens.Typography.caption)
-                        .foregroundStyle(.secondary)
+    /// Full-width hero block on the grouped background (no card chrome).
+    private func totalStakedHero(for round: Round) -> some View {
+        VStack(spacing: 0) {
+            Text(round.totalStaked, format: currencyDisplayFormat)
+                .font(DesignTokens.Typography.heroValue.monospacedDigit())
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.55)
+                .lineLimit(1)
+            
+            Text("On the line")
+                .font(DesignTokens.Typography.caption)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.top, DesignTokens.Spacing.small)
+        .padding(.bottom, DesignTokens.Spacing.large)
+        .accessibilityElement(children: .combine)
+    }
 
+    private func outcome(round: Round) -> some View {
+        Card {
+            VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
+                Text("Spin result")
+                    .font(DesignTokens.Typography.sectionTitle)
+
+                HStack {
+                    Spacer()
                     CoinOutcomeRow(selectedOutcome: $viewModel.model.pendingResultSelection)
+                    Spacer()
+                }
 
-                    Button {
-                        guard let outcome = viewModel.model.pendingResultSelection else { return }
-                        viewModel.recordPendingOutcome(outcome)
-                        viewModel.model.pendingResultSelection = nil
-                    } label: {
-                        Text(confirmButtonTitle(round: round, selection: viewModel.model.pendingResultSelection))
-                    }
-                    .buttonStyle(
-                        PrimaryButtonStyle(
-                            backgroundColor: confirmButtonBackground(
-                                round: round,
-                                selection: viewModel.model.pendingResultSelection,
-                            )
+                Button {
+                    guard let outcome = viewModel.model.pendingResultSelection else { return }
+                    viewModel.recordPendingOutcome(outcome)
+                    viewModel.model.pendingResultSelection = nil
+                } label: {
+                    Text(confirmButtonTitle(round: round, selection: viewModel.model.pendingResultSelection))
+                }
+                .buttonStyle(
+                    PrimaryButtonStyle(
+                        backgroundColor: confirmButtonBackground(
+                            round: round,
+                            selection: viewModel.model.pendingResultSelection,
                         )
                     )
-                    .frame(maxWidth: .infinity)
-                    .disabled(viewModel.model.pendingResultSelection == nil)
-                    .accessibilityLabel(
-                        confirmButtonTitle(round: round, selection: viewModel.model.pendingResultSelection)
-                    )
-                }
+                )
+                .frame(maxWidth: .infinity)
+                .disabled(viewModel.model.pendingResultSelection == nil)
+                .accessibilityLabel(
+                    confirmButtonTitle(round: round, selection: viewModel.model.pendingResultSelection)
+                )
             }
         }
     }
@@ -132,8 +146,7 @@ struct CurrentRoundView: View {
         Card {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
                 Text("Round \(viewModel.model.session.rounds.count) bets")
-                    .font(DesignTokens.Typography.headline)
-                    .foregroundStyle(.secondary)
+                    .font(DesignTokens.Typography.sectionTitle)
 
                 VStack(spacing: 0) {
                     ForEach(Array(round.bets.enumerated()), id: \.element.id) { index, bet in
@@ -202,4 +215,62 @@ extension CurrentRoundView {
                 .max(by: { $0.startDate < $1.startDate })
         }
     }
+}
+
+// MARK: - Previews
+
+private enum CurrentRoundPreviewSessions {
+    static let baseDate = Date(timeIntervalSince1970: 1_745_462_400)
+
+    static var bettingOpen: Session {
+        Session(
+            id: UUID(),
+            name: "Anzac Day 2026",
+            date: baseDate,
+            year: 2026,
+            rounds: []
+        )
+    }
+
+    static var pendingToss: Session {
+        Session(
+            id: UUID(),
+            name: "Anzac Day 2026",
+            date: baseDate,
+            year: 2026,
+            rounds: [
+                Round(
+                    id: UUID(),
+                    startDate: baseDate.addingTimeInterval(300),
+                    endDate: nil,
+                    result: nil,
+                    bets: [
+                        Bet(id: UUID(), amount: 50, prediction: .heads),
+                        Bet(id: UUID(), amount: 30, prediction: .tails),
+                        Bet(id: UUID(), amount: 12.50, prediction: .heads),
+                    ]
+                ),
+            ]
+        )
+    }
+}
+
+#Preview("Countdown") {
+    let assembler = TwoUpTrackerAssembly.testing()
+    CurrentRoundView(viewModel: assembler.resolver.currentRoundViewModel())
+}
+
+#Preview("Add bet") {
+    let assembler = TwoUpTrackerAssembly.testing()
+    let viewModel = assembler.resolver.currentRoundViewModel()
+    viewModel.mainStore.activeSession = CurrentRoundPreviewSessions.bettingOpen
+    viewModel.model.bettingAvailable = true
+    return CurrentRoundView(viewModel: viewModel)
+}
+
+#Preview("Pending toss") {
+    let assembler = TwoUpTrackerAssembly.testing()
+    let viewModel = assembler.resolver.currentRoundViewModel()
+    viewModel.mainStore.activeSession = CurrentRoundPreviewSessions.pendingToss
+    return CurrentRoundView(viewModel: viewModel)
 }
