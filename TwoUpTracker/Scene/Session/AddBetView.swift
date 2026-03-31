@@ -41,7 +41,9 @@ struct AddBetView: View {
                             onDismiss()
                         }
                     }
-                    .buttonStyle(.primary)
+                    .buttonStyle(
+                        PrimaryButtonStyle(backgroundColor: bet == nil ? .accentColor : Colors.australianGreen)
+                    )
                     .disabled(bet == nil)
                 }
             }

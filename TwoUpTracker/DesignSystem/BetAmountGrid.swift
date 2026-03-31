@@ -4,6 +4,8 @@ import SwiftUI
 struct BetAmountGrid: View {
     static let presetAmounts: [Double] = [5, 10, 20, 40, 50, 100]
 
+    private let color: Color = Colors.australianGold
+
     @Binding var amountText: String
 
     private let columns = [
@@ -27,16 +29,16 @@ struct BetAmountGrid: View {
                 .buttonStyle(.plain)
                 .background(
                     RoundedRectangle(cornerRadius: DesignTokens.CornerRadius.chip, style: .continuous)
-                        .fill(selected ? Color.accentColor.opacity(0.18) : Colors.cardBackground)
+                        .fill(selected ? color.opacity(0.18) : Colors.cardBackground)
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: DesignTokens.CornerRadius.chip, style: .continuous)
                         .strokeBorder(
-                            selected ? Color.accentColor : Color.secondary.opacity(0.35),
+                            selected ? color : Color.secondary.opacity(0.35),
                             lineWidth: selected ? 2 : 1
                         )
                 )
-                .foregroundStyle(selected ? Color.accentColor : .primary)
+                .foregroundStyle(.primary)
                 .accessibilityLabel("Bet amount \(Int(amount))")
                 .accessibilityAddTraits(selected ? .isSelected : [])
             }
