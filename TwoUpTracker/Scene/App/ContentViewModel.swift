@@ -17,7 +17,7 @@ enum ContentTab: Hashable {
 final class ContentViewModel {
     private let analyticsService: AnalyticsService
 
-    var selectedTab: ContentTab = .currentRound {
+    @ObservationIgnored var selectedTab: ContentTab = .currentRound {
         didSet {
             guard selectedTab != oldValue else { return }
             analyticsService.viewScreen(name: Self.viewName(for: selectedTab))

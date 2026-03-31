@@ -57,7 +57,6 @@ final class TwoUpTrackerAssembly: AutoInitModuleAssembly {
         container.register(ContentViewModel.self) { ContentViewModel.make(resolver: $0) }
         container.register(SessionDetailViewModel.self) { SessionDetailViewModel.make(resolver: $0) }
         container.register(CurrentRoundViewModel.self) { CurrentRoundViewModel.make(resolver: $0) }
-            .inObjectScope(.weak) // Not sure why this one is having problems, this is a hack to fix
         container.register(SettingsViewModel.self) { SettingsViewModel.make(resolver: $0) }
         container.register(GraphViewModel.self) { GraphViewModel.make(resolver: $0) }
     }

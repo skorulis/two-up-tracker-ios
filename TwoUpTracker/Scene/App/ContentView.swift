@@ -5,20 +5,16 @@ struct ContentView: View {
     @State var model: ContentViewModel
     @Environment(\.resolver) private var resolver
 
-    @State private var currentoundCoordinator = Coordinator(root: MainPath.currentRound)
-    @State private var historyCoordinator = Coordinator(root: MainPath.sessionDetail)
-    @State private var settingsCoordinator = Coordinator(root: MainPath.settings)
-
     var body: some View {
         TabView(selection: $model.selectedTab) {
-            CoordinatorView(coordinator: currentoundCoordinator)
+            CoordinatorView(coordinator: Coordinator(root: MainPath.currentRound))
                 .withRenderers(resolver: resolver!)
                 .tabItem {
                     Label("Bets", systemImage: "dollarsign.arrow.trianglehead.counterclockwise.rotate.90")
                 }
                 .tag(ContentTab.currentRound)
 
-            CoordinatorView(coordinator: historyCoordinator)
+            CoordinatorView(coordinator: Coordinator(root: MainPath.sessionDetail))
                 .withRenderers(resolver: resolver!)
                 .tabItem {
                     Label("History", systemImage: "list.bullet.rectangle")
@@ -31,7 +27,7 @@ struct ContentView: View {
                 }
                 .tag(ContentTab.graph)
 
-            CoordinatorView(coordinator: settingsCoordinator)
+            CoordinatorView(coordinator: Coordinator(root: MainPath.settings))
                 .withRenderers(resolver: resolver!)
                 .tabItem {
                     Label("Settings", systemImage: "gearshape.fill")
