@@ -5,13 +5,6 @@ import SwiftUI
 struct CurrentRoundView: View {
     @State var viewModel: CurrentRoundViewModel
 
-    private var currencyCode: String { "AUD" }
-
-    /// Whole dollars without “.00”; cents shown when needed (e.g. $10.50).
-    private var currencyDisplayFormat: FloatingPointFormatStyle<Double>.Currency {
-        .currency(code: currencyCode).precision(.fractionLength(0...2))
-    }
-
     var body: some View {
         if viewModel.model.bettingAvailable {
             mainContent
@@ -26,6 +19,9 @@ struct CurrentRoundView: View {
         } content: {
             ScrollView {
                 VStack(spacing: DesignTokens.Spacing.medium) {
+                    titleLine(round: viewModel.model.pendingRoundAwaitingResult)
+                        .animation(.easeInOut, value: viewModel.model.session)
+
                     if let pending = viewModel.model.pendingRoundAwaitingResult {
                         pendingTossContent(for: pending)
 
@@ -80,10 +76,26 @@ struct CurrentRoundView: View {
     @ViewBuilder
     private func pendingTossContent(for round: Round) -> some View {
         VStack(spacing: DesignTokens.Spacing.medium) {
-            LargeValuedHeroView(amount: round.totalStaked, format: currencyDisplayFormat)
+            
 
             bets(round: round)
             outcome(round: round)
+        }
+    }
+    
+    private func titleLine(round: Round?) -> some View {
+        HStack {
+            Spacer()
+            LargeValuedHeroView(
+                amount: viewModel.model.session.currentBalance,
+                caption: "Daily position",
+                colorAmountBySign: true,
+            )
+            if let round {
+                Spacer()
+                LargeValuedHeroView(amount: round.totalStaked, caption: "On the line")
+            }
+            Spacer()
         }
     }
 
@@ -155,7 +167,7 @@ struct CurrentRoundView: View {
             Text(bet.prediction.rawValue.capitalized)
                 .font(DesignTokens.Typography.body)
             Spacer()
-            Text(bet.amount, format: currencyDisplayFormat)
+            Text(bet.amount, format: Formatters.currencyDisplayFormat)
                 .font(DesignTokens.Typography.body.monospacedDigit())
         }
         .accessibilityElement(children: .combine)
@@ -165,10 +177,10 @@ struct CurrentRoundView: View {
         guard let selection else { return "Confirm" }
         let net = round.netProfit(for: selection)
         if net > 0 {
-            return "Confirm \(net.formatted(currencyDisplayFormat)) win"
+            return "Confirm \(net.formatted(Formatters.currencyDisplayFormat)) win"
         }
         if net < 0 {
-            return "Confirm \((-net).formatted(currencyDisplayFormat)) loss"
+            return "Confirm \((-net).formatted(Formatters.currencyDisplayFormat)) loss"
         }
         return "Confirm even"
     }

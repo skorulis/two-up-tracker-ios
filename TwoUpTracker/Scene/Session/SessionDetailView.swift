@@ -7,16 +7,19 @@ struct SessionDetailView: View {
         PageLayout {
             PageHeader(title: viewModel.model.sessionName)
         } content: {
-            if viewModel.model.hasRounds {
-                listContent
-            } else {
-                EmptyState(
-                    title: "No rounds yet",
-                    message: "Use the Add tab to enter your outstanding bets, then record the toss outcome " +
-                        "here when you know it.",
-                    systemImage: "list.bullet.rectangle"
-                )
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            VStack(spacing: 0) {
+
+                if viewModel.model.hasRounds {
+                    listContent
+                } else {
+                    EmptyState(
+                        title: "No rounds yet",
+                        message: "Use the Add tab to enter your outstanding bets, then record the toss outcome " +
+                            "here when you know it.",
+                        systemImage: "list.bullet.rectangle"
+                    )
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
             }
         }
         .id(viewModel.mainStore.activeSession.rounds.count)
@@ -25,7 +28,16 @@ struct SessionDetailView: View {
 
     private var listContent: some View {
         List {
-            balance
+            HStack {
+                Spacer()
+                LargeValuedHeroView(
+                    amount: viewModel.model.currentBalance,
+                    caption: LargeValuedHeroView.balanceCaption(for: viewModel.model.currentBalance),
+                    colorAmountBySign: true,
+                )
+                Spacer()
+            }
+
             Text("Rounds")
             Section {
                 ForEach(Array(viewModel.model.roundRows), id: \.round.id) { row in
@@ -95,21 +107,6 @@ struct SessionDetailView: View {
         }
         .padding(.vertical, DesignTokens.Spacing.xs)
     }
-
-    private var balance: some View {
-        Section {
-            Card {
-                HStack {
-                    Text("Balance")
-                        .font(DesignTokens.Typography.headline)
-                    Spacer()
-                    CurrencyLabel(amount: viewModel.model.currentBalance)
-                }
-                .accessibilityElement(children: .combine)
-            }
-            .listRowSeparator(.hidden)
-        }
-    }
 }
 
 extension SessionDetailView {
@@ -117,7 +114,7 @@ extension SessionDetailView {
         var session: Session = .defaultSession()
 
         var sessionName: String { session.name }
-        var currentBalance: Double { session.runningBalances().last?.1 ?? 0 }
+        var currentBalance: Double { session.currentBalance }
         var hasRounds: Bool { !session.rounds.isEmpty }
 
         /// Newest rounds first; each pair is the round and running balance after that round.
@@ -125,4 +122,64 @@ extension SessionDetailView {
             session.runningBalances().reversed()
         }
     }
+}
+
+// MARK: - Previews
+
+private enum SessionDetailPreviewSessions {
+    static let baseDate = Date(timeIntervalSince1970: 1_745_462_400)
+
+    static var empty: Session {
+        Session(
+            id: UUID(),
+            name: "Anzac Day 2026",
+            date: baseDate,
+            year: 2026,
+            rounds: []
+        )
+    }
+
+    static var withRounds: Session {
+        Session(
+            id: UUID(),
+            name: "Anzac Day 2026",
+            date: baseDate,
+            year: 2026,
+            rounds: [
+                Round(
+                    id: UUID(),
+                    startDate: baseDate.addingTimeInterval(300),
+                    endDate: baseDate.addingTimeInterval(420),
+                    result: .heads,
+                    bets: [
+                        Bet(id: UUID(), amount: 50, prediction: .heads),
+                        Bet(id: UUID(), amount: 30, prediction: .tails),
+                    ]
+                ),
+                Round(
+                    id: UUID(),
+                    startDate: baseDate.addingTimeInterval(600),
+                    endDate: nil,
+                    result: nil,
+                    bets: [
+                        Bet(id: UUID(), amount: 20, prediction: .heads),
+                    ]
+                ),
+            ]
+        )
+    }
+}
+
+#Preview("Empty") {
+    let assembler = TwoUpTrackerAssembly.testing()
+    let viewModel = assembler.resolver.sessionDetailViewModel()
+    viewModel.mainStore.activeSession = SessionDetailPreviewSessions.empty
+    return SessionDetailView(viewModel: viewModel)
+}
+
+#Preview("With rounds") {
+    let assembler = TwoUpTrackerAssembly.testing()
+    let viewModel = assembler.resolver.sessionDetailViewModel()
+    viewModel.mainStore.activeSession = SessionDetailPreviewSessions.withRounds
+    return SessionDetailView(viewModel: viewModel)
 }
