@@ -11,10 +11,6 @@ struct BetAmountGrid: View {
         GridItem(.flexible(), spacing: DesignTokens.Spacing.small),
     ]
 
-    private var currencyCode: String {
-        Locale.current.currency?.identifier ?? "AUD"
-    }
-
     var body: some View {
         LazyVGrid(columns: columns, spacing: DesignTokens.Spacing.small) {
             ForEach(Self.presetAmounts, id: \.self) { amount in
@@ -22,7 +18,7 @@ struct BetAmountGrid: View {
                 Button {
                     amountText = String(Int(amount))
                 } label: {
-                    Text(amount, format: .currency(code: currencyCode).precision(.fractionLength(0)))
+                    Text(amount, format: Formatters.roundedCurrencyDisplayFormat)
                         .font(DesignTokens.Typography.buttonLabel.monospacedDigit())
                         .frame(maxWidth: .infinity)
                         .frame(minHeight: DesignTokens.MinTapTarget.height)

@@ -2,18 +2,14 @@ import Charts
 import SwiftUI
 
 struct GraphView: View {
-    @State var model: GraphViewModel
-
-    private var currencyCode: String {
-        Locale.current.currency?.identifier ?? "USD"
-    }
+    @State var viewModel: GraphViewModel
 
     var body: some View {
         NavigationStack {
             PageLayout {
-                PageHeader(title: model.sessionName)
+                PageHeader(title: viewModel.session.name)
             } content: {
-                if model.hasData {
+                if viewModel.session.hasGraphData {
                     scrollContent
                 } else {
                     EmptyState(
@@ -26,7 +22,7 @@ struct GraphView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
-            .id(model.mainStore.activeSession.rounds.count)
+            .id(viewModel.mainStore.activeSession.rounds.count)
         }
     }
 
@@ -34,25 +30,15 @@ struct GraphView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
                 Card {
-                    HStack {
-                        Text("Running balance")
-                            .font(DesignTokens.Typography.caption)
-                            .foregroundStyle(.secondary)
-                        Spacer()
-                        CurrencyLabel(amount: model.currentBalance)
-                    }
-                }
-
-                Card {
                     VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
                         ratioRow(
                             title: "Win percentage",
-                            value: model.winPercentageText,
-                            detail: model.winLossRecordText
+                            value: viewModel.session.winPercentageText,
+                            detail: viewModel.session.winLossRecordText
                         )
                         ratioRow(
                             title: "Heads vs tails",
-                            value: model.headsTailsPercentageText,
+                            value: viewModel.session.headsTailsPercentageText,
                             detail: nil
                         )
                     }
@@ -86,12 +72,12 @@ struct GraphView: View {
 
     private var chart: some View {
         Chart {
-            ForEach(model.balanceSeries) { point in
+            ForEach(viewModel.session.balanceSeries) { point in
                 LineMark(
                     x: .value("Time", point.date),
                     y: .value("Balance", point.balance)
                 )
-                .interpolationMethod(.catmullRom)
+                .interpolationMethod(.linear)
                 .lineStyle(StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round))
                 .foregroundStyle(Color.accentColor)
             }
@@ -104,24 +90,18 @@ struct GraphView: View {
                 AxisTick()
                 AxisValueLabel {
                     if let amount = value.as(Double.self) {
-                        Text(amount, format: .currency(code: currencyCode))
+                        Text(amount, format: Formatters.roundedCurrencyDisplayFormat)
                     }
                 }
             }
         }
         .chartXAxis {
-            AxisMarks(values: .automatic(desiredCount: min(model.balanceSeries.count, 12))) { value in
+            AxisMarks(values: .automatic(desiredCount: min(viewModel.session.balanceSeries.count, 12))) { _ in
                 AxisGridLine()
-                AxisTick()
-                AxisValueLabel {
-                    if let date = value.as(Date.self) {
-                        Text(date, format: .dateTime.month(.abbreviated).day().hour().minute())
-                    }
-                }
             }
         }
         .accessibilityLabel("Running balance over time")
         .accessibilityHint("Line chart of cumulative profit or loss after each resolved round.")
-        .animation(.smooth(duration: 0.35), value: model.mainStore.activeSession.rounds.count)
+        .animation(.smooth(duration: 0.35), value: viewModel.mainStore.activeSession.rounds.count)
     }
 }

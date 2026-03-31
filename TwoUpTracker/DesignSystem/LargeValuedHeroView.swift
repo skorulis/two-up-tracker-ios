@@ -54,16 +54,28 @@ extension LargeValuedHeroView {
     VStack(spacing: DesignTokens.Spacing.large) {
         HStack {
             Spacer()
-            LargeValuedHeroView(amount: -100, caption: LargeValuedHeroView.balanceCaption(for: -100), colorAmountBySign: true)
+            LargeValuedHeroView(
+                amount: -100,
+                caption: LargeValuedHeroView.balanceCaption(for: -100),
+                colorAmountBySign: true
+            )
             Spacer()
             LargeValuedHeroView(amount: 92.50, caption: "On the line")
             Spacer()
         }
         HStack {
             Spacer()
-            LargeValuedHeroView(amount: 42, caption: LargeValuedHeroView.balanceCaption(for: 42), colorAmountBySign: true)
+            LargeValuedHeroView(
+                amount: 42,
+                caption: LargeValuedHeroView.balanceCaption(for: 42),
+                colorAmountBySign: true
+            )
             Spacer()
-            LargeValuedHeroView(amount: 0, caption: LargeValuedHeroView.balanceCaption(for: 0), colorAmountBySign: true)
+            LargeValuedHeroView(
+                amount: 0,
+                caption: LargeValuedHeroView.balanceCaption(for: 0),
+                colorAmountBySign: true
+            )
             Spacer()
         }
     }

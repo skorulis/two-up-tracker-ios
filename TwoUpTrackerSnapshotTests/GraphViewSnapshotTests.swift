@@ -14,7 +14,7 @@ struct GraphViewSnapshotTests {
         let viewModel = assembler.resolver.graphViewModel()
         viewModel.mainStore.activeSession = testData.realisticSession()
 
-        let view = GraphView(model: viewModel)
+        let view = GraphView(viewModel: viewModel)
         assertSnapshot(of: view, as: .image(on: .iPhoneSe))
     }
 
@@ -22,7 +22,7 @@ struct GraphViewSnapshotTests {
         let viewModel = assembler.resolver.graphViewModel()
         viewModel.mainStore.activeSession = testData.realisticSession()
 
-        let view = GraphView(model: viewModel)
+        let view = GraphView(viewModel: viewModel)
         assertSnapshot(of: view, as: .image(on: .iPhoneSe), style: .dark)
     }
 

@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 import Knit
 import KnitMacros
@@ -14,21 +15,28 @@ struct BalanceChartPoint: Identifiable, Equatable, Sendable {
 @Observable
 final class GraphViewModel {
     let mainStore: MainStore
+    private var cancellables: Set<AnyCancellable> = []
+
+    var session: Session
 
     @Resolvable<BaseResolver>
     init(mainStore: MainStore) {
         self.mainStore = mainStore
-    }
+        self.session = mainStore.activeSession
 
-    var sessionName: String {
-        mainStore.activeSession.name
+        mainStore.$activeSession.sink { [unowned self] in
+            self.session = $0
+        }
+        .store(in: &cancellables)
     }
+}
 
+extension Session {
     /// Chronological series: opens at $0 on the first round’s `startDate`, then one point per resolved
     /// round at that round’s `endDate` (fallback `startDate` if legacy data has no `endDate`).
     var balanceSeries: [BalanceChartPoint] {
-        let pairs = mainStore.activeSession.resolvedRunningBalances()
-        guard let originDate = mainStore.activeSession.roundsOrdered.first?.startDate,
+        let pairs = resolvedRunningBalances()
+        guard let originDate = roundsOrdered.first?.startDate,
               !pairs.isEmpty
         else { return [] }
 
@@ -43,24 +51,26 @@ final class GraphViewModel {
         return points
     }
 
-    var hasData: Bool {
+    var hasGraphData: Bool {
         !balanceSeries.isEmpty
     }
 
-    var currentBalance: Double {
-        mainStore.activeSession.resolvedRunningBalances().last?.balance ?? 0
-    }
-
     private var resolvedRounds: [Round] {
-        mainStore.activeSession.roundsOrdered.filter { $0.result != nil }
+        roundsOrdered.filter { $0.result != nil }
     }
 
     private var winCount: Int {
-        resolvedRounds.filter { $0.profit > 0 }.count
+        return resolvedRounds.map { round in
+            round.bets.count { bet in bet.prediction == round.result }
+        }
+        .reduce(0, +)
     }
 
     private var lossCount: Int {
-        resolvedRounds.filter { $0.profit < 0 }.count
+        return resolvedRounds.map { round in
+            round.bets.count { bet in bet.prediction.opposite == round.result }
+        }
+        .reduce(0, +)
     }
 
     private var headsCount: Int {

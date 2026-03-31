@@ -9,4 +9,8 @@ enum Formatters {
     static var currencyDisplayFormat: FloatingPointFormatStyle<Double>.Currency {
         .currency(code: currencyCode).precision(.fractionLength(0...2))
     }
+    
+    static var roundedCurrencyDisplayFormat: FloatingPointFormatStyle<Double>.Currency {
+        .currency(code: currencyCode).precision(.fractionLength(0))
+    }
 }
