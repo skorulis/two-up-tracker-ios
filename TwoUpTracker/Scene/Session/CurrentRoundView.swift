@@ -66,10 +66,12 @@ struct CurrentRoundView: View {
                     )
 
                     HStack {
-                        Button("Start betting") {
+                        Button("Start tracking") {
                             viewModel.model.bettingAvailable = true
                         }
-                        .buttonStyle(PrimaryButtonStyle(backgroundColor: Colors.australianGreen))
+                        .buttonStyle(
+                            PrimaryButtonStyle(backgroundColor: Colors.australianGreen)
+                        )
                         .frame(maxWidth: .infinity)
 
                         Button(
@@ -182,6 +184,7 @@ struct CurrentRoundView: View {
         HStack {
             Text(bet.prediction.rawValue.capitalized)
                 .font(DesignTokens.Typography.body)
+                .bold()
             Spacer()
             Text(bet.amount, format: Formatters.currencyDisplayFormat)
                 .font(DesignTokens.Typography.body.monospacedDigit())
