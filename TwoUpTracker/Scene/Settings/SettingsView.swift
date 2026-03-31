@@ -73,7 +73,7 @@ struct SettingsView: View {
                     viewModel.showWhatIsTwoUp()
                 } label: {
                     HStack {
-                        Text("What is Two-Up?")
+                        Text("What is Two-up?")
                         Spacer()
                         Image(systemName: "chevron.right")
                             .font(.footnote.weight(.semibold))

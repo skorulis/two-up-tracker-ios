@@ -47,7 +47,7 @@ struct WhatIsTwoUpView: View {
     private var section1: some View {
         Card {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-                SectionHeader(title: "What is Two-Up?")
+                SectionHeader(title: "What is Two-up?")
                 Text(
                     "Two-up is a traditional Australian coin-toss game. A designated " +
                         "spinner throws two coins, and players bet on the outcome."

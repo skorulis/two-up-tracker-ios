@@ -94,7 +94,7 @@ struct CurrentRoundView: View {
                         Button(
                             action: viewModel.showWhatIsTwoUp,
                             label: {
-                                Text("What is Two-Up?")
+                                Text("What is Two-up?")
                                     .foregroundStyle(Color.black)
                             }
                         )
