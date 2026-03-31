@@ -2,15 +2,16 @@ import ASKCore
 import SwiftUI
 
 struct AddBetView: View {
-    @State var draft = BetDraft(id: UUID(), amountText: "", prediction: .heads)
+    @State var draft = BetDraft(id: UUID(), amountText: "", prediction: nil)
     @Environment(\.dismissCustomOverlay) private var onDismiss
     let onSetBet: (Bet) -> Void
 
     var body: some View {
         Group {
             Section {
-                VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
                     Text("What are you betting on?")
+                        .font(DesignTokens.Typography.sectionTitle)
                     HStack(spacing: DesignTokens.Spacing.large) {
                         ForEach(Outcome.allCases, id: \.self) { outcome in
                             CoinOutcomeButton(
@@ -24,9 +25,13 @@ struct AddBetView: View {
                     }
                     .frame(maxWidth: .infinity)
 
+                    Text("How much?")
+                        .font(DesignTokens.Typography.sectionTitle)
+
                     BetAmountGrid(amountText: $draft.amountText)
                     HStack {
-                        TextField("Amount", text: $draft.amountText)
+                        TextField("Custom amount", text: $draft.amountText)
+                            .textFieldStyle(.roundedBorder)
                             .keyboardType(.decimalPad)
                             .font(DesignTokens.Typography.body.monospacedDigit())
                     }
@@ -45,13 +50,19 @@ struct AddBetView: View {
 
     var bet: Bet? {
         let trimmed = draft.amountText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let prediction = draft.prediction else { return nil }
         guard let value = Double(trimmed), value >= 0 else { return nil }
-        return Bet(id: draft.id, amount: value, prediction: draft.prediction)
+        return Bet(id: draft.id, amount: value, prediction: prediction)
     }
 }
 
 struct BetDraft: Identifiable, Equatable {
     let id: UUID
     var amountText: String
-    var prediction: Outcome
+    var prediction: Outcome?
+}
+
+#Preview {
+    AddBetView(onSetBet: { _ in })
+        .padding(DesignTokens.Spacing.large)
 }

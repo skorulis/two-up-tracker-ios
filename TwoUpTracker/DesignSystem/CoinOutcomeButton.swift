@@ -15,14 +15,10 @@ struct CoinOutcomeButton: View {
                     .scaledToFill()
                     .frame(width: diameter, height: diameter)
                     .clipShape(Circle())
-                    .overlay(
-                        Circle()
-                            .strokeBorder(Color.primary.opacity(0.35), lineWidth: 2)
-                    )
                     .overlay {
                         Circle()
                             .strokeBorder(borderColor, lineWidth: 3)
-                            .frame(width: diameter + 8, height: diameter + 8)
+                            .frame(width: diameter + 4, height: diameter + 4)
                     }
 
                 Text(label)

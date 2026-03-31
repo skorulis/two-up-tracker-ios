@@ -20,5 +20,4 @@ enum DesignTokens {
         static let height: CGFloat = 44
     }
 
-    
 }

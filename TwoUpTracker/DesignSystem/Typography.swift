@@ -23,7 +23,6 @@ extension DesignTokens {
     }
 }
 
-
 extension DesignTokens.Typography {
     /// WW2-inspired typography:
     /// - Gill Sans for headings/labels (official Commonwealth document feel)
@@ -35,4 +34,38 @@ extension DesignTokens.Typography {
         static let body = "Helvetica"
         static let bodySemibold = "Baskerville-SemiBold"
     }
+}
+
+private struct TypographyCatalog: View {
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {
+                row("display", DesignTokens.Typography.display, "Two-Up Tracker")
+                row("sectionTitle", DesignTokens.Typography.sectionTitle, "Round history")
+                row("buttonLabel", DesignTokens.Typography.buttonLabel, "Place bet")
+                row("bodyPrimary", DesignTokens.Typography.bodyPrimary, "Body text for longer passages and supporting copy.")
+                row("bodyStrong", DesignTokens.Typography.bodyStrong, "Emphasised body when you need a bit more weight.")
+                row("captionSmall", DesignTokens.Typography.captionSmall, "Captions, hints, and secondary labels")
+                row("value", DesignTokens.Typography.value, "$12,340.56 · 47 heads")
+            }
+            .padding(DesignTokens.Spacing.medium)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .background(Colors.groupedBackground)
+    }
+
+    private func row(_ name: String, _ font: Font, _ sample: String) -> some View {
+        VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
+            Text(name)
+                .font(.caption2.monospaced())
+                .foregroundStyle(.secondary)
+            Text(sample)
+                .font(font)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+}
+
+#Preview("Typography") {
+    TypographyCatalog()
 }
