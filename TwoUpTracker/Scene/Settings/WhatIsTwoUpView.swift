@@ -68,7 +68,7 @@ struct WhatIsTwoUpView: View {
                         "- Odds (one head and one tail)"
                 )
                 .font(DesignTokens.Typography.body)
-                
+
                 Text("Some places may use 3 coins so every spin gives a result.")
             }
         }

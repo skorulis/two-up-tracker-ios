@@ -32,4 +32,8 @@ final class SessionDetailViewModel {
     func deleteRound(id: UUID) {
         mainStore.removeRound(id: id)
     }
+
+    func resetSessionData() {
+        mainStore.activeSession = .defaultSession()
+    }
 }

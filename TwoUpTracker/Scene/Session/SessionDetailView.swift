@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SessionDetailView: View {
     @State var viewModel: SessionDetailViewModel
+    @State private var showResetConfirmation: Bool = false
 
     var body: some View {
         PageLayout {
@@ -24,6 +25,14 @@ struct SessionDetailView: View {
         }
         .id(viewModel.mainStore.activeSession.rounds.count)
         .navigationBarHidden(true)
+        .alert("Reset all data?", isPresented: $showResetConfirmation) {
+            Button("Cancel", role: .cancel) {}
+            Button("Reset", role: .destructive) {
+                viewModel.resetSessionData()
+            }
+        } message: {
+            Text("This will delete all of your bets.")
+        }
     }
 
     private var listContent: some View {
@@ -50,10 +59,25 @@ struct SessionDetailView: View {
                     }
                 }
             }
+            
+            resetSection
         }
         .scrollContentBackground(.hidden)
         .listRowBackground(Color.clear)
         .background(Color.clear)
+    }
+    
+    private var resetSection: some View {
+        Section {
+            Button(role: .destructive) {
+                showResetConfirmation = true
+            } label: {
+                Text("Reset session")
+            }
+        } footer: {
+            Text("Clears all of your bet history. This cannot be undone.")
+                .font(DesignTokens.Typography.caption)
+        }
     }
 
     @ViewBuilder
