@@ -14,7 +14,7 @@ struct ContentView: View {
             CoordinatorView(coordinator: currentoundCoordinator)
                 .withRenderers(resolver: resolver!)
                 .tabItem {
-                    Label("Bets", systemImage: "plus.circle.fill")
+                    Label("Bets", systemImage: "dollarsign.arrow.trianglehead.counterclockwise.rotate.90")
                 }
                 .tag(ContentTab.currentRound)
 
