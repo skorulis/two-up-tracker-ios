@@ -48,7 +48,6 @@ struct CountdownTimer: View {
                 Button(action: onInfoTapped) {
                     Image(systemName: "info.circle")
                         .font(.title3)
-                        .accessibilityLabel("Two-Up availability info")
                 }
                 .buttonStyle(.plain)
                 .padding(.top, 2)

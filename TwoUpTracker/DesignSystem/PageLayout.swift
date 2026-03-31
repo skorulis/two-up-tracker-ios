@@ -21,7 +21,6 @@ struct PageLayout<Header: View, Content: View>: View {
         }
         .padding(.top, DesignTokens.Spacing.medium)
         .background(Colors.groupedBackground.ignoresSafeArea())
-        .navigationBarHidden(true)
     }
 }
 

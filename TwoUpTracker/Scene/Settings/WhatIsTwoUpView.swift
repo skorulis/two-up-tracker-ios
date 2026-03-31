@@ -9,45 +9,38 @@ struct WhatIsTwoUpView: View {
     let coordinator: Coordinator?
 
     var body: some View {
-        PageLayout {
-            HStack(spacing: 0) {
-                Button(
-                    action: { coordinator?.pop()},
-                    label: {
-                        Image(systemName: "chevron.left")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .fontWeight(.bold)
-                            .padding(8)
-                            .frame(width: 44, height: 44)
-                            .foregroundStyle(Color.primary)
-                    }
-                )
-                PageHeader(title: "What is Two-Up")
+        content
+            .navigationTitle("What is Two-up")
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("What is Two-up")
+                        .font(DesignTokens.Typography.display)
+                }
             }
-        } content: {
-            ScrollView {
-                VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {
-                    section1
-                    terminologySection
+    }
+    
+    private var content: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {
+                section1
+                terminologySection
 
-                    roundSection
-                    howToPlaySection
+                roundSection
+                howToPlaySection
 
-                    section4
+                section4
 
-                    Card {
-                        VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-                            SectionHeader(title: "Source")
-                            Link("Wikipedia: Two-up", destination: wikipediaURL)
-                                .font(DesignTokens.Typography.caption)
-                                .foregroundStyle(.secondary)
-                        }
+                Card {
+                    VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+                        SectionHeader(title: "Source")
+                        Link("Wikipedia: Two-up", destination: wikipediaURL)
+                            .font(DesignTokens.Typography.caption)
+                            .foregroundStyle(.secondary)
                     }
                 }
-                .padding(.horizontal, .margin)
-                .padding(.bottom, DesignTokens.Spacing.medium)
             }
+            .padding(.horizontal, .margin)
+            .padding(.bottom, DesignTokens.Spacing.medium)
         }
     }
 

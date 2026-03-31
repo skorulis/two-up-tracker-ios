@@ -42,7 +42,7 @@ private struct TypographyCatalog: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {
-                row("display", DesignTokens.Typography.display, "Two-Up Tracker")
+                row("display", DesignTokens.Typography.display, "Two-up Tracker")
                 row("sectionTitle", DesignTokens.Typography.sectionTitle, "Round history")
                 row("buttonLabel", DesignTokens.Typography.buttonLabel, "Place bet")
                 row(

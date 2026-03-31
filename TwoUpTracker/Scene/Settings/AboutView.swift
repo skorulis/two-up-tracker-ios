@@ -3,34 +3,30 @@ import SwiftUI
 
 // swiftlint:disable line_length
 struct AboutView: View {
+    private let amplitudePrivacyURL = URL(string: "https://amplitude.com/privacy")!
+
     let coordinator: Coordinator?
 
     var body: some View {
-        PageLayout {
-            HStack(spacing: 0) {
-                Button(
-                    action: { coordinator?.pop() },
-                    label: {
-                        Image(systemName: "chevron.left")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .fontWeight(.bold)
-                            .padding(8)
-                            .frame(width: 44, height: 44)
-                            .foregroundStyle(Color.primary)
-                    }
-                )
-                PageHeader(title: "About")
-            }
-        } content: {
-            ScrollView {
-                VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {
-                    purposeSection
-                    disclaimerSection
+        content
+            .navigationTitle("About")
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("About")
+                        .font(DesignTokens.Typography.display)
                 }
-                .padding(.horizontal, .margin)
-                .padding(.bottom, DesignTokens.Spacing.medium)
             }
+    }
+    
+    private var content: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {
+                purposeSection
+                privacyPolicySection
+                disclaimerSection
+            }
+            .padding(.horizontal, .margin)
+            .padding(.bottom, DesignTokens.Spacing.medium)
         }
     }
 
@@ -47,6 +43,38 @@ struct AboutView: View {
                     "This app does not place, broker, or process bets of any kind. It is a tracking tool only."
                 )
                 .font(DesignTokens.Typography.body)
+            }
+        }
+    }
+
+    private var privacyPolicySection: some View {
+        Card {
+            VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+                SectionHeader(title: "Privacy policy")
+                Text(
+                    "Two Up Tracker does not use accounts. The session and bet information you enter is stored on " +
+                        "your device only and is not uploaded to our servers."
+                )
+                .font(DesignTokens.Typography.body)
+
+                Text(
+                    "We use Amplitude, a third-party analytics service, to understand how the app is used—for " +
+                        "example which areas of the app are viewed and coarse interaction events. These analytics events do not include the amounts or other details you enter for your bets."
+                )
+                .font(DesignTokens.Typography.body)
+
+                Text(
+                    "Analytics data may be processed and stored outside Australia, including in the United States."
+                )
+                .font(DesignTokens.Typography.body)
+
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
+                    Text("For how Amplitude handles data, see their privacy policy:")
+                        .font(DesignTokens.Typography.body)
+                    Link("Amplitude privacy policy", destination: amplitudePrivacyURL)
+                        .font(DesignTokens.Typography.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
         }
     }
