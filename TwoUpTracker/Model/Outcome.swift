@@ -14,7 +14,7 @@ enum Outcome: String, Codable, CaseIterable, Sendable {
             return Colors.australianGold
         }
     }
-    
+
     var opposite: Outcome {
         switch self {
         case .heads:

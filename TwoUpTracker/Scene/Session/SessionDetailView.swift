@@ -38,8 +38,7 @@ struct SessionDetailView: View {
                 Spacer()
             }
 
-            Text("Rounds")
-            Section {
+            Section("Rounds") {
                 ForEach(Array(viewModel.model.roundRows), id: \.round.id) { row in
                     roundRow(round: row.round, balance: row.balance)
                 }
@@ -52,60 +51,73 @@ struct SessionDetailView: View {
                 }
             }
         }
-        .listStyle(PlainListStyle())
         .scrollContentBackground(.hidden)
         .listRowBackground(Color.clear)
         .background(Color.clear)
     }
 
+    @ViewBuilder
     private func roundRow(round: Round, balance: Double) -> some View {
+        if let result = round.result {
+            finishedRound(round: round, balance: balance, result: result)
+        } else {
+            pendingRoundRow(round: round)
+        }
+
+    }
+
+    private func finishedRound(round: Round, balance: Double, result: Outcome) -> some View {
         VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
             HStack {
                 Text((round.endDate ?? round.startDate), format: .dateTime.hour().minute())
                     .font(DesignTokens.Typography.caption)
                     .foregroundStyle(.secondary)
                 Spacer()
-                if let result = round.result {
-                    Text(result.rawValue.capitalized)
-                        .font(DesignTokens.Typography.caption)
-                        .foregroundStyle(.secondary)
-                } else {
-                    Text("Outcome pending")
-                        .font(DesignTokens.Typography.caption)
-                        .foregroundStyle(.secondary)
-                }
+                Text(result.rawValue.capitalized)
+                    .font(DesignTokens.Typography.caption)
+                    .foregroundStyle(.secondary)
             }
-            if round.result == nil {
-                HStack(spacing: DesignTokens.Spacing.medium) {
-                    Text("Toss")
-                        .font(DesignTokens.Typography.caption)
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    CoinOutcomeButton(outcome: .heads) {
-                        viewModel.recordOutcome(roundId: round.id, outcome: .heads)
-                    }
-                    CoinOutcomeButton(outcome: .tails) {
-                        viewModel.recordOutcome(roundId: round.id, outcome: .tails)
-                    }
-                }
-                .accessibilityElement(children: .contain)
-            } else {
+            if round.profit != 0 {
                 HStack {
-                    Text("Result")
+                    Text(round.profit > 0 ? "Win" : "Lose")
                         .font(DesignTokens.Typography.body)
                     Spacer()
-                    CurrencyLabel(amount: round.profit)
+                    CurrencyLabel(amount: round.profit, showPlusForPositive: true)
                 }
-                HStack {
-                    Text("Running Balance")
-                        .font(DesignTokens.Typography.caption)
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    CurrencyLabel(amount: balance)
-                }
+            }
+            
+            HStack {
+                Text("Running Balance")
+                    .font(DesignTokens.Typography.caption)
+                    .foregroundStyle(.secondary)
+                Spacer()
+                CurrencyLabel(amount: balance)
             }
         }
         .padding(.vertical, DesignTokens.Spacing.xs)
+    }
+
+    private func pendingRoundRow(round: Round) -> some View {
+        VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
+            HStack(spacing: DesignTokens.Spacing.medium) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(round.totalStaked, format: Formatters.currencyDisplayFormat)
+                        + Text(" wagered")
+                        .font(DesignTokens.Typography.bodyPrimary)
+                    Text("Awaiting result")
+                        .font(DesignTokens.Typography.bodyPrimary)
+                }
+
+                Spacer()
+                CoinOutcomeButton(outcome: .heads) {
+                    viewModel.recordOutcome(roundId: round.id, outcome: .heads)
+                }
+                CoinOutcomeButton(outcome: .tails) {
+                    viewModel.recordOutcome(roundId: round.id, outcome: .tails)
+                }
+            }
+            .accessibilityElement(children: .contain)
+        }
     }
 }
 

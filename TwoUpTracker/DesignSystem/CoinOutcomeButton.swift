@@ -9,7 +9,7 @@ struct CoinOutcomeButton: View {
 
     var body: some View {
         Button(action: action) {
-            ZStack(alignment: .top) {
+            ZStack(alignment: .center) {
                 Image(asset: asset)
                     .resizable()
                     .scaledToFill()
@@ -22,7 +22,7 @@ struct CoinOutcomeButton: View {
                     }
 
                 Text(label)
-                    .font(DesignTokens.Typography.caption)
+                    .font(DesignTokens.Typography.buttonLabel)
                     .fontWeight(.semibold)
                     .foregroundStyle(.white)
                     .shadow(color: .black.opacity(0.55), radius: 2, x: 0, y: 1)

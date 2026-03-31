@@ -4,6 +4,7 @@ import SwiftUI
 struct CurrencyLabel: View {
     let amount: Double
     var locale: Locale = .current
+    var showPlusForPositive: Bool = false
 
     private var isWholeNumber: Bool {
         abs(amount - amount.rounded()) < 1e-9
@@ -20,7 +21,11 @@ struct CurrencyLabel: View {
             formatter.minimumFractionDigits = 2
             formatter.maximumFractionDigits = 2
         }
-        return formatter.string(from: NSNumber(value: amount)) ?? "\(amount)"
+        let formattedAmount = formatter.string(from: NSNumber(value: amount)) ?? "\(amount)"
+        if showPlusForPositive, amount > 0 {
+            return "+\(formattedAmount)"
+        }
+        return formattedAmount
     }
 
     private var semanticColor: Color {
