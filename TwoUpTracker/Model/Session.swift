@@ -63,4 +63,30 @@ extension Session {
         guard let index else { return}
         rounds.remove(at: index)
     }
+
+    func lossLimitBannerModel(lossLimit: Double?, nextBetAmount: Double?) -> LossLimitBannerModel? {
+        guard let lossLimit, lossLimit > 0 else {
+            return nil
+        }
+
+        let currentLoss = max(0, -currentBalance)
+        guard currentLoss > 0 else {
+            return nil
+        }
+
+        if currentLoss > lossLimit {
+            return .init(state: .exceeded, currentLoss: currentLoss, lossLimit: lossLimit)
+        }
+
+        if let nextBetAmount, currentLoss + nextBetAmount > lossLimit {
+            return .init(state: .nextBet(nextBetAmount), currentLoss: currentLoss, lossLimit: lossLimit)
+        }
+
+        let approachingThreshold = lossLimit * 0.8
+        if currentLoss >= approachingThreshold {
+            return .init(state: .approaching, currentLoss: currentLoss, lossLimit: lossLimit)
+        }
+
+        return nil
+    }
 }

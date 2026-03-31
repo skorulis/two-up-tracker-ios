@@ -34,7 +34,7 @@ extension DesignTokens.Typography {
         static let headingSemibold = "GillSans-SemiBold"
         static let headingBold = "GillSans-Bold"
         static let body = "Helvetica"
-        static let bodySemibold = "Baskerville-SemiBold"
+        static let bodySemibold = "Helvetica-SemiBold"
     }
 }
 

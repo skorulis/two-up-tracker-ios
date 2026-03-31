@@ -22,6 +22,14 @@ struct CurrentRoundView: View {
                     titleLine(round: viewModel.model.pendingRoundAwaitingResult)
                         .animation(.easeInOut, value: viewModel.model.session)
 
+                    if let lossLimitBannerModel {
+                        LossLimitBanner(
+                            state: lossLimitBannerModel.state,
+                            currentLoss: lossLimitBannerModel.currentLoss,
+                            lossLimit: lossLimitBannerModel.lossLimit
+                        )
+                    }
+
                     if let pending = viewModel.model.pendingRoundAwaitingResult {
                         pendingTossContent(for: pending)
 
@@ -201,6 +209,13 @@ struct CurrentRoundView: View {
         return Color.accentColor
     }
 
+    private var lossLimitBannerModel: LossLimitBannerModel? {
+        return viewModel.model.session.lossLimitBannerModel(
+            lossLimit: viewModel.model.lossLimit,
+            nextBetAmount: viewModel.model.pendingRoundAwaitingResult?.totalStaked,
+        )
+    }
+
 }
 
 extension CurrentRoundView {
@@ -208,6 +223,7 @@ extension CurrentRoundView {
         var session: Session = .defaultSession()
         var bettingAvailable: Bool = false
         var pendingResultSelection: Outcome?
+        var lossLimit: Double?
 
         /// Most recent round that still needs a toss result, if any.
         var pendingRoundAwaitingResult: Round? {

@@ -30,6 +30,11 @@ final class CurrentRoundViewModel: CoordinatorViewModel {
         }
         .store(in: &cancellables)
 
+        mainStore.$settings.sink { [unowned self] settings in
+            self.model.lossLimit = settings.lossLimit
+        }
+        .store(in: &cancellables)
+
         countdownService.$countdownFinished.sink { [unowned self] in
             if $0 && !self.model.bettingAvailable {
                 self.model.bettingAvailable = true
