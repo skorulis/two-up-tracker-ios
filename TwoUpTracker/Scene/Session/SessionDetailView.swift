@@ -24,7 +24,6 @@ struct SessionDetailView: View {
             }
         }
         .id(viewModel.mainStore.activeSession.rounds.count)
-        .navigationBarHidden(true)
         .alert("Reset all data?", isPresented: $showResetConfirmation) {
             Button("Cancel", role: .cancel) {}
             Button("Reset", role: .destructive) {

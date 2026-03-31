@@ -27,7 +27,6 @@ struct SettingsView: View {
                 viewModel.applyLossLimitFromField()
             }
         }
-        .navigationBarHidden(true)
     }
 
     private var content: some View {
