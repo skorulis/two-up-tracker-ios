@@ -12,14 +12,16 @@ final class CurrentRoundViewModel: CoordinatorViewModel {
     weak var coordinator: ASKCoordinator.Coordinator?
 
     let mainStore: MainStore
+    private let analyticsService: AnalyticsService
 
     private var cancellables: Set<AnyCancellable> = []
 
     var model: CurrentRoundView.Model = .init()
 
     @Resolvable<BaseResolver>
-    init(mainStore: MainStore, countdownService: CountdownService) {
+    init(mainStore: MainStore, countdownService: CountdownService, analyticsService: AnalyticsService) {
         self.mainStore = mainStore
+        self.analyticsService = analyticsService
         mainStore.$activeSession.sink { [unowned self] session in
             self.model.session = session
             if session.rounds.count > 0 && !self.model.bettingAvailable {
@@ -45,6 +47,7 @@ final class CurrentRoundViewModel: CoordinatorViewModel {
             round.bets.append(bet)
             session.rounds[session.rounds.count - 1] = round
             self.mainStore.activeSession = session
+            self.analyticsService.trackBetSet()
         }
         coordinator?.custom(overlay: .card, path)
     }
@@ -53,11 +56,12 @@ final class CurrentRoundViewModel: CoordinatorViewModel {
     func saveRound(bet: Bet) -> Bool {
         let round = Round(id: UUID(), startDate: Date(), endDate: nil, result: nil, bets: [bet])
         mainStore.appendRound(round)
+        analyticsService.trackBetSet()
         return true
     }
 
     func resetForm() {
-        mainStore.activeSession.resetOutstanding()
+        resetOutstanding(trackEvent: true)
     }
 
     func showTwoUpAvailabilityInfo() {
@@ -71,6 +75,14 @@ final class CurrentRoundViewModel: CoordinatorViewModel {
     func recordPendingOutcome(_ outcome: Outcome) {
         guard let id = model.pendingRoundAwaitingResult?.id else { return }
         mainStore.setRoundResult(roundId: id, result: outcome)
-        resetForm()
+        analyticsService.trackBetResultConfirmed()
+        resetOutstanding(trackEvent: false)
+    }
+
+    private func resetOutstanding(trackEvent: Bool) {
+        mainStore.activeSession.resetOutstanding()
+        if trackEvent {
+            analyticsService.trackBetReset()
+        }
     }
 }

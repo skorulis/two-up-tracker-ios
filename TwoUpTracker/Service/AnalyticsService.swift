@@ -19,6 +19,22 @@ extension AnalyticsService {
     func viewScreen(name: String) {
         self.track(event: "view-screen-\(name)")
     }
+
+    func trackBetSet() {
+        self.track(event: "bet-set")
+    }
+
+    func trackBetResultConfirmed() {
+        self.track(event: "bet-result-confirmed")
+    }
+
+    func trackBetReset() {
+        self.track(event: "bet-reset")
+    }
+
+    func trackBetResultSetFromSessionDetails() {
+        self.track(event: "bet-result-confirmed-from-session-details")
+    }
 }
 
 final class AmplitudeAnalyticsService: AnalyticsService {
@@ -33,6 +49,7 @@ final class AmplitudeAnalyticsService: AnalyticsService {
 
     func track(event name: String, properties: [String: Any]? = nil) {
         amplitude.track(eventType: name, eventProperties: properties)
+        print("#ANALYTICS# Tracked: \(name)")
     }
 }
 
