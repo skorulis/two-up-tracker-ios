@@ -59,6 +59,18 @@ struct SettingsView: View {
 
             Section {
                 Button {
+                    viewModel.showAbout()
+                } label: {
+                    HStack {
+                        Text("About this app")
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.footnote.weight(.semibold))
+                            .foregroundStyle(.tertiary)
+                    }
+                }
+
+                Button {
                     viewModel.showWhatIsTwoUp()
                 } label: {
                     HStack {
@@ -71,9 +83,6 @@ struct SettingsView: View {
                 }
             } header: {
                 Text("About")
-            } footer: {
-                Text("Learn the rules, terminology, and history.")
-                    .font(DesignTokens.Typography.caption)
             }
         }
         .scrollDismissesKeyboard(.immediately)

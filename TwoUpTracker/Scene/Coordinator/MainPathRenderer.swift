@@ -20,6 +20,8 @@ struct MainPathRenderer: CoordinatorPathRenderer {
             SettingsView(viewModel: coordinator.apply(resolver.settingsViewModel()))
         case .whatIsTwoUp:
             WhatIsTwoUpView(coordinator: coordinator)
+        case .about:
+            AboutView(coordinator: coordinator)
         case let .addBet(onSetBet):
             AddBetView(isCustomAmountFieldFocused: .constant(false), onSetBet: onSetBet)
         case .twoUpAvailabilityInfo:

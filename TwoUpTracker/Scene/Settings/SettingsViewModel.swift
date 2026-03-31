@@ -41,6 +41,10 @@ final class SettingsViewModel: CoordinatorViewModel {
         coordinator?.push(MainPath.whatIsTwoUp)
     }
 
+    func showAbout() {
+        coordinator?.push(MainPath.about)
+    }
+
     func applyLossLimitFromField() {
         let trimmed = lossLimitText.trimmingCharacters(in: .whitespacesAndNewlines)
         if trimmed.isEmpty {
