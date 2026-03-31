@@ -16,12 +16,10 @@ struct PageLayout<Header: View, Content: View>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: DesignTokens.Spacing.medium) {
             header()
+                .padding(.horizontal, .margin)
             content()
-            Spacer(minLength: 0)
         }
-        .padding(.horizontal, DesignTokens.Spacing.medium)
         .padding(.top, DesignTokens.Spacing.medium)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(Colors.groupedBackground.ignoresSafeArea())
         .navigationBarHidden(true)
     }

@@ -14,6 +14,7 @@ struct EmptyState: View {
                 Text(message)
             }
         }
+        .padding(.horizontal, .margin)
     }
 }
 

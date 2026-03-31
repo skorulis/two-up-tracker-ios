@@ -49,6 +49,7 @@ struct GraphView: View {
                         .frame(minHeight: 260)
                 }
             }
+            .padding(.horizontal, .margin)
         }
     }
 

@@ -39,8 +39,8 @@ struct CurrentRoundView: View {
                         }
                     }
                 }
+                .padding(.horizontal, .margin)
                 .padding(.bottom, DesignTokens.Spacing.medium)
-                .frame(maxWidth: .infinity)
             }
         }
     }
@@ -74,6 +74,7 @@ struct CurrentRoundView: View {
 
                 Spacer()
             }
+            .padding(.horizontal, .margin)
         }
     }
 

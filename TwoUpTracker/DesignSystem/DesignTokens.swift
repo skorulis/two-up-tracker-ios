@@ -21,3 +21,7 @@ enum DesignTokens {
     }
 
 }
+
+extension CGFloat {
+    static let margin: CGFloat = 16
+}
