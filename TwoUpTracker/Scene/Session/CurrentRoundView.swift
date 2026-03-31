@@ -80,30 +80,11 @@ struct CurrentRoundView: View {
     @ViewBuilder
     private func pendingTossContent(for round: Round) -> some View {
         VStack(spacing: DesignTokens.Spacing.medium) {
-            totalStakedHero(for: round)
+            LargeValuedHeroView(amount: round.totalStaked, format: currencyDisplayFormat)
 
             bets(round: round)
             outcome(round: round)
         }
-    }
-
-    /// Full-width hero block on the grouped background (no card chrome).
-    private func totalStakedHero(for round: Round) -> some View {
-        VStack(spacing: 0) {
-            Text(round.totalStaked, format: currencyDisplayFormat)
-                .font(DesignTokens.Typography.heroValue.monospacedDigit())
-                .multilineTextAlignment(.center)
-                .minimumScaleFactor(0.55)
-                .lineLimit(1)
-            
-            Text("On the line")
-                .font(DesignTokens.Typography.caption)
-                .foregroundStyle(.secondary)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.top, DesignTokens.Spacing.small)
-        .padding(.bottom, DesignTokens.Spacing.large)
-        .accessibilityElement(children: .combine)
     }
 
     private func outcome(round: Round) -> some View {
