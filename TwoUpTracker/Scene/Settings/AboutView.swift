@@ -64,8 +64,7 @@ struct AboutView: View {
                 Text("3. Limitation of Liability: ").bold() +
                 Text("To the maximum extent permitted by law, TwoUpTracker and its affiliates are not liable for any losses, damages, or expenses incurred by users, including any financial losses resulting from gambling activities tracked by this app.")
 
-                Text("4. Responsible Gambling: ").bold() +
-                Text(" Gambling involves risk. Only gamble with money you can afford to lose. If you feel that gambling is causing problems, support is available. You can call 1800 858 858 or visit gamblinghelponline.org.au.")
+                responsibleGamblingParagraph
 
                 Text("5. Not a Betting Operator: ").bold() +
                 Text("This app is not an online gambling provider, bookmaker, or financial institution.")
@@ -73,6 +72,18 @@ struct AboutView: View {
             }
             .font(DesignTokens.Typography.body)
         }
+    }
+
+    private var responsibleGamblingParagraph: some View {
+        Text(Self.responsibleGamblingAttributed)
+    }
+
+    private static var responsibleGamblingAttributed: AttributedString {
+        let markdown =
+            "**4. Responsible Gambling:** Gambling involves risk. Only gamble with money you can afford to lose. " +
+            "If you feel that gambling is causing problems, support is available. You can call " +
+            "[1800 858 858](tel:1800858858) or visit [gamblinghelponline.org.au](https://gamblinghelponline.org.au)."
+        return (try? AttributedString(markdown: markdown)) ?? AttributedString(markdown)
     }
 }
 
