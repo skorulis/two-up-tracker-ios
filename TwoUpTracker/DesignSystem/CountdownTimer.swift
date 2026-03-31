@@ -32,7 +32,7 @@ struct CountdownTimer: View {
     private func timeRemaining(now: Date) -> some View {
         HStack(alignment: .top, spacing: DesignTokens.Spacing.medium) {
             VStack(spacing: DesignTokens.Spacing.small) {
-                Text("Spinning starts in:")
+                Text("Spinning starts in")
                     .font(DesignTokens.Typography.bodyPrimary)
                     .foregroundStyle(.secondary)
 

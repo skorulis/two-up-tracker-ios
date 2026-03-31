@@ -24,7 +24,7 @@ struct MainPathRenderer: CoordinatorPathRenderer {
         case .settings:
             AnyView(SettingsView(viewModel: coordinator.apply(resolver.settingsViewModel())))
         case .whatIsTwoUp:
-            AnyView(WhatIsTwoUpView())
+            AnyView(WhatIsTwoUpView(coordinator: coordinator))
         case let .addBet(onSetBet):
             AnyView(AddBetView(onSetBet: onSetBet))
         case .twoUpAvailabilityInfo:

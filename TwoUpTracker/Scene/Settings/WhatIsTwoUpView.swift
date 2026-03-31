@@ -1,12 +1,29 @@
+import ASKCoordinator
 import Foundation
 import SwiftUI
 
 struct WhatIsTwoUpView: View {
     private let wikipediaURL = URL(string: "https://en.wikipedia.org/wiki/Two-up")!
 
+    let coordinator: Coordinator?
+
     var body: some View {
         PageLayout {
-            PageHeader(title: "What is Two-Up")
+            HStack(spacing: 0) {
+                Button(
+                    action: { coordinator?.pop()},
+                    label: {
+                        Image(systemName: "chevron.left")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .fontWeight(.bold)
+                            .padding(8)
+                            .frame(width: 44, height: 44)
+                            .foregroundStyle(Color.primary)
+                    }
+                )
+                PageHeader(title: "What is Two-Up")
+            }
         } content: {
             ScrollView {
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {
@@ -35,7 +52,7 @@ struct WhatIsTwoUpView: View {
 
                             VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
                                 Text("1. A spinner tosses two coins into the air.")
-                                Text("2. Before the toss, players place bets for heads, tails, or odds.")
+                                Text("2. Before the toss, players place bets for heads or tails.")
                                 Text(
                                     "3. Two heads means the spinner wins their wager, " +
                                         "two tails means the spinner loses it, and odds results in another toss " +
@@ -55,19 +72,18 @@ struct WhatIsTwoUpView: View {
                             SectionHeader(title: "Common terminology")
 
                             VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
-                                Text("Spinner: the person who throws the coins.")
-                                Text("Boxer: the person who manages the game (bets and equipment).")
+                                Text("Spinner:").bold() + Text(" the person who throws the coins.")
+                                Text("Boxer:").bold() + Text(" the person who manages the game (bets and equipment).")
+                                Text("Ring / ringkeeper (ringie):").bold() +
                                 Text(
-                                    "Ring / ringkeeper (ringie): the ring is the play area; " +
-                                        "the ringkeeper calls validity and resets."
+                                    " the ring is the play area; the ringkeeper calls validity and resets."
                                 )
-                                Text("Kip: the surface the coins rest on before being tossed.")
-                                Text("Heads / tails: the two possible matching outcomes.")
-                                Text("Odds (one them): one coin is heads and the other is tails.")
-                                Text(
-                                    "Odding out: spinning odds repeatedly until the game resolves " +
-                                        "(casino rule variants exist)."
-                                )
+                                Text("Kip:").bold() +
+                                Text(" the surface the coins rest on before being tossed.")
+                                Text("Heads / tails:").bold() +
+                                Text(" the two possible matching outcomes.")
+                                Text("Odds:").bold() +
+                                Text(" one coin is heads and the other is tails.")
                             }
                             .font(DesignTokens.Typography.body)
                             .fixedSize(horizontal: false, vertical: true)
@@ -106,4 +122,8 @@ struct WhatIsTwoUpView: View {
             }
         }
     }
+}
+
+#Preview {
+    WhatIsTwoUpView(coordinator: nil)
 }
