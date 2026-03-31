@@ -32,7 +32,7 @@ func assertSnapshot<V: View>(
         return
     }
 
-    let hostingController = UIHostingController(rootView: view)
+    let hostingController = UIHostingController(rootView: view.ignoresSafeArea())
     hostingController.overrideUserInterfaceStyle = style
 
     assertSnapshot(

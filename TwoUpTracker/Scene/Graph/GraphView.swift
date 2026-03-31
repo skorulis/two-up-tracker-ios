@@ -5,25 +5,23 @@ struct GraphView: View {
     @State var viewModel: GraphViewModel
 
     var body: some View {
-        NavigationStack {
-            PageLayout {
-                PageHeader(title: viewModel.session.name)
-            } content: {
-                if viewModel.session.hasGraphData {
-                    scrollContent
-                } else {
-                    EmptyState(
-                        title: "No data yet",
-                        message:
-                            "Add rounds from the Bets tab and record outcomes in History "
-                            + "to see your running balance.",
-                        systemImage: "chart.line.uptrend.xyaxis"
-                    )
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }
+        PageLayout {
+            PageHeader(title: viewModel.session.name)
+        } content: {
+            if viewModel.session.hasGraphData {
+                scrollContent
+            } else {
+                EmptyState(
+                    title: "No data yet",
+                    message:
+                        "Add rounds from the Bets tab and record outcomes in History "
+                        + "to see your running balance.",
+                    systemImage: "chart.line.uptrend.xyaxis"
+                )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .id(viewModel.mainStore.activeSession.rounds.count)
         }
+        .id(viewModel.mainStore.activeSession.rounds.count)
     }
 
     private var scrollContent: some View {
