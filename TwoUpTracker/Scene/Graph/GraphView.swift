@@ -74,7 +74,7 @@ struct GraphView: View {
             if let lossLimit = viewModel.settings.lossLimit {
                 RuleMark(y: .value("Loss limit", -lossLimit))
                     .lineStyle(StrokeStyle(lineWidth: 1.5))
-                    .foregroundStyle(.red)
+                    .foregroundStyle(Colors.australianGold)
             }
 
             ForEach(viewModel.session.balanceSeries) { point in
@@ -84,7 +84,7 @@ struct GraphView: View {
                 )
                 .interpolationMethod(.linear)
                 .lineStyle(StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round))
-                .foregroundStyle(Color.accentColor)
+                .foregroundStyle(sessionProfitLineColor)
             }
         }
         .chartXAxisLabel("Time", alignment: .trailing)
@@ -122,5 +122,9 @@ struct GraphView: View {
             return (minValue - 1) ... (maxValue + 1)
         }
         return (minValue - 20) ... (maxValue + 20)
+    }
+
+    private var sessionProfitLineColor: Color {
+        viewModel.session.currentBalance > 0 ? Colors.australianGreen : .primary
     }
 }
