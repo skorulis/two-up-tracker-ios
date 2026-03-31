@@ -19,14 +19,6 @@ struct SettingsView: View {
         } message: {
             Text("This will delete your current session and restore default settings.")
         }
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button("Done") {
-                    lossLimitFocused = false
-                }
-            }
-        }
         .onAppear {
             viewModel.syncFromStore()
         }
@@ -84,7 +76,16 @@ struct SettingsView: View {
                     .font(DesignTokens.Typography.caption)
             }
         }
+        .scrollDismissesKeyboard(.immediately)
         .scrollContentBackground(.hidden)
         .background(Color.clear)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    lossLimitFocused = false
+                }
+            }
+        }
     }
 }

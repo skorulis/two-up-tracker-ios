@@ -50,6 +50,7 @@ struct CurrentRoundView: View {
                 .padding(.horizontal, .margin)
                 .padding(.bottom, DesignTokens.Spacing.medium)
             }
+            .scrollDismissesKeyboard(.immediately)
         }
     }
 
