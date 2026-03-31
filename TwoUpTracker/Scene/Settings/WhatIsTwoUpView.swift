@@ -2,6 +2,7 @@ import ASKCoordinator
 import Foundation
 import SwiftUI
 
+// swiftlint:disable line_length
 struct WhatIsTwoUpView: View {
     private let wikipediaURL = URL(string: "https://en.wikipedia.org/wiki/Two-up")!
 
@@ -28,10 +29,10 @@ struct WhatIsTwoUpView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {
                     section1
+                    terminologySection
 
-                    section2
-
-                    section3
+                    roundSection
+                    howToPlaySection
 
                     section4
 
@@ -67,42 +68,54 @@ struct WhatIsTwoUpView: View {
                         "- Odds (one head and one tail)"
                 )
                 .font(DesignTokens.Typography.body)
+                
+                Text("Some places may use 3 coins so every spin gives a result.")
             }
         }
     }
 
-    private var section2: some View {
+    private var howToPlaySection: some View {
         Card {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
-                SectionHeader(title: "How a round works")
+                SectionHeader(title: "How to place side bets")
 
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
-                    Text("1. A spinner tosses two coins into the air.")
-                    Text("2. Before the toss, players place bets for heads or tails.")
-                    Text(
-                        "3. Two heads means the spinner wins their wager, " +
-                            "two tails means the spinner loses it, and odds results in another toss " +
-                            "with the head/tail bets frozen."
-                    )
-                    Text(
-                        "4. The game is run by roles such as a boxer (who manages betting/equipment) " +
-                            "and a ringkeeper (who monitors the toss and resets the kip)."
-                    )
+                    Text("If you want to bet on heads, hold the money for your wager above your head. If you want to bet on tails, find someone holding money above their head. The heads better holds the money for both players until the round concludes.")
+                    Text("If the round results is heads then the heads better keeps the money. If the round is tails then the tails better collects their winnings from the heads better.")
                 }
                 .font(DesignTokens.Typography.body)
             }
         }
     }
 
-    private var section3: some View {
+    private var roundSection: some View {
+        Card {
+            VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
+                SectionHeader(title: "How a round works")
+
+                VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
+                    Text("1. Before the toss, players place bets for heads or tails.")
+                    Text("2. A chosen spinner tosses two coins into the air.")
+                    Text(
+                        "3. Two heads means the spinner wins their wager, " +
+                            "two tails means the spinner loses it, and odds results in another toss "
+                    )
+                    Text("4. The coins must fly three metres into the air, not touch the roof and have to fall within the ring.")
+                    Text("5. The ringkeeper monitors the toss and resets the kip.")
+                }
+                .font(DesignTokens.Typography.body)
+            }
+        }
+    }
+
+    private var terminologySection: some View {
         Card {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
                 SectionHeader(title: "Common terminology")
 
                 VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
                     Text("Spinner:").bold() + Text(" the person who throws the coins.")
-                    Text("Boxer:").bold() + Text(" the person who manages the game (bets and equipment).")
-                    Text("Ring / ringkeeper (ringie):").bold() +
+                    Text("Ringkeeper (ringie):").bold() +
                     Text(
                         " the ring is the play area; the ringkeeper calls validity and resets."
                     )
@@ -144,3 +157,4 @@ struct WhatIsTwoUpView: View {
 #Preview {
     WhatIsTwoUpView(coordinator: nil)
 }
+// swiftlint:enable line_length
