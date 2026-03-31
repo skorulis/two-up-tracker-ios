@@ -61,6 +61,7 @@ final class CurrentRoundViewModel: CoordinatorViewModel {
     }
 
     func resetForm() {
+        model.pendingResultSelection = nil
         resetOutstanding(trackEvent: true)
     }
 

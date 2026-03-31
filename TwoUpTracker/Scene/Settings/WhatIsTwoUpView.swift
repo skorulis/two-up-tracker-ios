@@ -49,7 +49,7 @@ struct WhatIsTwoUpView: View {
             }
         }
     }
-    
+
     private var section1: some View {
         Card {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
@@ -70,7 +70,7 @@ struct WhatIsTwoUpView: View {
             }
         }
     }
-    
+
     private var section2: some View {
         Card {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
@@ -93,7 +93,7 @@ struct WhatIsTwoUpView: View {
             }
         }
     }
-    
+
     private var section3: some View {
         Card {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
@@ -118,7 +118,7 @@ struct WhatIsTwoUpView: View {
             }
         }
     }
-    
+
     private var section4: some View {
         Card {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {

@@ -25,7 +25,7 @@ struct CurrentRoundView: View {
                     if let pending = viewModel.model.pendingRoundAwaitingResult {
                         pendingTossContent(for: pending)
 
-                        Button("Reset") {
+                        Button("Reset", role: .destructive) {
                             viewModel.resetForm()
                         }
                         .buttonStyle(.bordered)
@@ -61,13 +61,17 @@ struct CurrentRoundView: View {
                         Button("Start betting") {
                             viewModel.model.bettingAvailable = true
                         }
-                        .buttonStyle(.primary)
+                        .buttonStyle(PrimaryButtonStyle(backgroundColor: Colors.australianGreen))
                         .frame(maxWidth: .infinity)
 
-                        Button("What is Two-Up?") {
-                            viewModel.showWhatIsTwoUp()
-                        }
-                        .buttonStyle(.primary)
+                        Button(
+                            action: viewModel.showWhatIsTwoUp,
+                            label: {
+                                Text("What is Two-Up?")
+                                    .foregroundStyle(Color.black)
+                            }
+                        )
+                        .buttonStyle(PrimaryButtonStyle(backgroundColor: Colors.australianGold))
                         .frame(maxWidth: .infinity)
                     }
                 }
@@ -92,7 +96,7 @@ struct CurrentRoundView: View {
             Spacer()
             LargeValuedHeroView(
                 amount: viewModel.model.session.currentBalance,
-                caption: "Daily position",
+                caption: LargeValuedHeroView.balanceCaption(for: viewModel.model.session.currentBalance),
                 colorAmountBySign: true,
             )
             if let round {

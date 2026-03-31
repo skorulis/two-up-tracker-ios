@@ -41,11 +41,11 @@ extension LargeValuedHeroView {
     /// Caption for a running balance: **Win** when ahead, **Loss** when behind, **Balance** at zero.
     static func balanceCaption(for amount: Double) -> String {
         if amount > 0 {
-            "Win"
+            "Today's win"
         } else if amount < 0 {
-            "Loss"
+            "Today's loss"
         } else {
-            "Balance"
+            "Today's position"
         }
     }
 }

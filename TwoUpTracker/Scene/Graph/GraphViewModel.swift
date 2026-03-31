@@ -18,7 +18,7 @@ final class GraphViewModel {
     private var cancellables: Set<AnyCancellable> = []
 
     private(set) var session: Session
-    
+
     private(set) var settings: Settings
 
     @Resolvable<BaseResolver>
@@ -31,7 +31,7 @@ final class GraphViewModel {
             self.session = $0
         }
         .store(in: &cancellables)
-        
+
         mainStore.$settings.sink { [unowned self] in
             self.settings = $0
         }

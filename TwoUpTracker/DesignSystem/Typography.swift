@@ -45,8 +45,16 @@ private struct TypographyCatalog: View {
                 row("display", DesignTokens.Typography.display, "Two-Up Tracker")
                 row("sectionTitle", DesignTokens.Typography.sectionTitle, "Round history")
                 row("buttonLabel", DesignTokens.Typography.buttonLabel, "Place bet")
-                row("bodyPrimary", DesignTokens.Typography.bodyPrimary, "Body text for longer passages and supporting copy.")
-                row("bodyStrong", DesignTokens.Typography.bodyStrong, "Emphasised body when you need a bit more weight.")
+                row(
+                    "bodyPrimary",
+                    DesignTokens.Typography.bodyPrimary,
+                    "Body text for longer passages and supporting copy."
+                )
+                row(
+                    "bodyStrong",
+                    DesignTokens.Typography.bodyStrong,
+                    "Emphasised body when you need a bit more weight."
+                )
                 row("captionSmall", DesignTokens.Typography.captionSmall, "Captions, hints, and secondary labels")
                 row("value", DesignTokens.Typography.value, "$12,340.56 · 47 heads")
             }

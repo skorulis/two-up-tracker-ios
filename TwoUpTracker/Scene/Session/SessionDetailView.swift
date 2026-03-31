@@ -85,7 +85,7 @@ struct SessionDetailView: View {
                     CurrencyLabel(amount: round.profit, showPlusForPositive: true)
                 }
             }
-            
+
             HStack {
                 Text("Running Balance")
                     .font(DesignTokens.Typography.caption)
