@@ -79,7 +79,7 @@ struct WhatIsTwoUpView: View {
                                     " the ring is the play area; the ringkeeper calls validity and resets."
                                 )
                                 Text("Kip:").bold() +
-                                Text(" the surface the coins rest on before being tossed.")
+                                Text(" A piece of wood used to toss the coins.")
                                 Text("Heads / tails:").bold() +
                                 Text(" the two possible matching outcomes.")
                                 Text("Odds:").bold() +
