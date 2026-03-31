@@ -46,7 +46,7 @@ extension Session {
             return (round, balance)
         }
     }
-    
+
     var currentBalance: Double { runningBalances().last?.1 ?? 0 }
 
     /// Cumulative balance after each round that has a recorded toss outcome, in chronological order.

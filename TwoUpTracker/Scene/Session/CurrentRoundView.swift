@@ -51,22 +51,26 @@ struct CurrentRoundView: View {
         } content: {
             VStack(spacing: DesignTokens.Spacing.medium) {
                 Spacer()
-                CountdownTimer(
-                    session: viewModel.model.session,
-                    onInfoTapped: { viewModel.showTwoUpAvailabilityInfo() }
-                )
+                Card {
+                    CountdownTimer(
+                        session: viewModel.model.session,
+                        onInfoTapped: { viewModel.showTwoUpAvailabilityInfo() }
+                    )
 
-                Button("start betting") {
-                    viewModel.model.bettingAvailable = true
-                }
-                .buttonStyle(.primary)
-                .frame(maxWidth: .infinity)
+                    HStack {
+                        Button("Start betting") {
+                            viewModel.model.bettingAvailable = true
+                        }
+                        .buttonStyle(.primary)
+                        .frame(maxWidth: .infinity)
 
-                Button("What is Two-Up?") {
-                    viewModel.showWhatIsTwoUp()
+                        Button("What is Two-Up?") {
+                            viewModel.showWhatIsTwoUp()
+                        }
+                        .buttonStyle(.primary)
+                        .frame(maxWidth: .infinity)
+                    }
                 }
-                .buttonStyle(.bordered)
-                .frame(maxWidth: .infinity)
 
                 Spacer()
             }
@@ -76,13 +80,12 @@ struct CurrentRoundView: View {
     @ViewBuilder
     private func pendingTossContent(for round: Round) -> some View {
         VStack(spacing: DesignTokens.Spacing.medium) {
-            
 
             bets(round: round)
             outcome(round: round)
         }
     }
-    
+
     private func titleLine(round: Round?) -> some View {
         HStack {
             Spacer()

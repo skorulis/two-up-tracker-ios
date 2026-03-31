@@ -10,16 +10,30 @@ struct CountdownTimer: View {
             if session.bettingStartTime <= now {
                EmptyView()
             } else {
-                timeRemaining(now: now)
+                VStack {
+                    timeRemaining(now: now)
+                    coins
+                }
+
             }
+        }
+    }
+
+    private var coins: some View {
+        HStack {
+            Spacer()
+            SpinningCoinView()
+            Spacer()
+            SpinningCoinView(initialOffset: 180)
+            Spacer()
         }
     }
 
     private func timeRemaining(now: Date) -> some View {
         HStack(alignment: .top, spacing: DesignTokens.Spacing.medium) {
             VStack(spacing: DesignTokens.Spacing.small) {
-                Text("Betting starts in")
-                    .font(DesignTokens.Typography.caption)
+                Text("Spinning starts in:")
+                    .font(DesignTokens.Typography.bodyPrimary)
                     .foregroundStyle(.secondary)
 
                 Text(Self.formatRemaining(until: session.bettingStartTime, from: now))
@@ -66,7 +80,7 @@ struct CountdownTimer: View {
 
 #Preview {
     VStack(spacing: DesignTokens.Spacing.large) {
-        CountdownTimer(session: .defaultSession())
+        CountdownTimer(session: .defaultSession(), onInfoTapped: {})
     }
     .padding()
 }

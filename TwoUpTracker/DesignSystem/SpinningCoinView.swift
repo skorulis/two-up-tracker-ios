@@ -6,6 +6,8 @@ struct SpinningCoinView: View {
     /// Full rotations per second.
     var speed: Double = 0.45
 
+    var initialOffset: Double = 0
+
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
@@ -15,7 +17,7 @@ struct SpinningCoinView: View {
             } else {
                 TimelineView(.animation(minimumInterval: 1.0 / 60.0, paused: false)) { context in
                     let t = context.date.timeIntervalSinceReferenceDate
-                    let degrees = (t * speed * 360).truncatingRemainder(dividingBy: 360)
+                    let degrees = (t * speed * 360).truncatingRemainder(dividingBy: 360) + initialOffset
                     spinningCoin(angle: degrees)
                 }
             }

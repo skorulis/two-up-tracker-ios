@@ -23,6 +23,7 @@ struct PageLayout<Header: View, Content: View>: View {
         .padding(.top, DesignTokens.Spacing.medium)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(Colors.groupedBackground.ignoresSafeArea())
+        .navigationBarHidden(true)
     }
 }
 
