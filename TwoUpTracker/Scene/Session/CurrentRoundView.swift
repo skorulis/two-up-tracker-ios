@@ -4,6 +4,7 @@ import SwiftUI
 
 struct CurrentRoundView: View {
     @State var viewModel: CurrentRoundViewModel
+    @State private var isCustomAmountFieldFocused = false
 
     var body: some View {
         if viewModel.model.bettingAvailable {
@@ -42,6 +43,7 @@ struct CurrentRoundView: View {
                     } else {
                         Card {
                             AddBetView(
+                                isCustomAmountFieldFocused: $isCustomAmountFieldFocused,
                                 onSetBet: { viewModel.saveRound(bet: $0) }
                             )
                         }
@@ -52,6 +54,20 @@ struct CurrentRoundView: View {
             }
             .scrollDismissesKeyboard(.immediately)
         }
+        .modifier(
+            KeyboardToolbarModifier {
+                if isCustomAmountFieldFocused {
+                    HStack {
+                        Spacer()
+                        Button("Done") {
+                            isCustomAmountFieldFocused = false
+                        }
+                    }
+                    .padding(.horizontal, .margin)
+                    .padding(.bottom, 8)
+                }
+            }
+        )
     }
 
     private var countdownDisplay: some View {

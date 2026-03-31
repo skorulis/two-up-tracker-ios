@@ -79,13 +79,17 @@ struct SettingsView: View {
         .scrollDismissesKeyboard(.immediately)
         .scrollContentBackground(.hidden)
         .background(Color.clear)
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button("Done") {
-                    lossLimitFocused = false
+        .modifier(
+            KeyboardToolbarModifier {
+                HStack {
+                    Spacer()
+                    Button("Done") {
+                        lossLimitFocused = false
+                    }
                 }
+                .padding(.horizontal, .margin)
+                .padding(.bottom, 8)
             }
-        }
+        )
     }
 }

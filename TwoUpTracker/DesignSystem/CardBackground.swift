@@ -17,7 +17,7 @@ extension CardBackground: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
-                .fill(Color.white)
+                .fill(Colors.cardBackground)
 
             RoundedRectangle(cornerRadius: 8)
                 .stroke(Color.gray, lineWidth: 2)

@@ -3,6 +3,8 @@ import SwiftUI
 
 struct AddBetView: View {
     @State var draft = BetDraft(id: UUID(), amountText: "", prediction: nil)
+    @Binding var isCustomAmountFieldFocused: Bool
+    @FocusState private var isCustomAmountFocused: Bool
     @Environment(\.dismissCustomOverlay) private var onDismiss
     let onSetBet: (Bet) -> Void
 
@@ -34,8 +36,9 @@ struct AddBetView: View {
                             .textFieldStyle(.roundedBorder)
                             .keyboardType(.decimalPad)
                             .font(DesignTokens.Typography.body.monospacedDigit())
+                            .focused($isCustomAmountFocused)
                     }
-                    Button("Set Bet") {
+                    Button("Track Bet") {
                         if let bet {
                             onSetBet(bet)
                             onDismiss()
@@ -47,6 +50,17 @@ struct AddBetView: View {
                     .disabled(bet == nil)
                 }
             }
+        }
+        .onAppear {
+            isCustomAmountFocused = isCustomAmountFieldFocused
+        }
+        .onChange(of: isCustomAmountFocused) { focused in
+            guard isCustomAmountFieldFocused != focused else { return }
+            isCustomAmountFieldFocused = focused
+        }
+        .onChange(of: isCustomAmountFieldFocused) { focused in
+            guard isCustomAmountFocused != focused else { return }
+            isCustomAmountFocused = focused
         }
     }
 
@@ -65,6 +79,6 @@ struct BetDraft: Identifiable, Equatable {
 }
 
 #Preview {
-    AddBetView(onSetBet: { _ in })
+    AddBetView(isCustomAmountFieldFocused: .constant(false), onSetBet: { _ in })
         .padding(DesignTokens.Spacing.large)
 }

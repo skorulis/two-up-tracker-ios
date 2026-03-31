@@ -59,14 +59,14 @@ struct SessionDetailView: View {
                     }
                 }
             }
-            
+
             resetSection
         }
         .scrollContentBackground(.hidden)
         .listRowBackground(Color.clear)
         .background(Color.clear)
     }
-    
+
     private var resetSection: some View {
         Section {
             Button(role: .destructive) {
