@@ -73,6 +73,12 @@ struct GraphView: View {
 
     private var chart: some View {
         Chart {
+            if let lossLimit = viewModel.settings.lossLimit {
+                RuleMark(y: .value("Loss limit", -lossLimit))
+                    .lineStyle(StrokeStyle(lineWidth: 1.5))
+                    .foregroundStyle(.red)
+            }
+
             ForEach(viewModel.session.balanceSeries) { point in
                 LineMark(
                     x: .value("Time", point.date),
@@ -101,8 +107,22 @@ struct GraphView: View {
                 AxisGridLine()
             }
         }
+        .chartYScale(domain: yScaleDomain)
         .accessibilityLabel("Running balance over time")
         .accessibilityHint("Line chart of cumulative profit or loss after each resolved round.")
         .animation(.smooth(duration: 0.35), value: viewModel.mainStore.activeSession.rounds.count)
+    }
+
+    private var yScaleDomain: ClosedRange<Double> {
+        var values = viewModel.session.balanceSeries.map(\.balance)
+        values.append(0)
+
+        guard let minValue = values.min(), let maxValue = values.max() else {
+            return -1 ... 1
+        }
+        if minValue == maxValue {
+            return (minValue - 1) ... (maxValue + 1)
+        }
+        return (minValue - 20) ... (maxValue + 20)
     }
 }
