@@ -13,6 +13,7 @@ struct Card<Content: View>: View {
     }
 }
 
+#if !os(Android)
 #Preview("Card") {
     Card {
         VStack(alignment: .leading, spacing: DesignTokens.Spacing.small) {
@@ -26,3 +27,4 @@ struct Card<Content: View>: View {
     .frame(maxWidth: .infinity, maxHeight: .infinity)
     .background(Colors.groupedBackground)
 }
+#endif

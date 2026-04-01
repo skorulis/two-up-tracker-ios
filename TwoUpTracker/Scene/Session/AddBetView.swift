@@ -78,7 +78,9 @@ struct BetDraft: Identifiable, Equatable {
     var prediction: Outcome?
 }
 
+#if !os(Android)
 #Preview {
     AddBetView(isCustomAmountFieldFocused: .constant(false), onSetBet: { _ in })
         .padding(DesignTokens.Spacing.large)
 }
+#endif

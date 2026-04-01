@@ -54,6 +54,7 @@ struct BetAmountGrid: View {
     }
 }
 
+#if !os(Android)
 #Preview("Bet amount grid") {
     @Previewable @State var text = ""
     VStack(alignment: .leading) {
@@ -65,3 +66,4 @@ struct BetAmountGrid: View {
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     .background(Colors.groupedBackground)
 }
+#endif

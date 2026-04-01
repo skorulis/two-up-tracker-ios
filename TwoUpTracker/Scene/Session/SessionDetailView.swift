@@ -161,6 +161,7 @@ extension SessionDetailView {
 
 // MARK: - Previews
 
+#if !os(Android)
 private enum SessionDetailPreviewSessions {
     static let baseDate = Date(timeIntervalSince1970: 1_745_462_400)
 
@@ -218,3 +219,4 @@ private enum SessionDetailPreviewSessions {
     viewModel.mainStore.activeSession = SessionDetailPreviewSessions.withRounds
     return SessionDetailView(viewModel: viewModel)
 }
+#endif

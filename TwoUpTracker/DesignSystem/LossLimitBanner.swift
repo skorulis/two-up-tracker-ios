@@ -91,6 +91,7 @@ struct LossLimitBannerModel {
     let lossLimit: Double
 }
 
+#if !os(Android)
 #Preview("Next Bet") {
     LossLimitBanner(state: .nextBet(40), currentLoss: 80, lossLimit: 100)
         .padding()
@@ -102,3 +103,4 @@ struct LossLimitBannerModel {
         .padding()
         .background(Colors.groupedBackground)
 }
+#endif

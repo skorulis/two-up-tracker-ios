@@ -79,8 +79,10 @@ private struct CoinOutcomeButtonPressStyle: ButtonStyle {
     }
 }
 
+#if !os(Android)
 #Preview("Coin outcome buttons") {
     CoinOutcomeRow(selectedOutcome: .constant(nil))
     .padding()
     .background(Colors.groupedBackground)
 }
+#endif

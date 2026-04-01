@@ -50,6 +50,7 @@ extension LargeValuedHeroView {
     }
 }
 
+#if !os(Android)
 #Preview {
     VStack(spacing: DesignTokens.Spacing.large) {
         HStack {
@@ -80,3 +81,4 @@ extension LargeValuedHeroView {
         }
     }
 }
+#endif

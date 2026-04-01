@@ -20,6 +20,7 @@ extension ButtonStyle where Self == PrimaryButtonStyle {
     static var primary: PrimaryButtonStyle { PrimaryButtonStyle() }
 }
 
+#if !os(Android)
 #Preview("Primary button") {
     Button("Save Round") {}
         .buttonStyle(.primary)
@@ -27,3 +28,4 @@ extension ButtonStyle where Self == PrimaryButtonStyle {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Colors.groupedBackground)
 }
+#endif

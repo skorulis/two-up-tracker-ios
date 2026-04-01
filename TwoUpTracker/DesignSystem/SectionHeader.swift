@@ -19,6 +19,7 @@ struct SectionHeader: View {
     }
 }
 
+#if !os(Android)
 #Preview("With subtitle") {
     SectionHeader(title: "Statistics", subtitle: "Current session")
         .padding()
@@ -32,3 +33,4 @@ struct SectionHeader: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Colors.groupedBackground)
 }
+#endif

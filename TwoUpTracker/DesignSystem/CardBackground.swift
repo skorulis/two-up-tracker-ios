@@ -28,7 +28,9 @@ extension CardBackground: View {
 
 // MARK: - Previews
 
+#if !os(Android)
 #Preview {
     CardBackground()
         .padding(16)
 }
+#endif

@@ -256,6 +256,7 @@ extension CurrentRoundView {
 
 // MARK: - Previews
 
+#if !os(Android)
 private enum CurrentRoundPreviewSessions {
     static let baseDate = Date(timeIntervalSince1970: 1_745_462_400)
 
@@ -311,3 +312,4 @@ private enum CurrentRoundPreviewSessions {
     viewModel.mainStore.activeSession = CurrentRoundPreviewSessions.pendingToss
     return CurrentRoundView(viewModel: viewModel)
 }
+#endif

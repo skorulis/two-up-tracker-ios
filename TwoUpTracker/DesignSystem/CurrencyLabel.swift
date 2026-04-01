@@ -45,6 +45,7 @@ struct CurrencyLabel: View {
     }
 }
 
+#if !os(Android)
 #Preview {
     VStack {
         CurrencyLabel(amount: 125.50)
@@ -54,3 +55,4 @@ struct CurrencyLabel: View {
         CurrencyLabel(amount: -47.25)
     }
 }
+#endif

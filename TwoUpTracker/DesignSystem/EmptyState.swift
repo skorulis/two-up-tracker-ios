@@ -18,6 +18,7 @@ struct EmptyState: View {
     }
 }
 
+#if !os(Android)
 #Preview("With message") {
     EmptyState(
         title: "No rounds yet",
@@ -29,3 +30,4 @@ struct EmptyState: View {
 #Preview("Title only") {
     EmptyState(title: "No sessions", systemImage: "calendar")
 }
+#endif

@@ -17,8 +17,10 @@ struct PageHeader: View {
     }
 }
 
+#if !os(Android)
 #Preview {
     PageHeader(title: "Settings")
         .padding()
         .background(Colors.groupedBackground)
 }
+#endif

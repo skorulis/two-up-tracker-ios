@@ -147,7 +147,9 @@ struct WhatIsTwoUpView: View {
     }
 }
 
+#if !os(Android)
 #Preview {
     WhatIsTwoUpView(coordinator: nil)
 }
+#endif
 // swiftlint:enable line_length

@@ -77,9 +77,11 @@ struct CountdownTimer: View {
     }
 }
 
+#if !os(Android)
 #Preview {
     VStack(spacing: DesignTokens.Spacing.large) {
         CountdownTimer(session: .defaultSession(), onInfoTapped: {})
     }
     .padding()
 }
+#endif

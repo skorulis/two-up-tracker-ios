@@ -49,7 +49,9 @@ struct SpinningCoinView: View {
     }
 }
 
+#if !os(Android)
 #Preview("Spinning coin") {
     SpinningCoinView()
         .padding()
 }
+#endif

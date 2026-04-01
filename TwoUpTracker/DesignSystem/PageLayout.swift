@@ -24,6 +24,7 @@ struct PageLayout<Header: View, Content: View>: View {
     }
 }
 
+#if !os(Android)
 #Preview {
     PageLayout {
         PageHeader(title: "Preview")
@@ -34,3 +35,4 @@ struct PageLayout<Header: View, Content: View>: View {
         }
     }
 }
+#endif

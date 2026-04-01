@@ -115,7 +115,9 @@ struct AboutView: View {
     }
 }
 
+#if !os(Android)
 #Preview {
     AboutView(coordinator: nil)
 }
+#endif
 // swiftlint:enable line_length
