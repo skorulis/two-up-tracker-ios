@@ -22,9 +22,9 @@ struct CountdownTimer: View {
     private var coins: some View {
         HStack {
             Spacer()
-            SpinningCoinView()
+            SpinningCoinView(frontImage: Asset.heads.image, backImage: Asset.tails.image)
             Spacer()
-            SpinningCoinView(initialOffset: 180)
+            SpinningCoinView(frontImage: Asset.heads.image, backImage: Asset.tails.image, initialOffset: 180)
             Spacer()
         }
     }

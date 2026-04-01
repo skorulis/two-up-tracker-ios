@@ -2,22 +2,28 @@ import SwiftUI
 
 /// Heads and tails artwork as a single coin, spinning on the Y axis so each face is visible in turn.
 struct SpinningCoinView: View {
-    var diameter: CGFloat = 88
-    /// Full rotations per second.
-    var speed: Double = 0.45
-
-    var initialOffset: Double = 0
+    private let diameter: CGFloat = 88
+    private let speed: Double = 0.45
+    private let initialOffset: Double
+    private let frontImage: Image
+    private let backImage: Image
 
 #if !os(Android)
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 #else
     private var reduceMotion: Bool { false }
 #endif
+    
+    init(frontImage: Image, backImage: Image, initialOffset: Double = 0) {
+        self.frontImage = frontImage
+        self.backImage = backImage
+        self.initialOffset = initialOffset
+    }
 
     var body: some View {
         Group {
             if reduceMotion {
-                coinFace(asset: Asset.heads)
+                coinFace(image: frontImage)
             } else {
                 TimelineView(.animation(minimumInterval: 1.0 / 60.0, paused: false)) { context in
                     let t = context.date.timeIntervalSinceReferenceDate
@@ -36,16 +42,16 @@ struct SpinningCoinView: View {
         let tailsOpacity = max(0, -cos(radians))
 
         return ZStack {
-            coinFace(asset: Asset.heads)
-            coinFace(asset: Asset.tails)
+            coinFace(image: frontImage)
+            coinFace(image: backImage)
                 .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                 .opacity(tailsOpacity)
         }
         .rotation3DEffect(.degrees(angle), axis: (x: 0, y: 1, z: 0), perspective: 0.5)
     }
 
-    private func coinFace(asset: ImageAsset) -> some View {
-        Image(asset: asset)
+    private func coinFace(image: Image) -> some View {
+        image
             .resizable()
             .scaledToFill()
             .frame(width: diameter, height: diameter)
@@ -55,7 +61,10 @@ struct SpinningCoinView: View {
 
 #if !os(Android)
 #Preview("Spinning coin") {
-    SpinningCoinView()
-        .padding()
+    SpinningCoinView(
+        frontImage: Image(systemName: "1.circle.fill"),
+        backImage: Image(systemName: "2.circle.fill")
+    )
+    .padding()
 }
 #endif
