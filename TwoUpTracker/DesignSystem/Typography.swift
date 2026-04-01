@@ -30,6 +30,7 @@ extension DesignTokens.Typography {
     }
 }
 
+#if !os(Android)
 private struct TypographyCatalog: View {
     var body: some View {
         ScrollView {
@@ -72,3 +73,4 @@ private struct TypographyCatalog: View {
 #Preview("Typography") {
     TypographyCatalog()
 }
+#endif
