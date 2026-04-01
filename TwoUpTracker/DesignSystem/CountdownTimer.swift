@@ -51,10 +51,10 @@ struct CountdownTimer: View {
                 }
                 .buttonStyle(.plain)
                 .padding(.top, 2)
-                .accessibilityLabel("Two-up availability info")
+                .skip_accessibilityLabel("Two-up availability info")
             }
         }
-        .accessibilityElement(children: .combine)
+        .skip_accessibilityElement(children: .combine)
     }
 
     private var countdownFont: Font {

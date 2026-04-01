@@ -24,7 +24,7 @@ struct BetAmountGrid: View {
                         .font(DesignTokens.Typography.buttonLabel.monospacedDigit())
                         .frame(maxWidth: .infinity)
                         .frame(minHeight: DesignTokens.MinTapTarget.height)
-                        .contentShape(Rectangle())
+                        .skip_contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
                 .background(
@@ -39,12 +39,12 @@ struct BetAmountGrid: View {
                         )
                 )
                 .foregroundStyle(.primary)
-                .accessibilityLabel("Bet amount \(Int(amount))")
+                .skip_accessibilityLabel("Bet amount \(Int(amount))")
                 .accessibilityAddTraits(selected ? .isSelected : [])
             }
         }
-        .accessibilityElement(children: .contain)
-        .accessibilityLabel("Quick amount")
+        .skip_accessibilityElement(children: .contain)
+        .skip_accessibilityLabel("Quick amount")
     }
 
     private func isSelected(_ amount: Double) -> Bool {

@@ -13,7 +13,7 @@ struct PageHeader: View {
                 .minimumScaleFactor(0.85)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .accessibilityElement(children: .combine)
+        .skip_accessibilityElement(children: .combine)
     }
 }
 

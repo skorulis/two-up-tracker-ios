@@ -139,7 +139,7 @@ struct SessionDetailView: View {
                     viewModel.recordOutcome(roundId: round.id, outcome: .tails)
                 }
             }
-            .accessibilityElement(children: .contain)
+            .skip_accessibilityElement(children: .contain)
         }
     }
 }

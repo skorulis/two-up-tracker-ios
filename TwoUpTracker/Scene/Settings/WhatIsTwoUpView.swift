@@ -18,7 +18,7 @@ struct WhatIsTwoUpView: View {
                 }
             }
     }
-    
+
     private var content: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: DesignTokens.Spacing.large) {

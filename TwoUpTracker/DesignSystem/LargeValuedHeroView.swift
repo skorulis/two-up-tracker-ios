@@ -33,7 +33,7 @@ struct LargeValuedHeroView: View {
         }
         .padding(.top, DesignTokens.Spacing.small)
         .padding(.bottom, DesignTokens.Spacing.large)
-        .accessibilityElement(children: .combine)
+        .skip_accessibilityElement(children: .combine)
     }
 }
 

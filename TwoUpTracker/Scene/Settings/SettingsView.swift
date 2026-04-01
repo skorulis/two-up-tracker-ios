@@ -44,7 +44,7 @@ struct SettingsView: View {
                 )
                 .font(DesignTokens.Typography.caption)
             }
-            
+
             about
             debug
 
@@ -75,7 +75,7 @@ struct SettingsView: View {
             }
         )
     }
-    
+
     private var about: some View {
         Section {
             Button {

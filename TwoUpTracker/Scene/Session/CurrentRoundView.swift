@@ -39,7 +39,7 @@ struct CurrentRoundView: View {
                         }
                         .buttonStyle(.bordered)
                         .frame(maxWidth: .infinity)
-                        .accessibilityLabel("Clear bet fields")
+                        .skip_accessibilityLabel("Clear bet fields")
                     } else {
                         Card {
                             AddBetView(
@@ -163,7 +163,7 @@ struct CurrentRoundView: View {
                 )
                 .frame(maxWidth: .infinity)
                 .disabled(viewModel.model.pendingResultSelection == nil)
-                .accessibilityLabel(
+                .skip_accessibilityLabel(
                     confirmButtonTitle(round: round, selection: viewModel.model.pendingResultSelection)
                 )
             }
@@ -206,7 +206,7 @@ struct CurrentRoundView: View {
             Text(bet.amount, format: Formatters.currencyDisplayFormat)
                 .font(DesignTokens.Typography.body.monospacedDigit())
         }
-        .accessibilityElement(children: .combine)
+        .skip_accessibilityElement(children: .combine)
     }
 
     private func confirmButtonTitle(round: Round, selection: Outcome?) -> String {

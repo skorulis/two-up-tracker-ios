@@ -31,7 +31,7 @@ struct LossLimitBanner: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(backgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: DesignTokens.CornerRadius.card, style: .continuous))
-        .accessibilityElement(children: .combine)
+        .skip_accessibilityElement(children: .combine)
     }
 
     private var title: String {

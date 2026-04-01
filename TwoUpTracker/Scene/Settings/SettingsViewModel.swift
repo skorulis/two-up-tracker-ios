@@ -44,7 +44,7 @@ final class SettingsViewModel: CoordinatorViewModel {
     func showAbout() {
         coordinator?.push(MainPath.about)
     }
-    
+
     func configureScreenshotData() {
         mainStore.activeSession = TestData().realisticSession()
     }

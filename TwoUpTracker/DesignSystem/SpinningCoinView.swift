@@ -8,7 +8,11 @@ struct SpinningCoinView: View {
 
     var initialOffset: Double = 0
 
+#if !os(Android)
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+#else
+    private var reduceMotion: Bool { false }
+#endif
 
     var body: some View {
         Group {

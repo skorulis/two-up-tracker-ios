@@ -106,7 +106,7 @@ struct GraphView: View {
             }
         }
         .chartYScale(domain: yScaleDomain)
-        .accessibilityLabel("Running balance over time")
+        .skip_accessibilityLabel("Running balance over time")
         .accessibilityHint("Line chart of cumulative profit or loss after each resolved round.")
         .animation(.smooth(duration: 0.35), value: viewModel.mainStore.activeSession.rounds.count)
     }

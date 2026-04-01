@@ -28,10 +28,9 @@ struct CoinOutcomeButton: View {
                     .shadow(color: .black.opacity(0.55), radius: 2, x: 0, y: 1)
                     .padding(.top, DesignTokens.Spacing.xs)
             }
-            .contentShape(Circle())
+            .skip_contentShape(Circle())
         }
         .buttonStyle(CoinOutcomeButtonPressStyle())
-        .accessibilityLabel(label)
     }
 
     private var label: String {
