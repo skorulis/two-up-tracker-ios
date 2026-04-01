@@ -21,7 +21,7 @@ final class GraphViewModel {
 
     private(set) var settings: Settings
 
-    @Resolvable<BaseResolver>
+    @Resolvable<Resolver>
     init(mainStore: MainStore) {
         self.mainStore = mainStore
         self.session = mainStore.activeSession

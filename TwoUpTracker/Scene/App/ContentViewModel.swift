@@ -24,7 +24,7 @@ final class ContentViewModel {
         }
     }
 
-    @Resolvable<BaseResolver>
+    @Resolvable<Resolver>
     init(analyticsService: AnalyticsService) {
         self.analyticsService = analyticsService
         // Fire the initial tab impression so analytics reflects the first screen.

@@ -5,7 +5,7 @@ import SwiftUI
 struct MainPathRenderer: CoordinatorPathRenderer {
     typealias PathType = MainPath
 
-    let resolver: BaseResolver
+    let resolver: Resolver
 
     @ViewBuilder @MainActor
     func render(path: MainPath, in coordinator: Coordinator) -> some View {

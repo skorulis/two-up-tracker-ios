@@ -44,6 +44,9 @@ struct SettingsView: View {
                 )
                 .font(DesignTokens.Typography.caption)
             }
+            
+            about
+            debug
 
             Section {
                 Button(role: .destructive) {
@@ -54,34 +57,6 @@ struct SettingsView: View {
             } footer: {
                 Text("Clears your session and loss limit. This cannot be undone.")
                     .font(DesignTokens.Typography.caption)
-            }
-
-            Section {
-                Button {
-                    viewModel.showAbout()
-                } label: {
-                    HStack {
-                        Text("About this app")
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .font(.footnote.weight(.semibold))
-                            .foregroundStyle(.tertiary)
-                    }
-                }
-
-                Button {
-                    viewModel.showWhatIsTwoUp()
-                } label: {
-                    HStack {
-                        Text("What is Two-up?")
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .font(.footnote.weight(.semibold))
-                            .foregroundStyle(.tertiary)
-                    }
-                }
-            } header: {
-                Text("About")
             }
         }
         .scrollDismissesKeyboard(.immediately)
@@ -99,5 +74,51 @@ struct SettingsView: View {
                 .padding(.bottom, 8)
             }
         )
+    }
+    
+    private var about: some View {
+        Section {
+            Button {
+                viewModel.showAbout()
+            } label: {
+                HStack {
+                    Text("About this app")
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(.tertiary)
+                }
+            }
+
+            Button {
+                viewModel.showWhatIsTwoUp()
+            } label: {
+                HStack {
+                    Text("What is Two-up?")
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(.tertiary)
+                }
+            }
+        } header: {
+            Text("About")
+        }
+    }
+
+    private var debug: some View {
+        #if DEBUG
+        Section {
+            Button {
+                viewModel.configureScreenshotData()
+            } label: {
+                Text("Setup app for screenshots")
+            }
+        } header: {
+            Text("Debug")
+        }
+        #else
+        EmptyView()
+        #endif
     }
 }

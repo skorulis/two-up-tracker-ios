@@ -31,7 +31,7 @@ final class MainStore: ObservableObject {
         }
     }
 
-    @Resolvable<BaseResolver>
+    @Resolvable<Resolver>
     init(keyValueStore: PKeyValueStore) {
         self.keyValueStore = keyValueStore
         activeSession = (try? keyValueStore.codable(forKey: Self.activeSessionKey)) ?? .defaultSession()

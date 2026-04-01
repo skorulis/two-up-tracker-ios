@@ -18,7 +18,7 @@ final class CurrentRoundViewModel: CoordinatorViewModel {
 
     var model: CurrentRoundView.Model = .init()
 
-    @Resolvable<BaseResolver>
+    @Resolvable<Resolver>
     init(mainStore: MainStore, countdownService: CountdownService, analyticsService: AnalyticsService) {
         self.mainStore = mainStore
         self.analyticsService = analyticsService

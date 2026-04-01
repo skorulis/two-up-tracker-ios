@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		431FCD7F5C9A6C1DF2C505F4 /* ASKCore in Frameworks */ = {isa = PBXBuildFile; productRef = 597C86E113CB703592B33268 /* ASKCore */; };
 		9449BBF997F1165520CB9602 /* ASKCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 1FC81680AC7E4D5AC424E3DA /* ASKCoordinator */; };
-		B6124C5E12970F619EA53673 /* KnitMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 5EEE554B454885BDCB0FF15E /* KnitMacros */; };
-		E2D8185759B706FC5E4396E7 /* Knit in Frameworks */ = {isa = PBXBuildFile; productRef = 3B6E474A8E3A9C3F015AA952 /* Knit */; };
 		FA2F9D7F2F7B190300E9FB08 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = FA2F9D7E2F7B190300E9FB08 /* SnapshotTesting */; };
+		FA2FA1A02F7CF29200E9FB08 /* ASKCore in Frameworks */ = {isa = PBXBuildFile; productRef = FA2FA19F2F7CF29200E9FB08 /* ASKCore */; };
+		FA2FA1A32F7CF2BA00E9FB08 /* Knit in Frameworks */ = {isa = PBXBuildFile; productRef = FA2FA1A22F7CF2BA00E9FB08 /* Knit */; };
+		FA2FA1A52F7CF2BA00E9FB08 /* KnitMacros in Frameworks */ = {isa = PBXBuildFile; productRef = FA2FA1A42F7CF2BA00E9FB08 /* KnitMacros */; };
 		FA94ECCD2F7A70B000F7DB4D /* AmplitudeUnified in Frameworks */ = {isa = PBXBuildFile; productRef = FA94ECCC2F7A70B000F7DB4D /* AmplitudeUnified */; };
 /* End PBXBuildFile section */
 
@@ -62,11 +62,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2FA1A02F7CF29200E9FB08 /* ASKCore in Frameworks */,
 				FA94ECCD2F7A70B000F7DB4D /* AmplitudeUnified in Frameworks */,
+				FA2FA1A52F7CF2BA00E9FB08 /* KnitMacros in Frameworks */,
+				FA2FA1A32F7CF2BA00E9FB08 /* Knit in Frameworks */,
 				9449BBF997F1165520CB9602 /* ASKCoordinator in Frameworks */,
-				431FCD7F5C9A6C1DF2C505F4 /* ASKCore in Frameworks */,
-				E2D8185759B706FC5E4396E7 /* Knit in Frameworks */,
-				B6124C5E12970F619EA53673 /* KnitMacros in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +116,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				E40F67BA12A8414015318587 /* PBXTargetDependency */,
+				FA2FA1A72F7CF2FA00E9FB08 /* PBXTargetDependency */,
 				EB9805C7F431C54778F51AE5 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
@@ -125,10 +125,10 @@
 			name = TwoUpTracker;
 			packageProductDependencies = (
 				1FC81680AC7E4D5AC424E3DA /* ASKCoordinator */,
-				597C86E113CB703592B33268 /* ASKCore */,
-				3B6E474A8E3A9C3F015AA952 /* Knit */,
-				5EEE554B454885BDCB0FF15E /* KnitMacros */,
 				FA94ECCC2F7A70B000F7DB4D /* AmplitudeUnified */,
+				FA2FA19F2F7CF29200E9FB08 /* ASKCore */,
+				FA2FA1A22F7CF2BA00E9FB08 /* Knit */,
+				FA2FA1A42F7CF2BA00E9FB08 /* KnitMacros */,
 			);
 			productName = TwoUpTracker;
 			productReference = C30AB8A28116E03BFDA13BCD /* TwoUpTracker.app */;
@@ -206,11 +206,11 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				57EF43E428A327B1766BEBA3 /* XCRemoteSwiftPackageReference "ASKCoordinator" */,
-				1BE92299E97AF486458EB21E /* XCRemoteSwiftPackageReference "ASKCore" */,
-				88D81E6F01ACC87463D6776C /* XCRemoteSwiftPackageReference "knit" */,
 				6B8B6839F173B8709D9BF762 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 				FA94ECCB2F7A70B000F7DB4D /* XCRemoteSwiftPackageReference "AmplitudeUnified-Swift" */,
 				FA2F9D7D2F7B190300E9FB08 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				FA2FA19E2F7CF29200E9FB08 /* XCRemoteSwiftPackageReference "ASKCore" */,
+				FA2FA1A12F7CF2BA00E9FB08 /* XCRemoteSwiftPackageReference "knit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B2C11C1BF9418747B255ED8A /* Products */;
@@ -271,10 +271,6 @@
 			target = AEBA6118CCC07D5D90D0A1E7 /* TwoUpTracker */;
 			targetProxy = FB168A392DDFB358CDA6FBE1 /* PBXContainerItemProxy */;
 		};
-		E40F67BA12A8414015318587 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 410DF970F352D58CEC505C1E /* KnitBuildPlugin */;
-		};
 		EB9805C7F431C54778F51AE5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 88ACCD7C283CB173910A0E3A /* SwiftLintBuildToolPlugin */;
@@ -283,6 +279,10 @@
 			isa = PBXTargetDependency;
 			target = AEBA6118CCC07D5D90D0A1E7 /* TwoUpTracker */;
 			targetProxy = FA2F9D722F7B18CE00E9FB08 /* PBXContainerItemProxy */;
+		};
+		FA2FA1A72F7CF2FA00E9FB08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = FA2FA1A62F7CF2FA00E9FB08 /* KnitBuildPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -598,14 +598,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1BE92299E97AF486458EB21E /* XCRemoteSwiftPackageReference "ASKCore" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/skorulis/ASKCore";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		57EF43E428A327B1766BEBA3 /* XCRemoteSwiftPackageReference "ASKCoordinator" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/skorulis/ASKCoordinator";
@@ -622,20 +614,28 @@
 				minimumVersion = 0.60.0;
 			};
 		};
-		88D81E6F01ACC87463D6776C /* XCRemoteSwiftPackageReference "knit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cashapp/knit";
-			requirement = {
-				branch = "skorulis/resolver-class";
-				kind = branch;
-			};
-		};
 		FA2F9D7D2F7B190300E9FB08 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.19.2;
+			};
+		};
+		FA2FA19E2F7CF29200E9FB08 /* XCRemoteSwiftPackageReference "ASKCore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/skorulis/ASKCore";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		FA2FA1A12F7CF2BA00E9FB08 /* XCRemoteSwiftPackageReference "knit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cashapp/knit";
+			requirement = {
+				branch = main;
+				kind = branch;
 			};
 		};
 		FA94ECCB2F7A70B000F7DB4D /* XCRemoteSwiftPackageReference "AmplitudeUnified-Swift" */ = {
@@ -654,26 +654,6 @@
 			package = 57EF43E428A327B1766BEBA3 /* XCRemoteSwiftPackageReference "ASKCoordinator" */;
 			productName = ASKCoordinator;
 		};
-		3B6E474A8E3A9C3F015AA952 /* Knit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 88D81E6F01ACC87463D6776C /* XCRemoteSwiftPackageReference "knit" */;
-			productName = Knit;
-		};
-		410DF970F352D58CEC505C1E /* KnitBuildPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 88D81E6F01ACC87463D6776C /* XCRemoteSwiftPackageReference "knit" */;
-			productName = "plugin:KnitBuildPlugin";
-		};
-		597C86E113CB703592B33268 /* ASKCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1BE92299E97AF486458EB21E /* XCRemoteSwiftPackageReference "ASKCore" */;
-			productName = ASKCore;
-		};
-		5EEE554B454885BDCB0FF15E /* KnitMacros */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 88D81E6F01ACC87463D6776C /* XCRemoteSwiftPackageReference "knit" */;
-			productName = KnitMacros;
-		};
 		88ACCD7C283CB173910A0E3A /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6B8B6839F173B8709D9BF762 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
@@ -683,6 +663,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA2F9D7D2F7B190300E9FB08 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
+		};
+		FA2FA19F2F7CF29200E9FB08 /* ASKCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA2FA19E2F7CF29200E9FB08 /* XCRemoteSwiftPackageReference "ASKCore" */;
+			productName = ASKCore;
+		};
+		FA2FA1A22F7CF2BA00E9FB08 /* Knit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA2FA1A12F7CF2BA00E9FB08 /* XCRemoteSwiftPackageReference "knit" */;
+			productName = Knit;
+		};
+		FA2FA1A42F7CF2BA00E9FB08 /* KnitMacros */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA2FA1A12F7CF2BA00E9FB08 /* XCRemoteSwiftPackageReference "knit" */;
+			productName = KnitMacros;
+		};
+		FA2FA1A62F7CF2FA00E9FB08 /* KnitBuildPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA2FA1A12F7CF2BA00E9FB08 /* XCRemoteSwiftPackageReference "knit" */;
+			productName = "plugin:KnitBuildPlugin";
 		};
 		FA94ECCC2F7A70B000F7DB4D /* AmplitudeUnified */ = {
 			isa = XCSwiftPackageProductDependency;

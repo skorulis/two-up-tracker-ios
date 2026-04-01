@@ -4,8 +4,8 @@ import SwiftUI
 
 @main
 struct TwoUpTrackerApp: App {
-    private let assembler: ScopedModuleAssembler<BaseResolver> = {
-        let assembler = ScopedModuleAssembler<BaseResolver>(
+    private let assembler: ScopedModuleAssembler<Resolver> = {
+        let assembler = ScopedModuleAssembler<Resolver>(
             [
                 TwoUpTrackerAssembly(purpose: .normal)
             ]

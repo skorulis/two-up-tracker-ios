@@ -14,7 +14,7 @@ final class SettingsViewModel: CoordinatorViewModel {
     /// Editable text for loss limit (currency); empty means no limit.
     var lossLimitText: String
 
-    @Resolvable<BaseResolver>
+    @Resolvable<Resolver>
     init(mainStore: MainStore) {
         self.mainStore = mainStore
         if let limit = mainStore.settings.lossLimit {
@@ -43,6 +43,10 @@ final class SettingsViewModel: CoordinatorViewModel {
 
     func showAbout() {
         coordinator?.push(MainPath.about)
+    }
+    
+    func configureScreenshotData() {
+        mainStore.activeSession = TestData().realisticSession()
     }
 
     func applyLossLimitFromField() {

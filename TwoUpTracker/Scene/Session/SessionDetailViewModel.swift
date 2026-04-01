@@ -13,7 +13,7 @@ final class SessionDetailViewModel {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    @Resolvable<BaseResolver>
+    @Resolvable<Resolver>
     init(mainStore: MainStore, analyticsService: AnalyticsService) {
         self.mainStore = mainStore
         self.analyticsService = analyticsService

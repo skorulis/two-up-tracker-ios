@@ -5,7 +5,7 @@ import KnitMacros
 
 final class TwoUpTrackerAssembly: AutoInitModuleAssembly {
     static var dependencies: [any Knit.ModuleAssembly.Type] { [] }
-    typealias TargetResolver = BaseResolver
+    typealias TargetResolver = Resolver
 
     private let purpose: IOCPurpose
 
@@ -63,7 +63,7 @@ final class TwoUpTrackerAssembly: AutoInitModuleAssembly {
 }
 
 extension TwoUpTrackerAssembly {
-    @MainActor static func testing() -> ScopedModuleAssembler<BaseResolver> {
-        ScopedModuleAssembler<BaseResolver>([TwoUpTrackerAssembly()])
+    @MainActor static func testing() -> ScopedModuleAssembler<Resolver> {
+        ScopedModuleAssembler<Resolver>([TwoUpTrackerAssembly()])
     }
 }

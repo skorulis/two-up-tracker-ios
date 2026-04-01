@@ -21,7 +21,7 @@ final class AmplitudeAnalyticsService: AnalyticsService {
 
     private let amplitude: Amplitude
 
-    @Resolvable<BaseResolver>
+    @Resolvable<Resolver>
     init(mainStore: MainStore) {
         self.amplitude = Amplitude(apiKey: AppEnvironment.amplitudeKey)
         self.amplitude.setUserId(userId: UUID().uuidString)

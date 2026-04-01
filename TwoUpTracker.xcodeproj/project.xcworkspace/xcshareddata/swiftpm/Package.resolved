@@ -79,7 +79,7 @@
       "location" : "https://github.com/skorulis/ASKCore",
       "state" : {
         "branch" : "main",
-        "revision" : "3b1e1ffe8e6fc6f6057e9891ba3cc205335dccbc"
+        "revision" : "400f97f0c18bc744112b458096b6471cc063a8b0"
       }
     },
     {
@@ -103,10 +103,10 @@
     {
       "identity" : "knit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/cashapp/knit",
+      "location" : "https://github.com/cashapp/knit.git",
       "state" : {
-        "branch" : "skorulis/resolver-class",
-        "revision" : "f645ad918b2b38173e4d1c82fe622d95d25b10a6"
+        "branch" : "main",
+        "revision" : "3d4afea562b95a95725f689be819b10ff93351fc"
       }
     },
     {
@@ -150,8 +150,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swiftlang/swift-syntax",
       "state" : {
-        "revision" : "f99ae8aa18f0cf0d53481901f88a0991dc3bd4a2",
-        "version" : "601.0.1"
+        "revision" : "4799286537280063c85a32f09884cfbca301b1a1",
+        "version" : "602.0.0"
       }
     },
     {
