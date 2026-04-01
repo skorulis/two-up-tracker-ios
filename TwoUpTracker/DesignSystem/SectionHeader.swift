@@ -7,7 +7,7 @@ struct SectionHeader: View {
     var body: some View {
         VStack(alignment: .leading, spacing: DesignTokens.Spacing.xs) {
             Text(title)
-                .font(DesignTokens.Typography.title)
+                .font(DesignTokens.Typography.sectionTitle)
                 .foregroundStyle(.primary)
             if let subtitle {
                 Text(subtitle)

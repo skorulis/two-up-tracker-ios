@@ -5,23 +5,15 @@ import SwiftUI
 
 extension DesignTokens {
     enum Typography {
-        // Core semantic scale
         static let display = Font.custom(Family.headingBold, size: 34, relativeTo: .largeTitle)
         static let sectionTitle = Font.custom(Family.headingSemibold, size: 22, relativeTo: .title2)
         static let buttonLabel = Font.custom(Family.headingSemibold, size: 17, relativeTo: .headline)
-        static let bodyPrimary = Font.custom(Family.body, size: 17, relativeTo: .body)
+        static let body = Font.custom(Family.body, size: 17, relativeTo: .body)
         static let bodyStrong = Font.custom(Family.bodySemibold, size: 17, relativeTo: .body)
-        static let captionSmall = Font.custom(Family.heading, size: 13, relativeTo: .caption)
-        static let value = Font.custom(Family.headingSemibold, size: 20, relativeTo: .title3).monospacedDigit()
+        static let caption = Font.custom(Family.heading, size: 13, relativeTo: .caption)
+        static let statValue = Font.custom(Family.headingSemibold, size: 20, relativeTo: .title3).monospacedDigit()
         /// Large currency figure for emphasis (e.g. pending round total staked).
         static let heroValue = Font.custom(Family.headingBold, size: 52, relativeTo: .largeTitle)
-
-        // Backward-compatible aliases used by existing views
-        static let title = sectionTitle
-        static let headline = buttonLabel
-        static let body = bodyPrimary
-        static let caption = captionSmall
-        static let statValue = value
     }
 }
 
@@ -46,8 +38,8 @@ private struct TypographyCatalog: View {
                 row("sectionTitle", DesignTokens.Typography.sectionTitle, "Round history")
                 row("buttonLabel", DesignTokens.Typography.buttonLabel, "Place bet")
                 row(
-                    "bodyPrimary",
-                    DesignTokens.Typography.bodyPrimary,
+                    "body",
+                    DesignTokens.Typography.body,
                     "Body text for longer passages and supporting copy."
                 )
                 row(
@@ -55,8 +47,9 @@ private struct TypographyCatalog: View {
                     DesignTokens.Typography.bodyStrong,
                     "Emphasised body when you need a bit more weight."
                 )
-                row("captionSmall", DesignTokens.Typography.captionSmall, "Captions, hints, and secondary labels")
-                row("value", DesignTokens.Typography.value, "$12,340.56 · 47 heads")
+                row("caption", DesignTokens.Typography.caption, "Captions, hints, and secondary labels")
+                row("statValue", DesignTokens.Typography.statValue, "$12,340.56 · 47 heads")
+                row("heroValue", DesignTokens.Typography.heroValue, "$1,234")
             }
             .padding(DesignTokens.Spacing.medium)
             .frame(maxWidth: .infinity, alignment: .leading)

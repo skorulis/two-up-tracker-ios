@@ -33,7 +33,7 @@ struct CountdownTimer: View {
         HStack(alignment: .top, spacing: DesignTokens.Spacing.medium) {
             VStack(spacing: DesignTokens.Spacing.small) {
                 Text("Spinning starts in")
-                    .font(DesignTokens.Typography.bodyPrimary)
+                    .font(DesignTokens.Typography.body)
                     .foregroundStyle(.secondary)
 
                 Text(Self.formatRemaining(until: session.bettingStartTime, from: now))

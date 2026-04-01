@@ -126,9 +126,9 @@ struct SessionDetailView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(round.totalStaked, format: Formatters.currencyDisplayFormat)
                         + Text(" wagered")
-                        .font(DesignTokens.Typography.bodyPrimary)
+                        .font(DesignTokens.Typography.body)
                     Text("Awaiting result")
-                        .font(DesignTokens.Typography.bodyPrimary)
+                        .font(DesignTokens.Typography.body)
                 }
 
                 Spacer()

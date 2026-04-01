@@ -6,7 +6,7 @@ struct PrimaryButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(DesignTokens.Typography.headline)
+            .font(DesignTokens.Typography.buttonLabel)
             .frame(minHeight: DesignTokens.MinTapTarget.height)
             .frame(maxWidth: .infinity)
             .padding(.horizontal, DesignTokens.Spacing.medium)
