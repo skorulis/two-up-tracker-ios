@@ -1,5 +1,4 @@
 import SwiftUI
-import UIKit
 
 /// Semantic colors aligned with PRD: system colors, clear profit vs loss.
 enum Colors {
@@ -8,11 +7,11 @@ enum Colors {
     static var neutral: Color { .secondary }
 
     static var cardBackground: Color {
-        Color(uiColor: .secondarySystemGroupedBackground)
+        Asset.cardBackground.color
     }
 
     static var groupedBackground: Color {
-        Color(uiColor: .systemGroupedBackground)
+        Asset.groupedBackground.color
     }
 
     // MARK: - Australian national colours

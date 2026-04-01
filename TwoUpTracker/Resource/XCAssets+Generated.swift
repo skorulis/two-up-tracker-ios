@@ -10,6 +10,8 @@ import SwiftUI
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset: Sendable {
   internal static let accentColor = ColorAsset(name: "AccentColor")
+  internal static let cardBackground = ColorAsset(name: "CardBackground")
+  internal static let groupedBackground = ColorAsset(name: "GroupedBackground")
   internal static let heads = ImageAsset(name: "heads")
   internal static let tails = ImageAsset(name: "tails")
 }
