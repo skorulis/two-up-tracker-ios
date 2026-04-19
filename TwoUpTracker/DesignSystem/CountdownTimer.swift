@@ -37,8 +37,7 @@ struct CountdownTimer: View {
                     .foregroundStyle(.secondary)
 
                 Text(Self.formatRemaining(until: session.bettingStartTime, from: now))
-                    .font(countdownFont)
-                    .monospacedDigit()
+                    .font(countdownFont.skip_monospacedDigit())
                     .multilineTextAlignment(.center)
                     .minimumScaleFactor(0.45)
                     .lineLimit(1)

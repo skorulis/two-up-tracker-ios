@@ -4,7 +4,7 @@ import SwiftUI
 
 struct CurrentRoundView: View {
     @State var viewModel: CurrentRoundViewModel
-    @State private var isCustomAmountFieldFocused = false
+    @State var isCustomAmountFieldFocused = false
 
     var body: some View {
         if viewModel.model.bettingAvailable {
@@ -204,7 +204,7 @@ struct CurrentRoundView: View {
                 .bold()
             Spacer()
             Text(bet.amount, format: Formatters.currencyDisplayFormat)
-                .font(DesignTokens.Typography.body.monospacedDigit())
+                .font(DesignTokens.Typography.body.skip_monospacedDigit())
         }
         .skip_accessibilityElement(children: .combine)
     }

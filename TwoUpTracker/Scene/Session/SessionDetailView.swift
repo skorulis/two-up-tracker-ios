@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SessionDetailView: View {
     @State var viewModel: SessionDetailViewModel
-    @State private var showResetConfirmation: Bool = false
+    @State var showResetConfirmation: Bool = false
 
     var body: some View {
         PageLayout {

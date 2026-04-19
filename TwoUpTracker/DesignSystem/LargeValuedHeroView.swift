@@ -21,7 +21,7 @@ struct LargeValuedHeroView: View {
     var body: some View {
         VStack(spacing: 0) {
             Text(amount, format: format)
-                .font(DesignTokens.Typography.heroValue.monospacedDigit())
+                .font(DesignTokens.Typography.heroValue.skip_monospacedDigit())
                 .foregroundStyle(colorAmountBySign ? amountForegroundStyle : .primary)
                 .multilineTextAlignment(.center)
                 .minimumScaleFactor(0.55)

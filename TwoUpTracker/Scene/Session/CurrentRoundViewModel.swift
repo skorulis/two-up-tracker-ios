@@ -1,5 +1,9 @@
 import ASKCoordinator
+#if canImport(Combine)
 import Combine
+#else
+import OpenCombine
+#endif
 import Foundation
 import Knit
 import SwiftUI

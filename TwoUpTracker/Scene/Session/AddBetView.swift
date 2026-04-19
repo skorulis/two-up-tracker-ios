@@ -4,8 +4,8 @@ import SwiftUI
 struct AddBetView: View {
     @State var draft = BetDraft(id: UUID(), amountText: "", prediction: nil)
     @Binding var isCustomAmountFieldFocused: Bool
-    @FocusState private var isCustomAmountFocused: Bool
-    @Environment(\.dismissCustomOverlay) private var onDismiss
+    @FocusState var isCustomAmountFocused: Bool
+    @Environment(\.dismissCustomOverlay) var onDismiss
     let onSetBet: (Bet) -> Void
 
     var body: some View {
@@ -35,7 +35,7 @@ struct AddBetView: View {
                         TextField("Custom amount", text: $draft.amountText)
                             .textFieldStyle(.roundedBorder)
                             .keyboardType(.decimalPad)
-                            .font(DesignTokens.Typography.body.monospacedDigit())
+                            .font(DesignTokens.Typography.body.skip_monospacedDigit())
                             .focused($isCustomAmountFocused)
                     }
                     Button("Track Bet") {

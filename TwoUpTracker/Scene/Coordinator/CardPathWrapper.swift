@@ -8,8 +8,8 @@ struct CardPathWrapper<Content: View>: View {
     let content: () -> Content
 
     @Environment(\.dismissCustomOverlay) private var onDismiss
-    @State private var isVisible: Bool = false
-    @State private var animatingOut: Bool = false
+    @State var isVisible: Bool = false
+    @State var animatingOut: Bool = false
 
     var body: some View {
         ZStack {

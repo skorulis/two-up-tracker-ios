@@ -21,7 +21,7 @@ struct BetAmountGrid: View {
                     amountText = String(Int(amount))
                 } label: {
                     Text(amount, format: Formatters.roundedCurrencyDisplayFormat)
-                        .font(DesignTokens.Typography.buttonLabel.monospacedDigit())
+                        .font(DesignTokens.Typography.buttonLabel.skip_monospacedDigit())
                         .frame(maxWidth: .infinity)
                         .frame(minHeight: DesignTokens.MinTapTarget.height)
                         .skip_contentShape(Rectangle())

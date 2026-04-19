@@ -4,7 +4,7 @@ import Foundation
 import SwiftUI
 
 struct KeyboardToolbarModifier<Toolbar: View>: ViewModifier {
-    @State private var isKeyboardShown = false
+    @State var isKeyboardShown = false
     private let toolbar: Toolbar
 
     init(@ViewBuilder toolbar: () -> Toolbar) {

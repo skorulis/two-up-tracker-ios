@@ -12,18 +12,12 @@ enum MainPath: CoordinatorPath {
 
     var id: String {
         switch self {
-        case .content:
-            "content"
-        case .sessionDetail:
-            "sessionDetail"
-        case .currentRound:
-            "currentRound"
-        case .settings:
-            "settings"
-        case .whatIsTwoUp:
-            "whatIsTwoUp"
-        case .about:
-            "about"
+        case .content: "content"
+        case .sessionDetail: "sessionDetail"
+        case .currentRound: "currentRound"
+        case .settings: "settings"
+        case .whatIsTwoUp: "whatIsTwoUp"
+        case .about: "about"
         case .addBet: "addBet"
         case .twoUpAvailabilityInfo:
             "twoUpAvailabilityInfo"

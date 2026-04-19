@@ -36,3 +36,13 @@ extension View {
         #endif
     }
 }
+
+extension Font {
+    nonisolated public func skip_monospacedDigit() -> Font {
+        #if !os(Android)
+            return monospacedDigit()
+        #else
+        return self
+        #endif
+    }
+}

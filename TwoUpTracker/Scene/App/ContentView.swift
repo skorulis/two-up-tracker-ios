@@ -2,11 +2,11 @@ import ASKCoordinator
 import SwiftUI
 
 struct ContentView: View {
-    @State var model: ContentViewModel
-    @Environment(\.resolver) private var resolver
+    @State var viewModel: ContentViewModel
+    @Environment(\.resolver) var resolver
 
     var body: some View {
-        TabView(selection: $model.selectedTab) {
+        TabView(selection: $viewModel.selectedTab) {
             CoordinatorView(coordinator: Coordinator(root: MainPath.currentRound))
                 .withRenderers(resolver: resolver!)
                 .tabItem {

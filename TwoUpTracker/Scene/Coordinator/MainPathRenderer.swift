@@ -11,7 +11,7 @@ struct MainPathRenderer: CoordinatorPathRenderer {
     func render(path: MainPath, in coordinator: Coordinator) -> some View {
         switch path {
         case .content:
-            ContentView(model: resolver.contentViewModel())
+            ContentView(viewModel: resolver.contentViewModel())
         case .sessionDetail:
             SessionDetailView(viewModel: resolver.sessionDetailViewModel())
         case .currentRound:

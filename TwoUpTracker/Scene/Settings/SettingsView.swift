@@ -2,8 +2,8 @@ import SwiftUI
 
 struct SettingsView: View {
     @State var viewModel: SettingsViewModel
-    @FocusState private var lossLimitFocused: Bool
-    @State private var showResetConfirmation = false
+    @FocusState var lossLimitFocused: Bool
+    @State var showResetConfirmation = false
 
     var body: some View {
         PageLayout {
@@ -34,7 +34,7 @@ struct SettingsView: View {
             Section {
                 TextField("Amount", text: $viewModel.lossLimitText)
                     .keyboardType(.decimalPad)
-                    .font(DesignTokens.Typography.body.monospacedDigit())
+                    .font(DesignTokens.Typography.body.skip_monospacedDigit())
                     .focused($lossLimitFocused)
             } header: {
                 Text("Loss limit")
